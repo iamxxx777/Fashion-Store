@@ -1,0 +1,213 @@
+@import './Pallette.scss';
+
+.header {
+    width: 100%;
+    background-color: $background-1;
+    padding: 0.7rem 1.5rem;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    .header_container {
+        max-width: 1250px;
+        margin: 0 auto;
+        .search_div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .search_bar {
+                width: 100%;
+                .search {
+                    form {
+                        position: relative;
+                        width: 100%;
+                        max-width: 600px;
+                        margin: 0 auto;
+                        height: 45px;
+                        border-radius: 25px;
+                        border: solid 1px #ddd;
+                        input {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 25px;
+                            color: $primary-text-2;
+                            font-size: 16px;
+                            font-weight: 400;
+                            padding: 0 3rem 0 1rem;
+                            background-color: transparent;
+                        }
+                        button {
+                            position: absolute;
+                            top: 11px;
+                            right: 17px;
+                            color: $pink;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.hide {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .hide {
+        display: initial;
+    }
+
+    .header {
+        .header_container {
+            display: flex;
+            flex-direction: column;
+            .search_div {
+                .header_logo {
+                    width: 100%;
+                    h2 {
+                        font-size: 40px;
+                        color: $background-blue;
+                        text-align: left;
+                    }
+                }
+                .search_bar {
+                    .search {
+                        form {
+                            width: 450px;
+                            &:hover, :focus, :active {
+                                border-color: #aaa;
+                            }
+                        }
+                    }
+                }
+                .search_bar {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    .header_btns {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        a {
+                            background-color: $background;
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 50%;
+                            margin-left: 1rem;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            div {
+                                width: 100%;
+                                position: relative;
+                                span {
+                                    background-color: $pink;
+                                    color: $secondary-text;
+                                    padding: 0.2rem 0.4rem;
+                                    font-size: 11px;
+                                    border-radius: 50%;
+                                    position: absolute;
+                                    top: -12px;
+                                    right: -8px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .header_nav {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 1rem;
+                .header_nav_category_btn {
+                    position: relative;
+                    button {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 0.4rem;
+                        background-color: $background;
+                        width: 300px;
+                        .header_nav_category_left {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            h3 {
+                                margin-left: 0.5rem;
+                                color: $primary-text-2;
+                                font-size: 15px;
+                                font-weight: 600;
+                            }
+                        }
+                    }                
+                    .header_dropdown {
+                        display: none;
+                        flex-direction: column;
+                        background-color: $background-1;
+                        box-shadow: $shadow-2;
+                        width: 300px;
+                        border-radius: 5px;
+                        position: absolute;
+                        top: 54px;
+                        left: 0;
+                        z-index: 10;
+                        transform: scaleY(1);
+                        transform-origin: center top;
+                        transition: all 250ms ease-in-out 0s;
+                        a {
+                            &:hover, :focus, :active {
+                                color: $pink;
+                                background-color: $pink-shade;
+                            }
+                            div {
+                                width: 100%;
+                                display: flex;
+                                justify-content: flex-start;
+                                align-items: center;
+                                padding: 0.7rem 1rem;
+                                p {
+                                    font-size: 15px;
+                                    font-weight: 400;
+                                    margin-left: 0.7rem;
+                                }
+                            }
+                        }
+                    }
+                    .show {
+                        display: flex;
+                    }
+                }
+                .header_nav_links {
+                    a {
+                        margin-left: 1.5rem;
+                        font-weight: 500;
+                        font-size: 15px;
+                        &:hover, :active, :focus {
+                            color: $pink;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 900px) {
+    .header {
+        .header_container {
+            .search_div {
+                .search_bar {
+                    .search {
+                        form {
+                            width: 600px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

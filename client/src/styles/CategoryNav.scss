@@ -1,0 +1,97 @@
+@import './Pallette.scss';
+
+.category_nav {
+    background-color: $background_1;
+    padding: 0.7rem 1.5rem;
+    display: none;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .category_nav {
+        display: block;
+        .header_nav {
+            max-width: 1250px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .header_nav_category_btn {
+                position: relative;
+                button {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0.4rem;
+                    background-color: $background;
+                    width: 300px;
+                    .header_nav_category_left {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        h3 {
+                            margin-left: 0.5rem;
+                            color: $primary-text-2;
+                            font-size: 15px;
+                            font-weight: 600;
+                        }
+                    }
+                    .header_nav_category_right {
+                        transform: rotate(0);
+                        transition: 0.3s linear;
+                    }
+                    .rotate {
+                        transform: rotate(90deg);
+                    }
+                }                
+                .header_dropdown {
+                    display: none;
+                    flex-direction: column;
+                    background-color: $background-1;
+                    box-shadow: $shadow-2;
+                    width: 300px;
+                    border-radius: 5px;
+                    position: absolute;
+                    top: 54px;
+                    left: 0;
+                    z-index: 10;
+                    transform: scaleY(1);
+                    transform-origin: center top;
+                    transition: all 250ms ease-in-out 0s;
+                    a {
+                        &:hover, :focus, :active {
+                            color: $pink;
+                            background-color: $pink-shade;
+                        }
+                        div {
+                            width: 100%;
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            padding: 0.7rem 1rem;
+                            p {
+                                font-size: 15px;
+                                font-weight: 400;
+                                margin-left: 0.7rem;
+                            }
+                        }
+                    }
+                }
+                .show {
+                    display: flex;
+                }
+            }
+            .header_nav_links {
+                a {
+                    margin-left: 1.5rem;
+                    font-weight: 400;
+                    font-size: 15px;
+                    &:hover, :active, :focus {
+                        color: $pink;
+                    }
+                }
+            }
+        }
+    }
+    
+}

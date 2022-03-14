@@ -1,0 +1,125 @@
+@import './Pallette.scss';
+
+.cart_item {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: $background_1;
+    box-shadow: $shadow_3;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 1.3rem;
+    .close {
+        color: $primary-text-3;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+    }
+    .item_img {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+        img {
+            display: flex;
+            width: 200px;
+            height: 150px;
+            object-fit: contain;
+        }
+    }
+    .item_info {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        .item_details {
+            text-align: left;
+            .name {
+                font-size: 16px;
+                font-weight: 400;
+                color: $primary-text-2;
+                text-transform: capitalize;
+                margin-bottom: 0.5rem;
+            }
+            .size {
+                font-size: 16px;
+                font-weight: 400;
+                margin-bottom: 0.5rem;
+            }
+            .unit {
+                font-weight: 300;
+                font-size: 14px;
+                color: $primary-text-3;
+                margin-bottom: 0.5rem;
+            }
+            .price {
+                font-weight: 700;
+                font-size: 15px;
+                color: $pink;
+            }
+        }
+        .item_buttons {
+            .buttons {
+                padding: 0.3rem;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                button {
+                    padding: 0.3rem 0.6rem;
+                    color: $secondary-text;
+                    background-color: $pink;
+                    margin-left: 0.7rem;
+                    border-radius: 3px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    &:disabled {
+                        background-color: lightgrey;
+                        color: #111;
+                        pointer-events: none;
+                    }
+                }
+                span {
+                    font-size: 14px;
+                    font-weight: 600;
+                    margin-left: 0.7rem;
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 550px) {
+    .cart_item {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        .item_img {
+            margin-bottom: 0;
+            img {
+                display: flex;
+                width: 200px;
+                height: 110px;
+                object-fit: contain;
+            }
+        }
+        .item_info {
+            .item_details {
+                text-align: left;
+                .unit {
+                    font-weight: 400;
+                    font-size: 14px;
+                }
+            }
+            .item_buttons {
+                .buttons {
+                    button {
+                        padding: 0.4rem 0.8rem;
+                    }
+                }
+            }
+        }
+    }
+}

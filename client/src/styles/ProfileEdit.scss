@@ -1,0 +1,87 @@
+@import './Pallette.scss';
+
+.password_change,
+.edit_profile {
+    width: 100%;
+    background-color: $background_1;
+    box-shadow: $shadow-3;
+    padding: 1rem 1.5rem;
+    padding-bottom: 2rem;
+    border-radius: 5px;
+    .password_header,
+    .edit_profile_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: $p 0;
+        .title {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            svg {
+                margin-right: $m-s;
+                fill: $pink;
+            }
+            h1 {
+                font-size: $f-xl;
+                font-weight: 600;
+                font-family: $family-2;
+            }
+        }
+        .mb_btn {
+            button {
+                background-color: transparent;
+                svg {
+                    fill: $pink;
+                }
+            }
+        }
+    }
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        form {
+            width: 100%;
+        }
+    }
+}
+
+
+
+@media (min-width: 600px) {
+    .password_change,
+    .edit_profile {
+        padding: 2rem 3rem;
+    }
+}
+
+
+@media (min-width: 800px) {
+    .password_change,
+    .edit_profile {
+        .password_header,
+        .edit_profile_header {
+            .title {
+                svg {
+                    width: 30px;
+                    height: 30px;
+                }
+                h1 {
+                    font-size: $f-xxl;
+                }
+            }
+            .mb_btn {
+                display: none;
+            }
+        }
+    }
+}
+
+
+@media (min-width: 1000px) {
+    .password_change {
+        .container {
+            grid-template-columns: 2fr 1fr;
+        }
+    }
+}

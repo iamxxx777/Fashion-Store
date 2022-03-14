@@ -1,0 +1,100 @@
+@import './Pallette.scss';
+
+.signin_page {
+    width: 100%;
+    min-height: 80vh;
+    padding: $p;
+    padding-bottom: $p-2;
+    .signin_page_container {
+        max-width: 650px;
+        margin: 0 auto;
+        background-color: $background_1;
+        box-shadow: $shadow-3;
+        padding: $p-2 0;
+        border-radius: 5px;
+        .signin_tab_panel {
+            padding-top: $p;
+            .login, .signin {
+                width: 100%;
+                form {
+                    padding: $p $p-2;
+                    display: flex;
+                    flex-direction: column;
+                    h2 {
+                        font-size: $f-xl;
+                        font-weight: 600;
+                        font-family: $family-2;
+                        margin-bottom: $m;
+                        text-align: center;
+                    }
+                    .form_control {
+                        width: 100%;
+                        margin-bottom: $m;
+                    }
+                    button {
+                        margin-bottom: $m;
+                    }
+                    a {
+                        color: $pink;
+                        font-size: $f-sm;
+                        font-weight: 600;
+                        margin-bottom: $m-s;
+                        text-align: left;
+                    }
+                    p {
+                        font-size: $f-sm;
+                        font-weight: 600;
+                        text-align: left;
+                        button {
+                            font-size: inherit;
+                            font-weight: inherit;
+                            color: $pink;
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+
+
+
+@media (min-width: 600px) {
+    .signin_page {
+        .signin_page_container {
+            .signin_tab_panel {
+                .login, .signin {
+                    form {
+                        padding: $p $p-3;
+                        h2 {
+                            font-size: $f-xxl;
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+}
+
+
+
+@media (min-width: 900px) {
+    .signin_page {
+        padding: $p-2;
+        .signin_page_container {
+            .signin_tab_panel {
+                .login, .signin {
+                    form {
+                        h2 {
+                            font-size: $f-xxxl;
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "store",
+  "version": "1.0.0",
+  "description": "E-commerce Store",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "client": "npm start --prefix client",
+    "server": "nodemon server/server.js",
+    "populateProducts": "node server/seedProducts.js"
+  },
+  "keywords": [
+    "E-COMMERCE",
+    "REACT",
+    "EXPRESS"
+  ],
+  "author": "Dayo-ajobiewe Hope",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cloudinary": "^1.27.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.4",
+    "multer": "^1.4.4",
+    "nodemailer": "^6.7.2"
+  }
+}

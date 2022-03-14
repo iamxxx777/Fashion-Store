@@ -1,0 +1,21 @@
+.main_page {
+    width: 100%;
+    padding: 3rem 1rem;
+    .main_container {
+        max-width: 1250px;
+        margin: 0 auto;
+    }
+}
+
+
+@media (min-width: 601px) {
+    .main_page {
+        padding: 3rem 1.5rem;
+    }
+}
+
+
+
+.pad {
+    padding: 4rem 0;
+}

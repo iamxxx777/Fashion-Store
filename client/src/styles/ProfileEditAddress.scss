@@ -1,0 +1,72 @@
+@import './Pallette.scss';
+
+.edit_address {
+    width: 100%;
+    background-color: $background_1;
+    box-shadow: $shadow-3;
+    padding: 1rem 1.5rem;
+    padding-bottom: 2rem;
+    border-radius: 5px;
+    .edit_address_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: $p 0;
+        .title {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            svg {
+                margin-right: $m-s;
+                fill: $pink;
+            }
+            h1 {
+                font-size: $f-xl;
+                font-weight: 600;
+                font-family: $family-2;
+            }
+        }
+        .mb_btn {
+            button {
+                background-color: transparent;
+                svg {
+                    fill: $pink;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 600px) {
+    .edit_address {
+        padding: 2rem;
+    }
+}
+
+
+@media (min-width: 800px) {
+    .edit_address {
+        .edit_address_header {
+            .title {
+                h1 {
+                    font-size: $f-xxl;
+                }
+                svg {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+            .mb_btn {
+                display: none;
+            }
+        }
+    }
+}
+
+
+@media (min-width: 1000px) {
+    .edit_address {
+        padding: 2rem 3rem;
+
+    }
+}

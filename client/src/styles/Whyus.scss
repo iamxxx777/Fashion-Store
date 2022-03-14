@@ -1,0 +1,78 @@
+@import './Pallette.scss';
+
+.traits {
+    width: 100%;
+    padding: 3rem 1rem;
+        .traits_items {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            width: 100%;
+            .trait {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 0.6rem;
+                padding: 2rem;
+                background-color: $background_2;
+                box-shadow: $shadow-3;
+                border-radius: 6px;
+                .trait_icon {
+                    svg {
+                        width: 50px;
+                        height: 50px;
+                        fill: $pink-2;
+                    }
+                }
+                .trait_info {
+                    h3 {
+                        font-size: $f-xl;
+                        font-weight: 600;
+                        margin-bottom: $m-s;
+                    }
+                    p {
+                        color: $primary-text-3;
+                        font-weight: 400;
+                        font-size: $f-sm;
+                        line-height: 20px;
+                    }
+                }
+            }
+        }
+}
+
+@media (min-width: 450px) {
+    .traits {
+        .traits_items {
+            grid-template-columns: repeat(2, 1fr);
+            .trait {
+                padding: 2rem;
+            }
+        }
+    }
+}
+
+
+@media (min-width: 800px) {
+    .traits {
+        .traits_items {
+            grid-template-columns: repeat(3, 1fr);
+            .trait {
+                .trait_info {
+                    p {
+                        font-size: $f-md;
+                        line-height: 22px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 950px) {
+    .traits {
+        .traits_items {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}

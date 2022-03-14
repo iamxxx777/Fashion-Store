@@ -1,0 +1,63 @@
+@import './Pallette.scss';
+
+.top_products_slide {
+    width: 100%;
+    padding: 3rem 0;
+    .top_products_slide_container {
+        display: flex;
+        flex-direction: column;
+        .top_products_slide_title {
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            h1 {
+                font-size: 24px;
+                font-weight: 600;
+                text-align: left;
+                color: $pink;
+                font-family: 'Poppins', sans-serif;
+            }
+            a {
+                font-size: $f-s;
+                color: $primary-text-3;
+                div {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    span {
+                        margin-right: 3px;
+                    }
+                    svg {
+                        fill: $primary-text-3;
+                    }
+                }
+            }
+        }
+        .top_products_slider {
+            max-width: 100%;
+        }
+    }
+}
+
+
+@media (min-width: 768px) {
+    .top_products_slide {
+        .top_products_slide_container {
+            .top_products_slide_title {
+                h1 {
+                    font-size: 30px;
+                }
+                a {
+                    font-size: $f-md;
+                    &:hover {
+                        color: $pink;
+                        svg {
+                            fill: $pink;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

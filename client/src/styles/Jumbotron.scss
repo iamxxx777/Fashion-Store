@@ -1,0 +1,118 @@
+@import './Pallette.scss';
+
+
+.jumbotron {
+    width: 100%;
+    margin-bottom: 2rem;
+    .jumbo_container {
+        .jumbo_grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            width: 100%;
+            .jumbo_grid_item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+                padding: 2rem 1rem;
+                border-radius: 4px;
+                background-color: $background-1;
+                .jumbo_img {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    img {
+                        display: block;
+                        width: 280px;
+                        height: 210px;
+                        object-fit: contain;
+                    }
+                }
+                .jumbo_info {
+                    text-align: left;
+                    h2 {
+                        font-size: 15px;
+                        font-weight: 400;
+                        text-transform: uppercase;
+                        margin-bottom: 1rem;
+                        color: $primary-text-3;
+                    }
+                    h1 {
+                        font-size: 30px;
+                        line-height: 40px;
+                        margin-bottom: 1rem;
+                        font-family: 'Poppins', sans-serif;
+                        span {
+                            color: $pink;
+                        }
+                    }
+                    p {
+                        font-size: 15px;
+                        line-height: 22px;
+                        color: $primary-text-3;
+                        margin-bottom: 1.2rem;
+                        font-weight: 400;
+                    }
+                    a {
+                        text-transform: uppercase;
+                        font-size: 13px;
+                        font-weight: 600;
+                        padding-bottom: 0.1rem;
+                        border-bottom: solid 2px $pink;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 600px) {
+    .jumbotron {
+        .jumbo_container {
+            .jumbo_grid {
+                .jumbo_grid_item {
+                    padding: 2rem;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    .jumbo_img {
+                        width: 100%;
+                        img {
+                            width: 100%;
+                            height: auto;
+                            max-height: 320px;
+                        }
+                    }
+                    .jumbo_sneakers_img {
+                        order: 2;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 950px) {
+    .jumbotron {
+        .jumbo_container {
+            .jumbo_grid {
+                display: grid;
+                grid-template-columns: 1fr 1.5fr;
+                gap: 1.5rem;
+                .jumbo_dresses {
+                    grid-row: 1 / span 2;
+                    grid-template-columns: 1fr;
+                }
+                .jumbo_grid_item {
+                    .jumbo_img {
+                        img {
+                            max-height: 250px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

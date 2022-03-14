@@ -1,0 +1,232 @@
+@import './Pallette.scss';
+
+.user_orders {
+    width: 100%;
+    background-color: $background_1;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    .user_orders_container {
+        .user_orders_header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: $p 0;
+            .user_orders_title {
+                div {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    margin-bottom: $m-s;
+                    svg {
+                        margin-right: $m-s;
+                        fill: $pink;
+                    }
+                    h1 {
+                        font-size: $f-xl;
+                        font-weight: 600;
+                        font-family: $family-2;
+                    }
+                }
+                h2 {
+                    font-size: $f-s;
+                    font-weight: 400;
+                    color: $primary-text-3;
+                    font-family: $family-2;
+                    text-align: left;
+                    padding-left: 1.7rem;
+                }
+            }
+            .mb_btn {
+                button {
+                    background-color: transparent;
+                    svg {
+                        fill: $pink;
+                    }
+                }
+            }
+        }
+        .orders {
+            .orders_title {
+                display: none;
+            }
+            .orders_list {
+                .user_order {
+                    width: 100%;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 0.5rem;
+                    border-radius: 5px;
+                    background-color: transparent;
+                    box-shadow: none;
+                    border: solid 1px #efefef;
+                    padding: $p-s;
+                    margin-bottom: $m;
+                    div {
+                        h3 {
+                            font-size: $f-s;
+                            font-weight: 400;
+                            text-align: left;
+                        }
+                        a {
+                            svg {
+                                fill: $pink;
+                            }
+                        }
+                    }
+                    .order_total {
+                        display: none;
+                    }
+                    .order_id {
+                        h3 {
+                            font-size: $f-xs;
+                        }
+                    }
+                    .order_status {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        span {
+                            width: 8px;
+                            height: 8px;
+                            border-radius: 50%;
+                            margin-right: $m-s;
+                        }
+                    }
+                    .more_btn {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
+@media (min-width: 600px) {
+    .user_orders {
+        .user_orders_container {
+            .orders {
+                .orders_title {
+                    display: none;
+                }
+                .orders_list {
+                    .user_order {
+                        padding: $p;
+                        .order_id {
+                            h3 {
+                                font-size: $f-s;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 800px) {
+    .user_orders {
+        padding: 1rem 2rem;
+        .user_orders_container {
+            .user_orders_header {
+                .mb_btn {
+                    display: none;
+                }
+            }
+            .orders {
+                .orders_list {
+                    .user_order {
+                        &:hover {
+                            border-color: #aaa;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1000px) {
+    .user_orders {
+        .user_orders_container {
+            .user_orders_header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: $p 0;
+                .user_orders_title {
+                    div {
+                        svg {
+                            width: 30px;
+                            height: 30px;
+                        }
+                        h1 {
+                            font-size: $f-xxl;
+                        }
+                    }
+                }
+            }
+            .orders {
+                .orders_title {
+                    display: grid;
+                    grid-template-columns: 2.5fr 1.5fr 1fr 1fr 1fr 1fr;
+                    gap: 1rem;
+                    padding: 0.8rem 1rem;
+                    margin-bottom: $m;
+                    background-color: $background;
+                    h2 {
+                        font-size: $f-s;
+                        font-weight: 600;
+                        text-align: left;
+                    }
+                }
+                .orders_list {
+                    .user_order {
+                        display: grid;
+                        grid-template-columns: 2.5fr 1.5fr 1fr 1fr 1fr 1fr;
+                        gap: 0.5rem;
+                        div {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                        }
+                        .order_total {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            h3 {
+                                font-size: $f-md;
+                            }
+                        }
+                        .more_btn {
+                            display: flex;
+                            justify-content: flex-end;
+                            a {
+                                svg {
+                                    fill: $pink;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 1100px) {
+    .user_orders {
+        .user_orders_container {
+            .orders {
+                .orders_list {
+                    .user_order {
+                        gap: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}

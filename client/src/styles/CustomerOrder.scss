@@ -1,0 +1,481 @@
+@import "./Pallette.scss";
+
+.user_order {
+    width: 100%;
+    .order_container {
+        .order_header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: $p 0;
+            .order_title {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                svg {
+                    margin-right: $m-s;
+                    fill: $pink;
+                }
+                h1 {
+                    font-size: $f-l;
+                    font-weight: 600;
+                    font-family: $family-2;
+                }
+            }
+            .mb_btn {
+                button {
+                    background-color: transparent;
+                    svg {
+                        fill: $pink;
+                    }
+                }
+            }
+        }
+        
+        .order_key_info {
+            background-color: $background_1;
+            border-radius: 5px;
+            box-shadow: $shadow-3;
+            padding: 1rem;
+            margin-bottom: $m-2;
+            div {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: $m;
+                h2 {
+                    color: $primary-text-2;
+                    font-size: $f-s;
+                    font-weight: 400;
+                }
+                h3 {
+                    font-size: $f-s;
+                    font-weight: 400;
+                }
+            }
+            div:nth-child(4) {
+                margin-bottom: 0;
+            }
+        }
+
+        .order_items {
+            margin-bottom: $m-2;
+            h2 {
+                text-align: left;
+                font-size: $f-sm;
+                text-transform: uppercase;
+                font-weight: 400;
+                margin-bottom: $m;
+            }
+            .items_container {
+                padding: $p;
+                background-color: $background_1;
+                border-radius: 5px;
+                box-shadow: $shadow-3;
+                .order_item {
+                    margin-bottom: $m;
+                    width: 100%;
+                    display: grid;
+                    grid-template-columns: 1fr 2fr;
+                    gap: 0.5rem 1rem;
+                    .order_item_img {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: flex-start;
+                        img {
+                            width: 100%;
+                            height: auto;
+                            object-fit: contain;
+                        }
+                    }
+                    .order_item_info {
+                        text-align: left;
+                        h2 {
+                            font-size: $f-s;
+                            text-transform: capitalize;
+                            font-weight: 400;
+                            margin-bottom: $m-s;
+                        }
+                        h3 {
+                            font-size: $f-s;
+                            font-weight: 400;
+                            margin-bottom: $m-s;
+                            span {
+                                margin-left: $m;
+                            }
+                        }
+                        h4 {
+                            font-size: $f-s;
+                            font-weight: 400;
+                            margin-bottom: $m;
+                            span {
+                                margin-left: $m;
+                            }
+                        }
+                        a {
+                            width: 100%;
+                            display: inline-block;
+                            padding: 0.7rem 1rem;
+                            background-color: $pink;
+                            color: $secondary-text;
+                            font-size: $f-s;
+                            border-radius: 5px;
+                            text-align: center;
+                            border: solid 1px transparent;
+                        }
+                    }
+                }
+            }
+        }
+
+        .order_summary {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            .order_shipping {
+                h2 {
+                    font-size: $f-sm;
+                    text-align: left;
+                    text-transform: uppercase;
+                    font-weight: 400;
+                    margin-bottom: $m;
+                }
+                .order_shipping_info {
+                    background-color: $background_1;
+                    box-shadow: $shadow-3;
+                    border-radius: 5px;
+                    padding: 1.5rem 1rem;
+                    .method {
+                        margin-bottom: $m-1;
+                        text-align: left;
+                        h2 {
+                            font-weight: 400;
+                            font-size: $f-md;
+                            margin-bottom: $m-s;
+                            text-transform: capitalize;
+                            background-color: $background;
+                            padding: $p-s;
+                        }
+                        h3 {
+                            font-weight: 400;
+                            font-size: $f-sm;
+                            color: $primary-text-3;
+                            padding-left: $p-s;
+                        }
+                    }
+                    .delivery_address {
+                        padding: 0;
+                        h3 {
+                            font-weight: 400;
+                            font-size: $f-md;
+                            margin-bottom: $m;
+                            text-transform: capitalize;
+                            text-align: left;
+                            background-color: $background;
+                            padding: $p-s;
+                        }
+                        div {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            padding-left: $p-s;
+                            margin-bottom: $m;
+                            h2 {
+                                color: $primary-text-2;
+                                font-weight: 400;
+                                font-size: $f-s;
+                                margin-right: $m;
+                                margin-bottom: 0;
+                                text-transform: capitalize;
+                            }
+                            h3 {
+                                font-weight: 400;
+                                font-size: $f-s;
+                                background-color: transparent;
+                                padding: 0;
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+            .order_payment {
+                h2 {
+                    font-size: $f-sm;
+                    text-align: left;
+                    text-transform: uppercase;
+                    font-weight: 400;
+                    margin-bottom: $m;
+                }
+                .order_payment_info {
+                    background-color: $background_1;
+                    box-shadow: $shadow-3;
+                    border-radius: 5px;
+                    padding: 1.5rem 1rem;
+                    .method {
+                        margin-bottom: $m-1;
+                        text-align: left;
+                        h2 {
+                            font-weight: 400;
+                            font-size: $f-md;
+                            margin-bottom: $m-s;
+                            text-transform: capitalize;
+                            background-color: $background;
+                            padding: $p-s;
+                        }
+                        h3 {
+                            font-weight: 400;
+                            font-size: $f-sm;
+                            color: $primary-text-3;
+                            padding-left: $p-s;
+                        }
+                    }
+                    .details {
+                        padding: 0;
+                        h3 {
+                            font-weight: 400;
+                            font-size: $f-md;
+                            margin-bottom: $m;
+                            text-transform: capitalize;
+                            text-align: left;
+                            background-color: $background;
+                            padding: $p-s;
+                        }
+                        div {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: flex-start;
+                            padding-left: $p-s;
+                            margin-bottom: $m;
+                            h4 {
+                                color: $primary-text-2;
+                                font-weight: 400;
+                                font-size: $f-s;
+                                margin-right: $m;
+                                text-transform: capitalize;
+                            }
+                            h5 {
+                                font-weight: 400;
+                                font-size: $f-s;
+                                background-color: transparent;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+@media (min-width: 600px) {
+    .user_order {
+        .order_container {
+            .order_header {
+                .order_title {
+                    h1 {
+                        font-size: $f-xl;
+                    }
+                }
+                .mb_btn {
+                    button {
+                        background-color: transparent;
+                        svg {
+                            width: 30px;
+                            height: 30px;
+                        }
+                    }
+                }
+            }
+            
+            .order_key_info {
+                div {
+                    h2 {
+                        font-size: $f-sm;
+                    }
+                    h3 {
+                        font-size: $f-sm;
+                    }
+                }
+            }
+    
+            .order_items {
+                h2 {
+                    font-size: $f-md;
+                }
+                .items_container {
+                    .order_item {
+                        margin-bottom: $m-1;
+                        gap: 2rem;
+                        .order_item_img {
+                            justify-content: center;
+                            img {
+                                width: 120px;
+                                height: 100px;
+                            }
+                        }
+                        .order_item_info {
+                            h2 {
+                                font-size: $f-sm;
+                            }
+                            h3 {
+                                font-size: $f-sm;
+                            }
+                            h4 {
+                                font-size: $f-sm;
+                            }
+                            a {
+                                width: 120px;
+                                font-size: $f-sm;
+                                &:hover {
+                                    background-color: transparent;
+                                    border-color: $pink;
+                                    color: $pink;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    
+            .order_summary {
+                .order_shipping {
+                    .order_shipping_info {
+                        .delivery_address {
+                            div {
+                                h2 {
+                                    font-size: $f-sm;
+                                }
+                                h3 {
+                                    font-size: $f-sm;
+                                }
+                            }
+                        }
+                    }
+                }
+                .order_payment {
+                    .order_payment_info {
+                        .details {
+                            div {
+                                h4 {
+                                    font-size: $f-sm;                                }
+                                h5 {
+                                    font-size: $f-sm;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+
+@media (min-width: 800px) {
+    .user_order {
+        .order_container {
+            .order_header {
+                .mb_btn {
+                    display: none;
+                }
+            }
+        }
+    }
+    
+}
+
+
+@media (min-width: 1000px) {
+    .user_order {
+        .order_container {
+            .order_header {
+                .order_title {
+                    svg {
+                        width: 30px;
+                        height: 30px;
+                    }
+                    h1 {
+                        font-size: $f-xxl;
+                    }
+                }
+            }
+            
+            .order_key_info {
+                div {
+                    h2 {
+                        font-size: $f-md;
+                    }
+                    h3 {
+                        font-size: $f-md;
+                    }
+                }
+            }
+    
+            .order_items {
+                .items_container {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 1rem;
+                    .order_item {
+                        grid-template-columns: 1fr 4fr;
+                        gap: 1rem;
+                        .order_item_info {
+                            h2 {
+                                font-size: $f-md;
+                            }
+                            h3 {
+                                font-size: $f-md;
+                            }
+                            h4 {
+                                font-size: $f-md;
+                            }
+                            a {
+                                font-size: $f-sm;
+                                padding: 0.5rem 0.8rem;
+                            }
+                        }
+                    }
+                }
+            }
+    
+            .order_summary {
+                grid-template-columns: 1fr 1fr;
+                .order_shipping {
+                    .order_shipping_info {
+                        .delivery_address {
+                            div {
+                                h2 {
+                                    font-size: $f-sm;
+                                }
+                                h3 {
+                                    font-size: $f-sm;
+                                }
+                            }
+                        }
+                    }
+                }
+                .order_payment {
+                    .order_payment_info {
+                        .details {
+                            div {
+                                h4 {
+                                    font-size: $f-sm;                                }
+                                h5 {
+                                    font-size: $f-sm;
+                                }
+                            }
+                            div:nth-child(5) {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}

@@ -1,0 +1,96 @@
+@import './Pallette.scss';
+
+.products_page {
+    width: 100%;
+    padding: 2rem 1rem;
+    min-height: 80vh;
+    .products_container {
+        max-width: 1250px;
+        margin: 0 auto;
+        .products_header {
+            margin-bottom: 1rem;
+            h1 {
+                font-size: $f-xxl;
+                font-weight: 600;
+                text-align: left;
+            }
+        }
+        .products {
+            margin-bottom: $m-2;
+            .products_box {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem 0.5rem;
+            }
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+
+@media (min-width: 500px) {
+    .products_page {
+        padding: 2rem 1.5rem;
+        .products_container {
+            .products {
+                .products_box {
+                    grid-template-columns: 1fr 1fr;
+                    gap: 1.5rem 1rem;
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 600px) {
+        .products_page {
+            .products_container {
+                .products_header {
+                    h1 {
+                        font-size: $f-xxxl;
+                    }
+                }
+                .products {
+                    margin-bottom: $m-3;
+                    .products_box {
+                        grid-template-columns: repeat(3, 1fr);
+                    }
+                }
+            }
+        }
+}
+
+
+@media (min-width: 850px) {
+    .products_page {
+        padding: 3rem 1.5rem;
+        .products_container {
+            .products {
+                .products_box {
+                    grid-template-columns: repeat(4, 1fr);
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1000px) {
+    .products_page {
+        padding: 3rem 1.5rem;
+        .products_container {
+            .products {
+                .products_box {
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 2rem;
+                }
+            }
+        }
+    }
+}
+
+

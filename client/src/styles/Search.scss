@@ -1,0 +1,110 @@
+@import './Pallette.scss';
+
+.search_title {
+    display: flex;
+    flex-direction: column;
+    padding: $p;
+    margin-bottom: $m-2;
+    background-color: $background_1;
+    box-shadow: $shadow-3;
+    border-radius: 4px;
+    .title {
+        margin-bottom: 1rem;
+        h2 {
+            font-size: $f-sm;
+            font-weight: 400;
+            margin-bottom: $m-s;
+            text-align: left;
+            span {
+                color: $pink;
+                font-weight: 600;
+            }
+        }
+        h3 {
+            font-size: $f-s;
+            font-weight: 400;
+            color: $primary-text-2;
+            text-align: left;
+            span {
+                color: $pink;
+                font-weight: 600;
+            }
+        }
+    }
+    .sort {
+        position: relative;
+        h3 {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            font-size: $f-sm;
+            font-weight: 400;
+            span {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                border: solid 1px $border;
+                border-radius: 5px;
+                padding: $p-s;
+                font-size: $f-s;
+                margin-left: $m-s;
+                button {
+                    margin-left: $m-s;
+                    transform: rotate(0);
+                    transition: 0.3s linear;
+                }
+                .rotate {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+        .options {
+            background-color: $background_1;
+            border-radius: 5px;
+            box-shadow: $shadow-5;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 200px;
+            button {
+                width: 100%;
+                padding: 0.7rem 1rem;
+                font-size: $f-s;
+                text-align: left;
+            }
+        }
+    }
+}
+
+
+
+@media (min-width: 601px) {
+    .search_title {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        .title {
+            margin-bottom: 0;
+            h2 {
+                font-size: $f-xl;
+                font-weight: 600;
+            }
+            h3 {
+                font-size: $f-md;
+            }
+        }
+        .sort {
+            justify-content: flex-end;
+            h3 {
+                font-size: $f-md;
+            }
+            .options {
+                button {
+                    &:hover {
+                        background-color: $background;
+                    } 
+                }
+            }
+        }
+    }
+}

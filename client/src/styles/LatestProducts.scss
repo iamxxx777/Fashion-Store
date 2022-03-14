@@ -1,0 +1,64 @@
+@import './Pallette.scss';
+
+.latest_products {
+    width: 100%;
+    padding: 3rem 0;
+    .latest_products_container {
+        display: flex;
+        flex-direction: column;
+        .latest_products_title {
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            h1 {
+                font-size: 24px;
+                font-weight: 600;
+                text-align: left;
+                color: $pink;
+                font-family: 'Poppins', sans-serif;
+            }
+            a {
+                font-size: $f-s;
+                color: $primary-text-3;
+                div {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    span {
+                        margin-right: 3px;
+                    }
+                    svg {
+                        fill: $primary-text-3;
+                    }
+                }
+            }
+        }
+        .latest_products_slider {
+            max-width: 100%;
+        }
+    }
+}
+
+
+@media (min-width: 768px) {
+    .latest_products {
+        .latest_products_container {
+            .latest_products_title {
+                h1 {
+                    font-size: 30px;
+                }
+                a {
+                    font-size: $f-md;
+                    &:hover {
+                        color: $pink;
+                        svg {
+                            fill: $pink;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}
