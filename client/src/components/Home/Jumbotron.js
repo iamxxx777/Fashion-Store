@@ -16,7 +16,7 @@ const Jumbotron = () => {
                             <h2>Dresses</h2>
                             <h1><span>High Fashion</span> patterned party gown</h1>
                             <p>We are majoring in women party dress, skirts, tops, suit and jumpsuits for may years. 100% good quality guarantee at a reasonable price.</p>
-                            <Link to="/cart">Shop Now</Link>
+                            <Link to="/category/dresses">Shop Now</Link>
                         </div>
                     </div>
                     <div className="jumbo_grid_item jumbo_sneakers">
@@ -27,7 +27,7 @@ const Jumbotron = () => {
                             <h2>Sneakers</h2>
                             <h1><span>Comfy</span> top quality sneakers</h1>
                             <p>Shatter the sneaker status quo in the Jordan MA2. Made from a mix of suede, full-grain leather and a variety of textiles.</p>
-                            <Link to="/cart">Shop Now</Link>
+                            <Link to="/category/sneakers">Shop Now</Link>
                         </div>
                     </div>
                     <div className="jumbo_grid_item jumbo_shirts">
@@ -38,7 +38,7 @@ const Jumbotron = () => {
                             <h2>Shirts</h2>
                             <h1><span>Dapper</span> stylish vintage shirts</h1>
                             <p>Are you a fashionista?Do you like to make statements?Do you like being unique and exclusive? Stress not, this shirt has everything you need and more</p>
-                            <Link to="/cart">Shop Now</Link>
+                            <Link to="/category/shirts">Shop Now</Link>
                         </div>
                     </div>
                 </div>

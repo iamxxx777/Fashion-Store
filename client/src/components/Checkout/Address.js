@@ -1,9 +1,18 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Address = ({ address }) => {
+import Button from '@mui/material/Button'
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
+
+
+const Address = ({ address, setAsMain, click }) => {
+
+    const set = () => {
+        setAsMain(address)
+        click()
+    }
+
     return (
-        <div className="main_address">   
+        <div className="address">   
             <div className="address_info">
                 <div className='info'>
                     <div className="name">
@@ -19,15 +28,16 @@ const Address = ({ address }) => {
                     </div>
                     <div className="phone">
                         <h2>{address.phone}</h2>
+                        /
                         <h2>{address.phone2}</h2>
                     </div>
+                    <div className="default">{address.main ? 'Default Address' : null}</div>
                 </div>
                 <div className='edit_btn'>
-                    <Link>Edit</Link>
+                    <Link to={`/account/editaddress/${address._id}`}><EditOutlinedIcon /></Link>
                 </div>
-                <div className="default">{address.main ? 'Default Address' : null}</div>
             </div>
-            <button>Use This Address</button>
+            <Button onClick={set}>Use This Address</Button>
         </div>
     )
 }

@@ -22,12 +22,24 @@
                 justify-content: center;
                 align-items: center;
                 padding: 0.8rem 0.4rem;
+                position: relative;
                 svg {
                     margin-bottom: 0.4rem;
                 }
                 p {
                     font-size: 13px;
                     font-weight: 400;
+                    position: relative;
+                    span {
+                        background-color: $pink;
+                        color: $secondary-text;
+                        padding: 0.2rem 0.4rem;
+                        font-size: 11px;
+                        border-radius: 50%;
+                        position: absolute;
+                        top: -35px;
+                        right: -20px;
+                    }
                 }
             }
         }

@@ -28,7 +28,8 @@ const registerUser = asyncHandler(async (req, res) => {
         if(newUser) {
             res.json({
                 _id: newUser._id,
-                name: newUser.name,
+                firstName: newUser.firstName,
+                lastName: newUser.lastName,
                 email: newUser.email,
                 isAdmin: newUser.isAdmin,
                 token: generateToken(newUser._id)

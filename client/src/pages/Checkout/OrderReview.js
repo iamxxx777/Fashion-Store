@@ -11,8 +11,6 @@ import { updateQty } from '../../redux/actions/cartActions'
 import Cartitem from '../../components/Cart/CartItem'
 import CustomizedSteps from '../../components/Checkout/CustomizedSteps'
 
-import CheckoutSteps from '../../components/Checkout/CheckoutSteps'
-
 import '../../styles/Checkout.scss'
 
 const OrderReview = () => {

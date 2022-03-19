@@ -1,37 +1,45 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useAlert } from 'react-alert'
 
-//MUI COMPONENTS
+// MUI COMPONENTS
 import TextField from '@mui/material/TextField'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Checkbox from '@mui/material/Checkbox'
 import Grid from '@mui/material/Grid'
 import LoadingButton from '@mui/lab/LoadingButton'
 
-// MUI ICONS
+// ICONS
 import CloseIcon from '@mui/icons-material/Close'
+import SaveIcon from '@mui/icons-material/Save'
 
-//REDUX
+
+// REDUX ACTIONS
 import { addAddress } from '../../redux/actions/userActions'
 import { ADD_ADDRESS_RESET } from '../../redux/constants/userConstants'
 
 
-const AddAddressModal = () => {
+const AddAddress = ({ type, click }) => {
+
+    const dispatch = useDispatch()
+    const alert = useAlert()
 
     const { userInfo } = useSelector((state) => state.loginUser)
+    const { result, loading, error } = useSelector((state) => state.addAddress)
 
-    const [firstName, setFirstName] = useState(userInfo.firstName)
-    const [lastName, setLastName] = useState(userInfo.lastName)
-    const [phone, setPhone] = useState("")
+
+    const [firstName, setFirstName] = useState(userInfo.firstName || "")
+    const [lastName, setLastName] = useState(userInfo.lastName || "")
+    const [phone, setPhone] = useState(userInfo.phone || "")
     const [phone2, setPhone2] = useState("")
     const [state, setState] = useState("")
     const [city, setCity] = useState("")
     const [street, setStreet] = useState("")
     const [landmark, setLandmark] = useState("")
 
+
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        const shippingInfo = { name, email, phone, phone2, state, city, address: street, landmark }
+        const shippingInfo = { firstName, lastName, phone, phone2, state, city, address: street, landmark }
 
         if(phone.length < 11 || phone.length > 11) {
             alert.error("Phone Number should be 11 digits Long");
@@ -45,45 +53,65 @@ const AddAddressModal = () => {
             }
         }
 
-        sessionStorage.setItem('shippingAddress', JSON.stringify(shippingInfo))
-        dispatch(setShippingAddress(shippingInfo))
-        history.push("/checkout/review")
+        dispatch(addAddress(shippingInfo))
     }
 
+
+    useEffect(() => {
+        if(result && result.success) {
+            dispatch({ type: ADD_ADDRESS_RESET })
+            alert.success('Address Added')
+            window.location.reload()
+        }
+    }, [dispatch, alert, result])
+
+
     return (
-        <div className="add_address_modal">
+        <div className="add_address">
             <div className="container">
-                <div className="title">
-                    <button><CloseIcon /></button>
-                    <h1>Add New Address</h1>
+                <div className="head">
+                    {type === 'first' && 
+                        <>
+                            <h2>Shipping Address</h2>
+                        </>
+                    }
+                    {type === 'new' && 
+                        <>
+                            <button onClick={click}><CloseIcon /></button>
+                            <h2>Add Address</h2>
+                        </>
+                    }
                 </div>
                 <div className="form">
-                    {error && <small style={{ color: "tomato", marginBottom: "2rem" }}>{error}</small>}
+                    {error && <small style={{ color: "red", marginBottom: "2rem" }}>{error}</small>}
                     <form onSubmit={handleSubmit}>
                         <Grid container rowSpacing={3} columnSpacing={6}>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    size='small'
                                     fullWidth 
                                     label="First Name" 
-                                    variant="standard" 
+                                    variant="outlined" 
                                     value={firstName}
                                     onChange={(e) => setFirstName(e.target.value)}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    size='small'
                                     fullWidth 
                                     label="Last Name" 
-                                    variant="standard" 
+                                    variant="outlined" 
                                     value={lastName}
                                     onChange={(e) => setLastName(e.target.value)}
                                 />
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    size='small'
                                     fullWidth 
                                     label="Phone" 
-                                    variant="standard" 
+                                    variant="outlined" 
                                     value={phone}
                                     required
                                     onChange={(e) => setPhone(e.target.value)}
@@ -91,18 +119,22 @@ const AddAddressModal = () => {
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    size='small'
                                     fullWidth 
                                     label="Phone 2" 
-                                    variant="standard" 
+                                    variant="outlined" 
                                     value={phone2}
                                     onChange={(e) => setPhone2(e.target.value)}
                                 />
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
+                                    size='small'
                                     fullWidth 
+                                    multiline
+                                    rows={3}
                                     label="Address" 
-                                    variant="standard" 
+                                    variant="outlined" 
                                     value={street}
                                     required
                                     onChange={(e) => setStreet(e.target.value)}
@@ -110,9 +142,12 @@ const AddAddressModal = () => {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
+                                    size='small'
                                     fullWidth 
+                                    multiline
+                                    rows={2}
                                     label="Nearest landmark" 
-                                    variant="standard" 
+                                    variant="outlined" 
                                     required
                                     value={landmark}
                                     onChange={(e) => setLandmark(e.target.value)}
@@ -120,9 +155,10 @@ const AddAddressModal = () => {
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    size='small'
                                     fullWidth 
                                     label="State" 
-                                    variant="standard" 
+                                    variant="outlined" 
                                     required
                                     value={state}
                                     onChange={(e) => setState(e.target.value)}
@@ -130,44 +166,29 @@ const AddAddressModal = () => {
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    size='small'
                                     fullWidth 
                                     label="City" 
-                                    variant="standard" 
+                                    variant="outlined" 
                                     required
                                     value={city}
                                     onChange={(e) => setCity(e.target.value)}
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={6}>
-                                <FormControlLabel 
-                                    sx={
-                                            {
-                                                width: '100%',
-                                            }
-                                        }
-                                        control={
-                                            <Checkbox 
-                                                checked={main}
-                                                onChange={(e) => setMain(e.target.checked)}
-                                                inputProps={{ 'aria-label': 'controlled' }} 
-                                            />
-                                        } 
-                                        label="Set as default" 
                                 />
                             </Grid>
                         </Grid>
 
                         <Grid container rowSpacing={2} columnSpacing={6} sx={{ mt: 2, '& button': { width: "100%" } }} >
                             <Grid item xs={12}>
-                            <LoadingButton
-                                endIcon={<SaveIcon />}
-                                loading={loading}
-                                loadingPosition="end"
-                                variant="contained"
-                                type="submit"
-                            >
-                                Save
-                            </LoadingButton>
+                                <LoadingButton
+                                    endIcon={<SaveIcon />}
+                                    loading={loading}
+                                    loadingPosition="end"
+                                    variant="contained"
+                                    type="submit"
+                                    size='large'
+                                >
+                                    Save
+                                </LoadingButton>
                             </Grid>    
                         </Grid>
                     </form>
@@ -177,4 +198,4 @@ const AddAddressModal = () => {
     )
 }
 
-export default AddAddressModal
+export default AddAddress

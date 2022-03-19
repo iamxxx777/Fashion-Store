@@ -99,17 +99,22 @@
             .cart_btn {
                 background-color: $pink;
                 color: $secondary-text;
-                display: inline-block;
                 border-radius: 6px;
-                font-size: 14px;
+                font-size: $f-s;
                 text-transform: uppercase;
+                padding: 0.7rem;
+                a {
+                    width: 100%;
+                    height: 100%;
+                    display: inline-block;
+                }
             }
             .continue_btn {
                 background-color: $pink_shade;
                 color: $pink;
                 padding: 0.7rem;
                 border-radius: 6px;
-                font-size: 14px;
+                font-size: $f-s;
                 text-transform: uppercase;
             }
         }
@@ -163,7 +168,7 @@
                     text-transform: uppercase;
                     transition: 0.4s linear;
                     &:hover {
-                        opacity: 0.8;
+                        opacity: 0.9;
                     }
                 }
                 .continue_btn {

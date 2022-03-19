@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link, useHistory }  from 'react-router-dom'
+import { Link }  from 'react-router-dom'
 import { useAlert } from 'react-alert'
 
 import PropTypes from 'prop-types'
@@ -67,11 +67,10 @@ function a11yProps(index) {
 
 const Signin = () => {
 
-    const { loginError, userInfo, loginLoading } = useSelector((state) => state.loginUser)
+    const { loginError, loginLoading } = useSelector((state) => state.loginUser)
     
-    const { registerError, userData, registerLoading } = useSelector((state) => state.registerUser)
+    const { registerError, registerLoading } = useSelector((state) => state.registerUser)
 
-    const history = useHistory()
     const dispatch = useDispatch()
     const alert = useAlert()
 
@@ -117,19 +116,6 @@ const Signin = () => {
             dispatch(registerUser(formData))
         }
     }
-
-    // useEffect(() => {
-    //     if(userInfo && userInfo.token) {
-    //         history.push("/account")
-    //     }
-
-    // }, [userInfo.token, userInfo, history])
-
-    // useEffect(() => {
-    //     if(userData && userData.token) {
-    //         history.push("/account")
-    //     }
-    // }, [userData.token, userData, history])
 
 
     return (
@@ -192,6 +178,7 @@ const Signin = () => {
                                     loadingPosition="end"
                                     variant="contained"
                                     type="submit"
+                                    size="large"
                                 >
                                     Login
                                 </LoadingButton>
@@ -276,6 +263,7 @@ const Signin = () => {
                                     loadingPosition="end"
                                     variant="contained"
                                     type="submit"
+                                    size="large"
                                 >
                                     SignUp
                                 </LoadingButton>

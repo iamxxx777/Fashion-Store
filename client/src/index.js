@@ -54,15 +54,15 @@ const theme = createTheme({
 
 
 ReactDOM.render(
-  <Provider store={store}>
-    <AlertProvider template={AlertTemplate} {...options}>
-      <React.StrictMode>
-        <ThemeProvider theme={theme}>
-          <App />
-        </ThemeProvider>
-      </React.StrictMode>
-    </AlertProvider>
-  </Provider>,
+  <React.StrictMode>
+    <Provider store={store}>
+      <AlertProvider template={AlertTemplate} {...options}>
+          <ThemeProvider theme={theme}>
+            <App />
+          </ThemeProvider>
+      </AlertProvider>
+    </Provider>
+  </React.StrictMode>,
   document.getElementById('root')
 );
 

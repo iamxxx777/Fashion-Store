@@ -4,14 +4,20 @@ import { useEffect } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import { useAlert } from 'react-alert'
 
+// REDUX ACTIONS
 import { createOrder, getPaymentKey } from '../../redux/actions/orderActions'
 import { clearCart } from '../../redux/actions/cartActions'
+import { CREATE_ORDER_RESET } from '../../redux/constants/orderConstants'
 
+// MUI COMPONENTS
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 
+// COMPONENTS
 import CustomizedSteps from '../../components/Checkout/CustomizedSteps'
+import AddressCard from '../../components/Checkout/AddressCard'
 
+// STYLE
 import '../../styles/Checkout.scss'
 
 const Payment = () => {
@@ -27,8 +33,7 @@ const Payment = () => {
     const { key } = useSelector((state) => state.paymentKey)
 
     const address = JSON.parse(sessionStorage.getItem('shippingAddress'))
-    const { name, email, ...shippingDetails } = address
-
+    const { main, ...shippingAddress } = address
     
     /* Calculate the price before and after shipping fees */
 
@@ -55,7 +60,7 @@ const Payment = () => {
     }
 
     var orderDetails = {
-        shippingDetails,
+        shippingAddress,
         orderItems: cartItems,
         itemsPrice: totalItemsPrice(),
         shippingFee,
@@ -71,15 +76,14 @@ const Payment = () => {
         }  
 
         dispatch(createOrder(orderDetails))
-        dispatch(clearCart())
     }
 
 
     const componentProps = {
-        email: address.email,
+        email: userInfo.email,
         amount: totalPrice() * 100,
         metadata: {
-            name: address.name,
+            name: address.firstName,
             phone: address.phone,
         },
         publicKey: key,
@@ -93,14 +97,16 @@ const Payment = () => {
     }
 
     useEffect(() => {
-        if(newOrder.paymentStatus) {
-            history.replace('/checkout/confirmation', newOrder)
+        if(newOrder && newOrder.paymentStatus) {
+            history.replace(`/account/order/${newOrder._id}`)
+            dispatch({ type: CREATE_ORDER_RESET })
+            dispatch(clearCart())
         }
-    }, [history, newOrder.paymentStatus])
+    }, [dispatch, history, newOrder])
 
     useEffect(() => {
         dispatch(getPaymentKey())
-    }, [])
+    }, [dispatch])
 
 
 
@@ -116,41 +122,7 @@ const Payment = () => {
                 </section>
                 <section className="payment_items_summary">
                     <div className="shipping_details">
-                        <h2>Shipping Address</h2>
-                        <div className="shipping_details_container">
-                            <div className="shipping_detail">
-                                <h5>Name</h5>
-                                <h3>{address.name}</h3>
-                            </div>
-                            <div className="shipping_detail">
-                                <h5>Email</h5>
-                                <h3>{address.email}</h3>
-                            </div>
-                            <div className="shipping_detail">
-                                <h5>Phone No</h5>
-                                <h3>{address.phone}</h3>
-                            </div>
-                            <div className="shipping_detail">
-                                <h5>Alternate Phone No</h5>
-                                <h3>{address.phone2 || null}</h3>
-                            </div>
-                            <div className="shipping_detail">
-                                <h5>State</h5>
-                                <h3>{address.state}</h3>
-                            </div>
-                            <div className="shipping_detail">
-                                <h5>City</h5>
-                                <h3>{address.city}</h3>
-                            </div>
-                            <div className="shipping_detail">
-                                <h5>Address</h5>
-                                <h3>{address.address}</h3>
-                            </div>
-                            <div className="shipping_detail">
-                                <h5>Landmark</h5>
-                                <h3>{address.landmark}</h3>
-                            </div>
-                        </div>
+                        <AddressCard address={address} type='payment' />
                     </div>
                     
                     <div className="order_details">

@@ -1,4 +1,4 @@
-import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
@@ -9,6 +9,8 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import '../../styles/MobileNav.scss'
 
 const MobileNav = () => {
+    const { cartItems } = useSelector((state) => state.cart)
+
     return (
         <nav className='mobile_nav'>
             <div className="mobile_nav_container">
@@ -36,7 +38,7 @@ const MobileNav = () => {
                 <Link to="/cart">
                     <div className="mobile_nav_link">
                         <ShoppingCartOutlinedIcon />
-                        <p>Cart</p>
+                        <p>Cart <span>{cartItems.length}</span></p>
                     </div>
                 </Link>
 

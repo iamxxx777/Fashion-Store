@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAlert } from 'react-alert'
-import axios from 'axios'
 
-
+//MUI COMPONENTS
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
@@ -31,13 +30,13 @@ const EditshippingAddress = ({ click, user }) => {
     const alert = useAlert()
     const { id } = useParams()
 
-    const { result, loading, error } = useSelector((state) => state.editAddress)
-    const { address: shippingAddress } = useSelector((state) => state.getAddress)
-
-
     useEffect(() => {
         dispatch(getAddress(id))
     }, [dispatch, id])
+
+    const { result, loading, error } = useSelector((state) => state.editAddress)
+    const { address: shippingAddress } = useSelector((state) => state.getAddress)
+
 
     useEffect(() => {
         if(result && result.success) {
@@ -80,6 +79,7 @@ const EditshippingAddress = ({ click, user }) => {
 
         dispatch(editAddress(id, shippingInfo))
     }
+
 
     return (
         <section className="edit_address">

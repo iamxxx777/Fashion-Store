@@ -10,7 +10,7 @@ import { useParams } from 'react-router-dom'
 import { useAlert } from 'react-alert'
 
 import { getProductDetails } from '../redux/actions/productActions'
-import { addToCart, updateQty } from '../redux/actions/cartActions'
+import { addToCart } from '../redux/actions/cartActions'
 
 // Components
 import Ratings from '../components/Products/Ratings'
@@ -96,7 +96,7 @@ const ProductPage = () => {
         pointerEvents: "none"
     }
 
-
+    // Show the size variations
     const [showVariation, setShowVariation] = useState(false)
 
     const closeVariation = () => setShowVariation(false)
@@ -105,10 +105,6 @@ const ProductPage = () => {
     const handleCart = (id, qty, size, count) => {
         dispatch(addToCart(id, qty, size, count))
         alert.show(`${product.name} added to cart successfully`)
-    }
-
-    const handleQty = (item, size, unit) => {
-        dispatch(updateQty(item, size, unit))
     }
 
     useEffect(() => {
@@ -171,7 +167,6 @@ const ProductPage = () => {
                                 cartItems={addedItems}
                                 item={product} 
                                 handleCart={handleCart} 
-                                updateQty={handleQty} 
                                 close={closeVariation}
                             />}
                         </div>

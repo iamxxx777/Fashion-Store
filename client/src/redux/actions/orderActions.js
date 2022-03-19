@@ -60,7 +60,6 @@ export const getPaymentKey = () => async (dispatch) => {
     }
 }
 
-
 export const getAllOrders = () => async (dispatch, getState) => {
     try {
         dispatch({ type: actionTypes.ALL_ORDERS_REQUEST })
@@ -95,7 +94,6 @@ export const getAllOrders = () => async (dispatch, getState) => {
         })
     }
 }
-
 
 export const getMyOrders = (id) => async (dispatch, getState) => {
     try {

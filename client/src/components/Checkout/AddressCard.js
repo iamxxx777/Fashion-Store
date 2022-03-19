@@ -1,11 +1,11 @@
 import React from 'react'
 
-const AddressCard = ({ address }) => {
+const AddressCard = ({ address, click, type }) => {
     return (
         <div className="main_address">
             <div className="address_head">
                 <h2>Your Address</h2>
-                <button>Change</button>
+                {type === 'shippingAddress' && <button onClick={click}>Change</button>}
             </div>
             <div className="address_info">
                 <div className="name">
@@ -21,7 +21,6 @@ const AddressCard = ({ address }) => {
                 </div>
                 <div className="phone">
                     <h2>{address.phone}</h2>
-                    / 
                     <h2>{address.phone2}</h2>
                 </div>
             </div>

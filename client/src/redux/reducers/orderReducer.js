@@ -17,6 +17,11 @@ export const newOrderReducer = (state = { newOrder: {} }, action) => {
                 loading: false,
                 error: action.payload,
             }
+        case actionTypes.CREATE_ORDER_RESET:
+            return {
+                loading: false,
+                newOrder: {},
+            }
         default:
             return state;
     }
@@ -69,7 +74,7 @@ export const myOrdersReducer = (state = { myOrders: [] }, action) => {
 };
 
 
-export const getOrderReducer = (state = {}, action) => {
+export const getOrderReducer = (state = {order: {}}, action) => {
     switch(action.type) {
         case actionTypes.GET_ORDER_REQUEST:
             return {

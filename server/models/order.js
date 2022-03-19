@@ -2,7 +2,15 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const orderSchema = new Schema({
-    shippingDetails: {
+    shippingAddress: {
+        firstName: {
+            type: String,
+            required: [true, "Please enter firstName"] 
+        },
+        lastName: {
+            type: String,
+            required: [true, "Please enter lastName"] 
+        },
         address: {
             type: String,
             required: [true, "Please enter address"] 
@@ -16,11 +24,11 @@ const orderSchema = new Schema({
             required: [true, 'Please select a city']
         },
         phone: {
-            type: Number,
+            type: String,
             required: [true, 'Please, enter your phone number']
         },
         phone2: {
-            type: Number
+            type: String
         },
         landmark: {
             type: String
@@ -42,8 +50,10 @@ const orderSchema = new Schema({
             },
             images: [
                 {
-                    type: String,
-                    required: true
+                    url: {
+                        type: String,
+                        required: true
+                    },
                 }
             ],
             price: {
@@ -91,9 +101,9 @@ const orderSchema = new Schema({
     paymentDate: {
         type: Date,
     },
-    isDelivered: {
-        type: Boolean,
-        default: false
+    status: {
+        type: 'String',
+        default: 'pending'
     },
     deliveryDate: {
         type: Date

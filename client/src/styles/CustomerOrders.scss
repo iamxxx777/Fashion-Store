@@ -3,8 +3,8 @@
 .user_orders {
     width: 100%;
     background-color: $background_1;
-    padding: 1rem;
-    padding-bottom: 2rem;
+    padding: $p;
+    padding-bottom: $p-2;
     .user_orders_container {
         .user_orders_header {
             display: flex;
@@ -105,6 +105,8 @@
 
 @media (min-width: 600px) {
     .user_orders {
+        padding: $p-2;
+        padding-top: $p;
         .user_orders_container {
             .orders {
                 .orders_title {
@@ -128,7 +130,6 @@
 
 @media (min-width: 800px) {
     .user_orders {
-        padding: 1rem 2rem;
         .user_orders_container {
             .user_orders_header {
                 .mb_btn {

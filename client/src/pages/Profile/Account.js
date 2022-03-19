@@ -3,8 +3,8 @@ import { Switch, useRouteMatch, Route } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 //Actions
-import { getUserInfo } from '../../redux/actions/userActions'
-import { logOut } from '../../redux/actions/userActions'
+import { getUserInfo,logOut } from '../../redux/actions/userActions'
+import { getMyOrders } from '../../redux/actions/orderActions'
 
 // Components
 import AccountNav from '../../components/Profile/AccountNav'
@@ -34,9 +34,11 @@ const Account = () => {
 
     const { userInfo } = useSelector((state) => state.loginUser)
     const { user, loading, error } = useSelector((state) => state.userDetails)
+    const { myOrders } = useSelector((state) => state.myOrders)
 
     useEffect(() => {
         dispatch(getUserInfo(userInfo._id))
+        dispatch(getMyOrders(userInfo._id))
     }, [dispatch, userInfo._id])
 
 
@@ -65,9 +67,9 @@ const Account = () => {
                         <Route path={`${path}/address/`}> <AddAddress user={user} click={() => setToggleNav(true)} /> </Route>
                         <Route path={`${path}/editaddress/:id`}> <EditAddress click={() => setToggleNav(true)} /> </Route>
                         <Route path={`${path}/addresses`}> <Addresses addresses={user.addresses} click={() => setToggleNav(true)} /> </Route>
-                        <Route path={`${path}/orders`}> <UserOrders click={() => setToggleNav(true)} /> </Route>
-                        <Route path={`${path}/order`}> <UserOrder click={() => setToggleNav(true)} /> </Route>
-                        <Route exact path={path}> <UserProfile user={user} click={() => setToggleNav(true)} /> </Route>
+                        <Route path={`${path}/orders`}> <UserOrders click={() => setToggleNav(true)} orders={myOrders} /> </Route>
+                        <Route path={`${path}/order/:id`}> <UserOrder click={() => setToggleNav(true)} /> </Route>
+                        <Route exact path={path}> <UserProfile user={user} click={() => setToggleNav(true)} orders={myOrders} /> </Route>
                     </Switch>
                 </div>
             </div>

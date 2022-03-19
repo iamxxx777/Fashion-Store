@@ -160,39 +160,69 @@
             margin-top: $m-2;
             .shipping_details {
                 width: 100%;
-                background-color: $background_1;
-                box-shadow: $shadow-3;
-                border-radius: 6px;
                 margin-bottom: $m-2;
-                padding: $p-2 $p;
-                h2 {
-                    font-size: $f-l;
-                    font-weight: 600;
-                    text-align: left;
-                    margin-bottom: $m;
-                }
-                .shipping_details_container {
-                    display: grid;
-                    grid-template-columns: 1fr;
-                    gap: $m;
-                    .shipping_detail {
-                        text-align: left;
-                        h5 {
-                            font-size: $f-xs;
-                            font-weight: 400;
-                            text-transform: uppercase;
-                            margin-bottom: $m-s;
-                            color: $primary-text-1;
+                .main_address {
+                    box-shadow: $shadow-3;
+                    background-color: $background_1;
+                    width: 100%;
+                    border-radius: 6px;
+                    .address_head {
+                        border-bottom: solid 1px #efefef;
+                        padding: 0.7rem 1rem;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        h2 {
+                            font-size: $f-l;
+                            font-weight: 600;
                         }
-                        h3 {
-                            border: solid 1px $border;
-                            border-radius: 4px;
-                            padding: $p-s;
+                        button {
+                            text-transform: uppercase;
+                            word-spacing: 2px;
                             font-size: $f-s;
                             font-weight: 400;
-                            color: $primary-text-1;
+                            background-color: transparent;
+                            color: $pink;
                         }
                     }
+                    .address_info {
+                        padding: $p;
+                        div {
+                            margin-bottom: $p-s;
+                            h2 {
+                                font-size: $f-s;
+                                font-weight: 400;
+                                text-align: left;
+                            }
+                        }
+                        .name, .state {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            h2 {
+                                margin-right: $m-s;
+                            }
+                        }
+    
+                        .phone {
+                            h2 {
+                                margin-right: $m-s;
+                                margin-bottom: 0.3rem;
+                            }
+                        }
+    
+                        .default {
+                            margin-top: $m-s;
+                            margin-bottom: 0;
+                            color: $primary-text-3;
+                            font-weight: 600;
+                            font-size: $f-xs;
+                            text-align: left;
+                            height: 20px;
+                        }
+    
+                    }
+                    
                 }
             }
             .order_details {
@@ -262,12 +292,11 @@
                     margin-bottom: 1rem;
                     width: 100%;
                     h2 {
-                        font-size: 15px;
+                        font-size: $f-sm;
                         font-weight: 400;
-                        color: $primary-text-2;
                     }
                     h3 {
-                        font-size: 16px;
+                        font-size: $f-md;
                         font-weight: 600;
                         color: $primary-text-2;
                     }
@@ -278,7 +307,7 @@
                     padding: 0.7rem;
                     text-transform: uppercase;
                     font-weight: 400;
-                    font-size: 15px;
+                    font-size: $f-sm;
                     border-radius: 3px;
                 }
             }
@@ -290,33 +319,103 @@
 
 @media (min-width: 600px) {
     .shipping_address {
-        padding: 3rem 1.5rem;
+        padding: $p-3 $p-1;
         .shipping_container {
             form {
-                padding: 3rem;
+                padding: $p-3;
                 h1 {
-                    font-size: 24px;
+                    font-size: $f-xl;
                 }
             }
         }
     }
 
     .order_review {
-        padding: 5rem 1.5rem;
+        padding: $p-5 $p-1;
     }
 
     .payment {
         .payment_container {
+            .payment_items_summary {
+                .shipping_details {
+                    .main_address {
+                        .address_head {
+                            padding: $p $p-1;
+                            button {
+                                font-size: $f-s;
+                                font-weight: 600;
+                            }
+                        }
+                        .address_info {
+                            padding: $p $p-1;
+                        }
+                        
+                    }
+                }
+                .order_details {
+                    padding: $p-2 $p-1;
+                }
+            }
+            .payment_summary {
+                padding: $p-2 $p-1;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .payment {
+        padding: $p-3 $p-2;
+        .payment_container {
+            .payment_items_summary {
+                .shipping_details {
+                    .main_address {
+                        .address_head {
+                            padding: $p $p-2;
+                            h2 {
+                                font-size: $f-xl;
+                            }
+                            button {
+                                font-size: $f-s;
+                                font-weight: 600;
+                            }
+                        }
+                        .address_info {
+                            padding: $p $p-2;
+                            div {
+                                h2 {
+                                    font-size: $f-sm;
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+                .order_details {
+                    padding: $p-2;
+                    h2 {
+                        font-size: $f-xl;
+                    }
+                    .order_details_header {
+                        h3 {
+                            font-size: $f-sm;
+                        }
+                    }
+                    .item {
+                        div {
+                            h3 {
+                                font-size: $f-sm;
+                            }
+                        }
+                    }
+                }
+            }
             .payment_summary {
                 padding: $p-2;
             }
         }
     }
 }
-
-// @media (min-width: 768px) {
-    
-// }
 
 
 @media (min-width: 1000px) {
@@ -343,23 +442,27 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 3rem;
                 .shipping_details {
-                    h2 {
-                        font-size: $f-xl;
-                    }
-                    .shipping_details_container {
-                        .shipping_detail {
-                            h5 {
-                                font-size: $f-s;
-                                font-weight: 400;
+                    .main_address {
+                        .address_head {
+                            padding-top: $p-1;
+                            button {
+                                font-size: $f-sm;
                             }
                         }
+                        .address_info {
+                            padding-bottom: $p-2;
+                            div {
+                                h2 {
+                                    font-size: $f-md;
+                                }
+                                margin-bottom: 0.7rem;
+                            }
+                        }
+                        
                     }
                 }
                 .order_details {
                     padding: $p-2;
-                    h2 {
-                        font-size: $f-xl;
-                    }
                     .order_details_header {
                         h3 {
                             font-size: $f-md;
@@ -371,6 +474,18 @@
                                 font-size: $f-md;
                             }
                         }
+                    }
+                }
+            }
+            .payment_summary {
+                .order_summary_container {
+                    .order_summary_item {
+                        h2 {
+                            font-size: $f-md;
+                        }
+                    }
+                    .pay_btn {
+                        font-size: $f-md;
                     }
                 }
             }

@@ -6,7 +6,7 @@ const sendMessage = require("../utils/nodemailer")
 
 const newOrder = asyncHandler(async (req, res) => {
     const { 
-        shippingDetails,
+        shippingAddress,
         orderItems,
         itemsPrice,
         shippingFee,
@@ -17,9 +17,8 @@ const newOrder = asyncHandler(async (req, res) => {
         paymentStatus
     } = req.body
 
-
     const newOrder = new Order({
-        shippingDetails,
+        shippingAddress,
         orderItems,
         itemsPrice,
         shippingFee,
@@ -29,7 +28,7 @@ const newOrder = asyncHandler(async (req, res) => {
         landmark,
         paymentStatus,
         paymentDate: Date.now(),
-        isDelivered: false
+        status: "pending"
     })
 
     const order = await newOrder.save()

@@ -32,9 +32,9 @@ const AddAddress = ({ click, user }) => {
 
     const { result, loading, error } = useSelector((state) => state.addAddress)
 
-    const [firstName, setFirstName] = useState(user.firstName)
-    const [lastName, setLastName] = useState(user.lastName)
-    const [phone, setPhone] = useState(user.phone)
+    const [firstName, setFirstName] = useState(user.firstName || "")
+    const [lastName, setLastName] = useState(user.lastName || "")
+    const [phone, setPhone] = useState(user.phone || "")
     const [phone2, setPhone2] = useState("")
     const [state, setState] = useState("")
     const [city, setCity] = useState("")

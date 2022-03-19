@@ -6,7 +6,6 @@ export const addToCart = (id, qty, size, countInStock) => async (dispatch, getSt
     const { data } = await axios.get(`/api/products/${id}`)
     const { product } = data
 
-
     dispatch({
         type: actionTypes.ADD_TO_CART,
         payload: {
@@ -27,9 +26,6 @@ export const addToCart = (id, qty, size, countInStock) => async (dispatch, getSt
 
 export const updateQty = (item, qty, size) => async (dispatch, getState) => {
     item.qty = qty
-
-    console.log(item)
-
 
     dispatch({
         type: actionTypes.UPDATE_CARTITEM_QTY,

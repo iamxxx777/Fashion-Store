@@ -53,8 +53,17 @@
                     font-weight: 400;
                 }
             }
-            div:nth-child(4) {
+            .status {
                 margin-bottom: 0;
+                .status_div {
+                    margin-bottom: 0;
+                    span {
+                        width: 8px;
+                        height: 8px;
+                        border-radius: 50%;
+                        margin-right: $m-s;
+                    }
+                }
             }
         }
 
@@ -73,7 +82,7 @@
                 border-radius: 5px;
                 box-shadow: $shadow-3;
                 .order_item {
-                    margin-bottom: $m;
+                    margin-bottom: $m-1;
                     width: 100%;
                     display: grid;
                     grid-template-columns: 1fr 2fr;
@@ -109,19 +118,19 @@
                             font-weight: 400;
                             margin-bottom: $m;
                             span {
-                                margin-left: $m;
+                                margin-left: $m-s;
                             }
                         }
                         a {
                             width: 100%;
-                            display: inline-block;
-                            padding: 0.7rem 1rem;
-                            background-color: $pink;
-                            color: $secondary-text;
-                            font-size: $f-s;
+                            background-color: $pink_shade;
+                            color: $pink;
+                            padding: 0.4rem 0.7rem;
                             border-radius: 5px;
-                            text-align: center;
-                            border: solid 1px transparent;
+                            font-size: $f-s;
+                            letter-spacing: 1px;
+                            text-transform: uppercase;
+                            text-align: left;
                         }
                     }
                 }
@@ -328,12 +337,6 @@
                             }
                             a {
                                 width: 120px;
-                                font-size: $f-sm;
-                                &:hover {
-                                    background-color: transparent;
-                                    border-color: $pink;
-                                    color: $pink;
-                                }
                             }
                         }
                     }
@@ -434,8 +437,8 @@
                                 font-size: $f-md;
                             }
                             a {
-                                font-size: $f-sm;
-                                padding: 0.5rem 0.8rem;
+                                font-size: $f-s;
+                                padding: 0.6rem 0.8rem;
                             }
                         }
                     }
@@ -467,9 +470,6 @@
                                 h5 {
                                     font-size: $f-sm;
                                 }
-                            }
-                            div:nth-child(5) {
-                                margin-bottom: 0;
                             }
                         }
                     }
