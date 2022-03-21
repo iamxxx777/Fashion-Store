@@ -1,29 +1,33 @@
 @import './Pallette.scss';
 
 .search_title {
-    display: flex;
-    flex-direction: column;
-    padding: $p;
-    margin-bottom: $m-2;
+    display: grid;
+    grid-template-columns: 40% 58%;
+    gap: 0.3rem;
+    padding: $p-s;
     background-color: $background_1;
     box-shadow: $shadow-3;
     border-radius: 4px;
     .title {
-        margin-bottom: 1rem;
+        margin-bottom: $m-s;
         h2 {
-            font-size: $f-sm;
+            font-size: $f-s;
             font-weight: 400;
-            margin-bottom: $m-s;
+            margin-bottom: 0.3rem;
             text-align: left;
             span {
                 color: $pink;
                 font-weight: 600;
             }
         }
+        .mega {
+            font-size: $f-l;
+            font-weight: 600;
+        }
         h3 {
             font-size: $f-s;
             font-weight: 400;
-            color: $primary-text-2;
+            color: $primary-text-3;
             text-align: left;
             span {
                 color: $pink;
@@ -35,9 +39,9 @@
         position: relative;
         h3 {
             display: flex;
-            justify-content: flex-start;
+            justify-content: flex-end;
             align-items: center;
-            font-size: $f-sm;
+            font-size: $f-s;
             font-weight: 400;
             span {
                 display: flex;
@@ -45,9 +49,10 @@
                 align-items: center;
                 border: solid 1px $border;
                 border-radius: 5px;
-                padding: $p-s;
-                font-size: $f-s;
+                padding: 0.1rem 0.2rem;
+                font-size: $f-xs;
                 margin-left: $m-s;
+                text-transform: capitalize;
                 button {
                     margin-left: $m-s;
                     transform: rotate(0);
@@ -80,23 +85,31 @@
 
 @media (min-width: 601px) {
     .search_title {
-        flex-direction: row;
+        display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: $p-s $p;
         .title {
             margin-bottom: 0;
             h2 {
+                font-size: $f-md;
+                margin-bottom: $m-s;
+            }
+            .mega {
                 font-size: $f-xl;
-                font-weight: 600;
             }
             h3 {
-                font-size: $f-md;
+                font-size: $f-sm;
             }
         }
         .sort {
             justify-content: flex-end;
             h3 {
-                font-size: $f-md;
+                font-size: $f-sm;
+                span {
+                    padding: 0.2rem 0.4rem;
+                    font-size: $f-s;
+                }
             }
             .options {
                 button {
@@ -104,6 +117,27 @@
                         background-color: $background;
                     } 
                 }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .search_title {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        .title {
+            margin-bottom: 0;
+            h2 {
+                font-size: $f-md;
+                font-weight: 600;
+            }
+            .mega {
+                font-size: $f-xxl;
+            }
+            h3 {
+                font-size: $f-sm;
             }
         }
     }

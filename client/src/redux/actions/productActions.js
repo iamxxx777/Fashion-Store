@@ -2,12 +2,12 @@ import * as actionTypes from '../constants/productConstants'
 import { logOut } from "./userActions"
 import axios from 'axios'
 
-export const getProducts = (keyword = '', pageNumber = '') => async (dispatch) => {
+export const getProducts = (keyword = '', pageNumber = '', sortKey = '', sortValue = '') => async (dispatch) => {
 
     try {
         dispatch({type: actionTypes.GET_PRODUCTS_REQUEST})
 
-        const { data } = await axios.get(`/api/products?keyword=${keyword}&pageNumber=${pageNumber}`)
+        const { data } = await axios.get(`/api/products?keyword=${keyword}&pageNumber=${pageNumber}&sortKey=${sortKey}&sortValue=${sortValue}`)
         
         dispatch({
             type: actionTypes.GET_PRODUCTS_SUCCESS,
@@ -24,12 +24,12 @@ export const getProducts = (keyword = '', pageNumber = '') => async (dispatch) =
     }
 };
 
-export const getCategoryProducts = (category = 'dresses', pageNumber = '') => async (dispatch) => {
+export const getCategoryProducts = (category = 'dresses', pageNumber = '', sortKey = '', sortValue = '') => async (dispatch) => {
 
     try {
         dispatch({type: actionTypes.GET_CATEGORY_PRODUCTS_REQUEST})
 
-        const { data } = await axios.get(`/api/products/category/?category=${category}&pageNumber=${pageNumber}`)
+        const { data } = await axios.get(`/api/products/category/?category=${category}&pageNumber=${pageNumber}&sortKey=${sortKey}&sortValue=${sortValue}`)
         
         dispatch({
             type: actionTypes.GET_CATEGORY_PRODUCTS_SUCCESS,

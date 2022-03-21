@@ -2,13 +2,14 @@
 
 .products_page {
     width: 100%;
-    padding: 2rem 1rem;
+    padding: $p-2 $p;
+    padding-top: $p;
     min-height: 80vh;
     .products_container {
         max-width: 1250px;
         margin: 0 auto;
         .products_header {
-            margin-bottom: 1rem;
+            margin-bottom: $m;
             h1 {
                 font-size: $f-xxl;
                 font-weight: 600;
@@ -34,7 +35,8 @@
 
 @media (min-width: 500px) {
     .products_page {
-        padding: 2rem 1.5rem;
+        padding: $p-2 $p-1;
+        padding-top: $p;
         .products_container {
             .products {
                 .products_box {
@@ -68,7 +70,8 @@
 
 @media (min-width: 850px) {
     .products_page {
-        padding: 3rem 1.5rem;
+        padding: $p-3 $p-1;
+        padding-top: $p-1;
         .products_container {
             .products {
                 .products_box {
@@ -81,7 +84,6 @@
 
 @media (min-width: 1000px) {
     .products_page {
-        padding: 3rem 1.5rem;
         .products_container {
             .products {
                 .products_box {

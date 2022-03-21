@@ -25,7 +25,7 @@ import '../../styles/Account.scss'
 
 const Account = () => {
     const [toggleNav, setToggleNav] = useState(false)
-    let { path } = useRouteMatch();
+    const { url } = useRouteMatch();
     const dispatch = useDispatch()
 
     const handleLogOut = () => {
@@ -62,14 +62,14 @@ const Account = () => {
                 <AccountNav logout={handleLogOut} toggle={toggleNav} click={() => setToggleNav(false)} />
                 <div className="screen">
                     <Switch> 
-                        <Route path={`${path}/editprofile`}> <EditProfile user={user} click={() => setToggleNav(true)} /> </Route>
-                        <Route path={`${path}/changepass`}> <ChangePassword click={() => setToggleNav(true)} /> </Route>
-                        <Route path={`${path}/address/`}> <AddAddress user={user} click={() => setToggleNav(true)} /> </Route>
-                        <Route path={`${path}/editaddress/:id`}> <EditAddress click={() => setToggleNav(true)} /> </Route>
-                        <Route path={`${path}/addresses`}> <Addresses addresses={user.addresses} click={() => setToggleNav(true)} /> </Route>
-                        <Route path={`${path}/orders`}> <UserOrders click={() => setToggleNav(true)} orders={myOrders} /> </Route>
-                        <Route path={`${path}/order/:id`}> <UserOrder click={() => setToggleNav(true)} /> </Route>
-                        <Route exact path={path}> <UserProfile user={user} click={() => setToggleNav(true)} orders={myOrders} /> </Route>
+                        <Route path={`${url}/editprofile`}> <EditProfile user={user} click={() => setToggleNav(true)} /> </Route>
+                        <Route path={`${url}/changepass`}> <ChangePassword click={() => setToggleNav(true)} /> </Route>
+                        <Route path={`${url}/address/`}> <AddAddress user={user} click={() => setToggleNav(true)} /> </Route>
+                        <Route path={`${url}/editaddress/:id`}> <EditAddress click={() => setToggleNav(true)} /> </Route>
+                        <Route path={`${url}/addresses`}> <Addresses addresses={user.addresses} click={() => setToggleNav(true)} /> </Route>
+                        <Route path={`${url}/orders`}> <UserOrders click={() => setToggleNav(true)} orders={myOrders} /> </Route>
+                        <Route path={`${url}/order/:id`}> <UserOrder click={() => setToggleNav(true)} /> </Route>
+                        <Route exact path={url}> <UserProfile user={user} click={() => setToggleNav(true)} orders={myOrders} /> </Route>
                     </Switch>
                 </div>
             </div>

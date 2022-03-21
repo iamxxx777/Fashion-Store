@@ -7,6 +7,9 @@ const fs = require("fs")
 const getProducts = asyncHandler(async (req, res) => {
     const pageSize = 10
     const pageNumber = Number(req.query.pageNumber) || 1
+    const sortKey = req.query.sortKey
+    const sortValue = req.query.sortValue.toLowerCase() || 'desc'
+    const sort =  sortKey ? { [sortKey]: sortValue } : {}
     const keyword = req.query.keyword.toLowerCase() 
         ? {
             name: {
@@ -14,11 +17,10 @@ const getProducts = asyncHandler(async (req, res) => {
                 $options: "i"
             },
         } : {}
-
-    
     const count = await Product.countDocuments({ ...keyword })
 
     const products = await Product.find({...keyword})
+        .sort({...sort})
         .skip(pageSize * (pageNumber - 1))
         .limit(pageSize)
 
