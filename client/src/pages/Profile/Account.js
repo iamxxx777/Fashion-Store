@@ -9,6 +9,7 @@ import { getMyOrders } from '../../redux/actions/orderActions'
 // Components
 import AccountNav from '../../components/Profile/AccountNav'
 import Overlay from '../../components/Profile/Overlay'
+import Loader from '../../components/Loader/Loader'
 
 // Pages
 import UserProfile from './UserProfile'
@@ -45,7 +46,7 @@ const Account = () => {
 
     if(loading) {
         return (
-            <main className="customer_account">Loading...</main>
+            <main className="customer_account"><Loader /></main>
         )
     }
 

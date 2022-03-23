@@ -15,7 +15,7 @@
                 margin-bottom: 1rem;
                 img {
                     width: 100%;
-                    height: 160px;
+                    height: 150px;
                     object-fit: contain;
                 }
             }
@@ -24,20 +24,22 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-start;
-                padding: 0.5rem;
+                padding: $p-s;
                 h2 {
                     font-size: $f-s;
-                    margin-bottom: 0.5rem;
+                    margin-bottom: $m-s;
                     text-transform: capitalize;
                     text-align: left;
                     font-weight: 400;
-                    height: 35px;
                 }
                 div {
-                    margin-bottom: 0.5rem;
+                    margin-bottom: $m-s;
+                    .MuiRating-root {
+                        font-size: 1.1rem;
+                    }
                 }
                 h3 {
-                    font-size: $f-sm;
+                    font-size: $f-s;
                     font-weight: 600;
                     color: $pink;
                 }
@@ -59,12 +61,17 @@
 
 @media (min-width: 850px) {
     .product_card {
-        padding: 0.5rem;
+        padding: $p-s;
         a {
             .product_card_container {
                 .product_card_info {
                     h2 {
                         font-size: $f-sm;
+                    }
+                    div {
+                        .MuiRating-root {
+                            font-size: 1.35rem;
+                        }
                     }
                 }
             }

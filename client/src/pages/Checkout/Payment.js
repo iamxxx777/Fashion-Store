@@ -1,6 +1,6 @@
 import { PaystackButton } from 'react-paystack'
 import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import { useAlert } from 'react-alert'
 
@@ -16,6 +16,7 @@ import Button from '@mui/material/Button'
 // COMPONENTS
 import CustomizedSteps from '../../components/Checkout/CustomizedSteps'
 import AddressCard from '../../components/Checkout/AddressCard'
+import Loader from '../../components/Loader/Loader'
 
 // STYLE
 import '../../styles/Checkout.scss'
@@ -26,7 +27,7 @@ const Payment = () => {
     const dispatch = useDispatch()
 
     /* Getting the cart items */
-
+    const [loading, setLoading] = useState(false)
     const { cartItems } = useSelector(state => state.cart)
     const { userInfo } = useSelector((state) => state.loginUser)
     const { newOrder } = useSelector((state) => state.createOrder)
@@ -74,8 +75,9 @@ const Payment = () => {
             id: response.reference,
             status: response.status
         }  
-
+        setLoading(true)
         dispatch(createOrder(orderDetails))
+        setLoading(false)
     }
 
 
@@ -92,7 +94,7 @@ const Payment = () => {
             handlePayment(response)
         },
         onClose: () => {
-            alert.show("Oh ye, don't go yet")          
+            alert.show("You no wan buy from cultist, you wan collect")          
         },
     }
 
@@ -108,7 +110,9 @@ const Payment = () => {
         dispatch(getPaymentKey())
     }, [dispatch])
 
-
+    if(loading) {
+        return <Loader />
+    }
 
     return (
         <main className='payment'>

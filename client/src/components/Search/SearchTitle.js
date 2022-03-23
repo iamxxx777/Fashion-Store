@@ -9,12 +9,13 @@ const SearchTitle = ({ keyword, totalNumber, sort, sortKey }) => {
     const [showOptions, setShowOptions] = useState(false)
 
     if(sortKey === 'updatedAt') sortKey = 'Date'
+    if(sortKey === 'undefined') sortKey = 'Popularity'
 
     return (
         <div className='search_title'>
             <div className="title">
                 {keyword ? <h2>Showing results for <span>{keyword}</span></h2> : <h2 class="mega">Products</h2>}
-                <h3><span>{totalNumber}</span> results found</h3>
+                <h3><span>{totalNumber}</span> items found</h3>
             </div>
             <div className="sort">
                 <h3>Sort by: <span>{sortKey || 'Popularity'} <button className={showOptions ? 'rotate' : null} onClick={() => setShowOptions(!showOptions)}><ArrowRightIcon /></button></span></h3>

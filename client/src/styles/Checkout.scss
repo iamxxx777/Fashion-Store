@@ -33,18 +33,18 @@
 .order_review {
     width: 100%;
     min-height: 80vh;
-    padding: 3rem 1rem;
+    padding: $p-2 $p;
     .order_review_container {
         max-width: 1250px;
         margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr;
         gap: 2rem;
-        margin-top: 2rem;
+        margin-top: $m-2;
         .order_details {
             width: 100%;
             .order_errors {
-                margin-bottom: 2rem;
+                margin-bottom: $m-2;
                 h2 {
                     text-align: left;
                     font-size: 24px;
@@ -331,7 +331,7 @@
     }
 
     .order_review {
-        padding: $p-5 $p-1;
+        padding: $p-3 $p-1;
     }
 
     .payment {
@@ -415,6 +415,10 @@
             }
         }
     }
+
+    .order_review {
+        padding: $p-3 $p-2;
+    }
 }
 
 
@@ -426,7 +430,7 @@
             .order_details {
                 .order_errors {
                     h1 {
-                        font-size: 32px;
+                        font-size: $f-xxl;
                     }
                 }
             }

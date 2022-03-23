@@ -1,41 +1,52 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react'
-import { getProducts } from "../redux/actions/productActions"
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-import Paginate from '../components/Pagination/Paginate'
-import Product from '../components/Products/Product'
+// REDUX ACTIONS
+import { getProducts, getTopProducts } from '../redux/actions/productActions'
 
-import "../styles/Home.css"
+// COMPONENTS
+import Jumbotron from '../components/Home/Jumbotron'
+import LatestProducts from '../components/Home/LatestProducts'
+import TopProductsSlide from '../components/Home/TopProductsSlide'
+import FeaturedCategories from '../components/Home/FeaturedCategories'
+import WhyUs from '../components/Home/WhyUs'
+import Loader from '../components/Loader/Loader'
 
-const Home = () => {
+// STYLES
+import '../styles/Main.scss'
 
-  const dispatch = useDispatch()
+const Main = () => {
 
-  const { products, loading, error } = useSelector((state) => state.products)
+    const [loading, setLoading] = useState(false)
+    const dispatch = useDispatch()
+    const { products } = useSelector((state) => state.products)
+    const { topProducts } = useSelector((state) => state.topProducts)
 
-  useEffect(() => {
-    dispatch(getProducts())
-  }, [dispatch])
+    useEffect(() => {
+        setLoading(true)
+        dispatch(getProducts())
+        dispatch(getTopProducts())
+        setLoading(false)
+    }, [dispatch])
+
+    if (loading) {
+      return (
+        <Loader />
+      )
+    }
 
 
-  return (
-    <div>
-
-      <h1>Index Page</h1>
-      {
-        loading ? <h1>Loading...</h1> :
-        error ? <h1>Error</h1> : 
-        <div className='grid'>
-          {products.products?.map((product) => (
-            <Product key={product._id} product={product} />
-          ))}
-
-          <Paginate pages={products.pages} pageNumber={products.pageNumber} />
+    return (
+        <div className='main_page'>
+            <div className="main_container">
+                <Jumbotron />
+                <TopProductsSlide products={topProducts} />
+                <LatestProducts products={products.products} />
+                <FeaturedCategories />
+                <WhyUs />
+            </div>
         </div>
-      }
+    )
+};
 
-    </div>
-  )
-}
-
-export default Home
+export default Main;

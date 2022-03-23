@@ -1,6 +1,6 @@
 import React from 'react'
 import MenuIcon from '@mui/icons-material/Menu'
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
+import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'
 
 import Order from '../../components/Profile/Order'
 
@@ -13,7 +13,7 @@ const UserOrders = ({ click, orders }) => {
                 <div className="user_orders_header">
                     <div className="user_orders_title">
                         <div>
-                            <ShoppingCartOutlinedIcon />
+                            <ShoppingBagOutlinedIcon />
                             <h1>My Orders</h1>
                         </div>
                         <h2>{orders.length} Orders found</h2>

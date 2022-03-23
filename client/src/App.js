@@ -13,7 +13,7 @@ import CategoryNav from './components/Nav/CategoryNav'
 import Footer from './components/Footer/Footer'
 
 // Pages
-import Main from './pages/Main'
+import Home from './pages/Home'
 import ProductPage from './pages/ProductPage'
 import Signin from './pages/Signin'
 import Cart from './pages/Cart'
@@ -49,7 +49,7 @@ function App() {
             <PrivateRoute path='/checkout/payment' component={Payment} />
             <Route path="/category/:category/page/:pageNumber" component={CategoryPage} />
             <Route path="/category/:category" component={CategoryPage} />
-            <Route exact path="/" component={Main} /> 
+            <Route exact path="/" component={Home} /> 
           </Switch>
         </ScrollToTop>
         <Footer />

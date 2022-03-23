@@ -3,12 +3,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useHistory, useLocation } from 'react-router-dom'
 import queryString from 'query-string'
 
+// REDUX ACTIONS
 import { getProducts } from "../redux/actions/productActions"
 
+// COMPONENTS
 import SearchTitle from '../components/Search/SearchTitle'
 import Paginate from '../components/Pagination/Paginate'
 import ProductCard from '../components/Products/ProductCard'
+import Loader from '../components/Loader/Loader'
 
+// STYLES
 import "../styles/ProductsPage.scss"
 
 const Products = () => {
@@ -39,9 +43,17 @@ const Products = () => {
 
     const paginatePage = (value) => {
         if(keyword) {
-            history.push(`/search/${keyword}/page/${value}?sortKey=${sortKey}&sortValue=${sortValue}`)
+            if(sortKey) {
+                history.push(`/search/${keyword}/page/${value}?sortKey=${sortKey}&sortValue=${sortValue}`)
+            } else {
+                history.push(`/search/${keyword}/page/${value}`)
+            }
         } else {
-            history.push(`/products/page/${value}?sortKey=${sortKey}&sortValue=${sortValue}`)
+            if(sortKey) {
+                history.push(`/products/page/${value}?sortKey=${sortKey}&sortValue=${sortValue}`)
+            } else {
+                history.push(`/products/page/${value}`)
+            }
         }
     }
 
@@ -60,7 +72,7 @@ const Products = () => {
     if(loading) {
         return (
             <main className="products_page">
-                <h1>Loading...</h1>
+                <Loader />
             </main>
         )
     }

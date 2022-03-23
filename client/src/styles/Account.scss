@@ -323,6 +323,33 @@
                     }
                 }
             }
+            .profile_info {
+                .info_container {
+                    .info_item {
+                        h3 {
+                            font-size: $f-sm;
+                        }
+                        h4 {
+                            font-size: $f-md;
+                        }
+                    }
+                }
+                .profile_orders {
+                    h3 {
+                        font-size: $f-xl;
+                    }
+                    .order_summary {
+                        .order_summary_item {
+                            h3 {
+                                font-size: $f-xxl;
+                            }
+                            h4 {
+                                font-size: $f-md;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 

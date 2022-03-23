@@ -1,23 +1,27 @@
 import PropTypes from 'prop-types'
-import Tabs from '@mui/material/Tabs'
-import Tab from '@mui/material/Tab'
-import Box from '@mui/material/Box'
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
-
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { useAlert } from 'react-alert'
 
+// MUI COMPONENTS
+import Tabs from '@mui/material/Tabs'
+import Tab from '@mui/material/Tab'
+import Box from '@mui/material/Box'
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
+
+// REDUX ACTIONS
 import { getProductDetails } from '../redux/actions/productActions'
 import { addToCart } from '../redux/actions/cartActions'
 
 // Components
+import Loader from '../components/Loader/Loader'
 import Ratings from '../components/Products/Ratings'
 import ProductCard from '../components/Products/ProductCard'
 import ProductCarousel from '../components/Products/ProductCarousel'
 import ProductTypeSelect from '../components/Products/ProductTypeSelect'
 
+// STYLES
 import "../styles/ProductPage.scss"
 
 
@@ -104,7 +108,7 @@ const ProductPage = () => {
 
     const handleCart = (id, qty, size, count) => {
         dispatch(addToCart(id, qty, size, count))
-        alert.show(`${product.name} added to cart successfully`)
+        alert.show('Cart updated successfully')
     }
 
     useEffect(() => {
@@ -112,11 +116,11 @@ const ProductPage = () => {
     }, [id, dispatch])
 
     if(loading) {
-        return <div className='loading'>Loading...</div>
+        return <Loader />
     }
 
     if (error) {
-        return <div className="loading">{error}</div>
+        return <div className="product_page">{error}</div>
     }
 
     return (

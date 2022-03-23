@@ -32,6 +32,25 @@ const newOrder = asyncHandler(async (req, res) => {
     })
 
     const order = await newOrder.save()
+
+    for(var a = 0; a < orderItems.length; a++) {
+        const product = await Product.findById(orderItems[a].product)
+        const sizes = product.sizes
+        const size = sizes.find((size) => size.name === orderItems[a].size)
+        const newSizeQty = size.count - orderItems[a].qty
+        const newTotal = product.countInStock - orderItems[a].qty
+
+        await Product.updateOne(
+            { _id: orderItems[a].product, "sizes.name": orderItems[a].size },
+            {
+                $set: {
+                    "countInStock": newTotal,
+                    "sizes.$.count": newSizeQty
+                }
+            }
+        )
+    }
+
     const populatedOrder = await Order.findById(order._id).populate("user", "name email")
 
     // const data = {
@@ -72,11 +91,10 @@ const confirmOrderItems = asyncHandler(async (req, res) => {
     res.json(newItems)
 })
 
-
 const getMyOrders = asyncHandler(async (req, res) => {
     const id = req.params.id
 
-    const orders = await Order.find({user: id})
+    const orders = await Order.find({user: id}).sort({createdAt: 'desc'})
 
     res.json(orders)
 })

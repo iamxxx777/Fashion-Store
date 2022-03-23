@@ -2,15 +2,20 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+// MUI COMPONENTS
 import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 
+// REDUX ACTIONS
 import { confirmOrderItems } from '../../redux/actions/cartActions'
 import { updateQty } from '../../redux/actions/cartActions'
 
+// COMPONENTS
 import Cartitem from '../../components/Cart/CartItem'
 import CustomizedSteps from '../../components/Checkout/CustomizedSteps'
+import Loader from '../../components/Loader/Loader'
 
+// STYLE
 import '../../styles/Checkout.scss'
 
 const OrderReview = () => {
@@ -51,7 +56,11 @@ const OrderReview = () => {
     }
      
     if (loading) {
-        return (<main className="loading">Loading...</main>)
+        return <Loader />
+    }
+
+    if (error) {
+        return <main className="order_review"><h1>{error}</h1></main>
     }
 
     return (

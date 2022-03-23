@@ -8,6 +8,7 @@ import AddressCard from '../../components/Checkout/AddressCard'
 import AddressesModal from '../../components/Checkout/AddressesModal'
 import CustomizedSteps from '../../components/Checkout/CustomizedSteps'
 import Meta from '../../components/Meta/Meta'
+import Loader from '../../components/Loader/Loader'
 
 // MUI COMPONENTS
 import Grid from '@mui/material/Grid'
@@ -96,7 +97,7 @@ const Shipping = () => {
 
 
     if(loading) {
-        return <main className="shipping_address">Loading...</main>
+        return <main className="shipping_address"><Loader /></main>
     }
 
     return (
