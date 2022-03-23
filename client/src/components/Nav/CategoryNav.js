@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+// ICONS
 import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined'
 import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined'
 import FitnessCenterOutlinedIcon from '@mui/icons-material/FitnessCenterOutlined'
 import EmojiNatureOutlinedIcon from '@mui/icons-material/EmojiNatureOutlined'
 
+// STYLES
 import '../../styles/CategoryNav.scss'
 
 const CategoryNav = () => {

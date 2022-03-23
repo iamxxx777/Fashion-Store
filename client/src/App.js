@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { useState } from 'react'
 import ScrollToTop from './ScrollToTop'
 
 //Routes
@@ -23,15 +24,19 @@ import Payment from './pages/Checkout/Payment'
 import Account from './pages/Profile/Account'
 import CategoryPage from './pages/CategoryPage'
 import Products from './pages/Products'
+import NotFound from './pages/NotFound'
 
 import './App.css'
 
 function App() {
+
+  const [toggleSideNav, setToggleSideNav] = useState(false)
+
   return (
     <Router>
       <div className="App">
         <MiniNav />
-        <MobileNav />
+        <MobileNav click={() => setToggleSideNav(true)} />
         <Nav />
         <CategoryNav />
         <ScrollToTop>
@@ -49,7 +54,9 @@ function App() {
             <PrivateRoute path='/checkout/payment' component={Payment} />
             <Route path="/category/:category/page/:pageNumber" component={CategoryPage} />
             <Route path="/category/:category" component={CategoryPage} />
+            <Route path="/404" component={NotFound} />
             <Route exact path="/" component={Home} /> 
+            <Route path="/*"> <Redirect from="/" to="/404" /> </Route>
           </Switch>
         </ScrollToTop>
         <Footer />

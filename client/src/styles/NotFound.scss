@@ -1,0 +1,171 @@
+@import './Pallette.scss';
+
+.not_found {
+    width: 100%;
+    padding: $p-2 $p;
+    padding-top: $p;
+    min-height: 80vh;
+    .container {
+        max-width: 1250px;
+        margin: 0 auto;
+        .error_div {
+            .image {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: $m;
+                img {
+                    width: 200px;
+                    height: 200px;
+                    object-fit: contain;
+                }
+            }
+            .text {
+                width: 100%;
+                text-align: left;
+                margin-bottom: $m-1;
+                h1 {
+                    font-size: $f-xl;
+                    font-weight: 600;
+                    color: $pink;
+                    margin-bottom: 0.3rem;
+                }
+                h2 {
+                    font-size: $f-sm;
+                    font-weight: 600;
+                    margin-bottom: $m;
+                }
+                p {
+                    font-size: $f-s;
+                    color: $primary-text-2;
+                    line-height: 1.5;
+                }
+            }
+        }
+        .items {
+            width: 100%;
+            h2 {
+                margin-bottom: $m;
+                font-size: $f-xl;
+                font-weight: 600;
+                text-align: left;
+            }
+            .items_container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem 0.5rem;
+            }
+        }
+    }
+    
+}
+
+
+@media (min-width: 601px) {
+    .not_found {
+        padding: $p-2 $p-1;
+        padding-top: $p;
+        .container {
+            .items {
+                .items_container {
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 1.5rem 1rem;
+                }
+            }
+        }
+        
+    }
+}
+
+@media (min-width: 768px) {
+    .not_found {
+        padding: $p-2 $p-1;
+        padding-top: $p;
+        .container {
+            .error_div {
+                .image {
+                    img {
+                        width: 300px;
+                        height: 300px;
+                    }
+                }
+                .text {
+                    margin-bottom: $m-2;
+                    h1 {
+                        font-size: $f-xxl;
+                        margin-bottom: $m-s;
+                    }
+                    h2 {
+                        font-size: $f-md;
+                        margin-bottom: $m;
+                    }
+                    p {
+                        font-size: $f-sm;
+                    }
+                }
+            }
+            .items {
+                h2 {
+                    font-size: $f-xxl;
+                }
+            }
+        }
+        
+    }
+}
+
+
+@media (min-width: 850px) {
+    .not_found {
+        padding: $p-3 $p-1;
+        padding-top: $p-1;
+        .container {
+            .items {
+                .items_container {
+                    grid-template-columns: repeat(4, 1fr);
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 950px) {
+    .not_found {
+        padding: $p-3 $p-2;
+        padding-top: $p-2;
+        .container {
+            .error_div {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+                width: 100%;
+                margin-bottom: $m-2;
+                .text {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    h1 {
+                        font-size: $f-xxxl;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 1150px) {
+    .not_found {
+        .container {
+            .items {
+                .items_container {
+                    grid-template-columns: repeat(5, 1fr);
+                }
+            }
+        }
+    }
+}

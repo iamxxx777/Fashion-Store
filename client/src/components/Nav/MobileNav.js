@@ -8,7 +8,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 
 import '../../styles/MobileNav.scss'
 
-const MobileNav = () => {
+const MobileNav = ({ click }) => {
     const { cartItems } = useSelector((state) => state.cart)
 
     return (
@@ -21,12 +21,12 @@ const MobileNav = () => {
                     </div>
                 </Link>
 
-                <Link to="/cart">
+                <button onClick={click}>
                     <div className="mobile_nav_link">
                         <CategoryOutlinedIcon />
                         <p>Category</p>
                     </div>
-                </Link>
+                </button>
 
                 <Link to="/account">
                     <div className="mobile_nav_link">
