@@ -3,8 +3,7 @@ import axios from 'axios'
 import { logOut } from "./userActions"
 
 export const addToCart = (id, qty, size, countInStock) => async (dispatch, getState) => {
-    const { data } = await axios.get(`/api/products/${id}`)
-    const { product } = data
+    const { data: { product } } = await axios.get(`/api/products/${id}`)
 
     dispatch({
         type: actionTypes.ADD_TO_CART,
@@ -45,7 +44,6 @@ export const clearCart = () => async (dispatch, getState) => {
 
 
 export const removeFromCart = (id, size) => async (dispatch, getState) => {
-    console.log({ id, size })
     dispatch({
         type: actionTypes.REMOVE_FROM_CART,
         payload: {id, size}
@@ -91,8 +89,6 @@ export const confirmOrderItems = () => async (dispatch, getState) => {
         if (message === "Not authorized, token failed") {
             logOut()
         }
-
-        console.log(message)
 
         dispatch({
             type: actionTypes.CONFIRM_CART_ITEMS_FAIL,

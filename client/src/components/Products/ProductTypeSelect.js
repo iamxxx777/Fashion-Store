@@ -4,7 +4,7 @@ import ProductTypeItem from './ProductTypeItem'
 
 import '../../styles/ProductType.scss'
 
-const ProductTypeSelect = ({ data, item, cartItems, handleCart, close }) => {
+const ProductTypeSelect = ({ data, item, cartItems, handleCart, handleRemove, close }) => {
     
     return (
         <div className='product_type'>
@@ -20,6 +20,7 @@ const ProductTypeSelect = ({ data, item, cartItems, handleCart, close }) => {
                             size={size} 
                             item={item} 
                             handleCart={handleCart}
+                            handleRemove={handleRemove}
                             cartItems={cartItems}
                         />)
                     )}

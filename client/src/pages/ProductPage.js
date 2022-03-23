@@ -12,7 +12,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 
 // REDUX ACTIONS
 import { getProductDetails } from '../redux/actions/productActions'
-import { addToCart } from '../redux/actions/cartActions'
+import { addToCart, removeFromCart } from '../redux/actions/cartActions'
 
 // Components
 import Loader from '../components/Loader/Loader'
@@ -111,6 +111,11 @@ const ProductPage = () => {
         alert.show('Cart updated successfully')
     }
 
+    const handleRemove = (id, size) => {
+        dispatch(removeFromCart(id, size))
+        alert.show('Product removed from cart')
+    }
+
     useEffect(() => {
         dispatch(getProductDetails(id))
     }, [id, dispatch])
@@ -171,6 +176,7 @@ const ProductPage = () => {
                                 cartItems={addedItems}
                                 item={product} 
                                 handleCart={handleCart} 
+                                handleRemove={handleRemove}
                                 close={closeVariation}
                             />}
                         </div>

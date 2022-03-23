@@ -38,7 +38,7 @@ const MobileNav = ({ click }) => {
                 <Link to="/cart">
                     <div className="mobile_nav_link">
                         <ShoppingCartOutlinedIcon />
-                        <p>Cart <span>{cartItems.length}</span></p>
+                        <p>Cart {cartItems.length > 0 && <span>{cartItems.length}</span>}</p>
                     </div>
                 </Link>
 

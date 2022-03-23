@@ -14,7 +14,7 @@ const SearchTitle = ({ keyword, totalNumber, sort, sortKey }) => {
     return (
         <div className='search_title'>
             <div className="title">
-                {keyword ? <h2>Showing results for <span>{keyword}</span></h2> : <h2 class="mega">Products</h2>}
+                {keyword ? <h2>Showing results for <span>{keyword}</span></h2> : <h2 className="mega">Products</h2>}
                 <h3><span>{totalNumber}</span> items found</h3>
             </div>
             <div className="sort">

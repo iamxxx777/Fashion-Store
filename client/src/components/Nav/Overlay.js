@@ -1,8 +1,8 @@
-import React from 'react'
+import '../../styles/SideCategory.scss'
 
-const Overlay = ({ click }) => {
+const Overlay = ({ click, show }) => {
   return (
-    <div className='side_overlay' onClick={click}></div>
+    <div className={show ? 'side_overlay' : null} onClick={click}></div>
   )
 }
 

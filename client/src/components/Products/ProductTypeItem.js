@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const ProductTypeItem = ({ handleCart, cartItems, item, size }) => {
+const ProductTypeItem = ({ handleCart, handleRemove, cartItems, item, size }) => {
 
     const itemExistInCart = cartItems.find((cartItem) => cartItem.size === size.name)
 
@@ -12,8 +12,13 @@ const ProductTypeItem = ({ handleCart, cartItems, item, size }) => {
     }
 
     const handleSubtract = () => {
-        setQty(qty => qty - 1)
-        handleCart(item._id, qty - 1, size.name, size.count)
+        if(qty === 1) {
+            setQty(qty => qty - 1)
+            handleRemove(item._id, size.name)
+        } else {
+            setQty(qty => qty - 1)
+            handleCart(item._id, qty - 1, size.name, size.count)
+        }
     }
 
 

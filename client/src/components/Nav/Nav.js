@@ -46,7 +46,7 @@ const Nav = () => {
                             <Link to="/cart">
                                 <div className="header_cart">
                                     <ShoppingCartOutlinedIcon />
-                                    <span>{cartItems.length}</span>
+                                    {cartItems.length > 0 && <span>{cartItems.length}</span>}
                                 </div>
                             </Link>
                         </div>

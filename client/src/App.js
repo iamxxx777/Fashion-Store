@@ -11,6 +11,8 @@ import MiniNav from './components/Nav/MiniNav'
 import MobileNav from './components/Nav/MobileNav'
 import Nav from './components/Nav/Nav'
 import CategoryNav from './components/Nav/CategoryNav'
+import SideCategory from './components/Nav/SideCategory'
+import Overlay from './components/Nav/Overlay'
 import Footer from './components/Footer/Footer'
 
 // Pages
@@ -38,6 +40,8 @@ function App() {
         <MiniNav />
         <MobileNav click={() => setToggleSideNav(true)} />
         <Nav />
+        <Overlay show={toggleSideNav} click={() => setToggleSideNav(false)} />
+        <SideCategory show={toggleSideNav} click={() => setToggleSideNav(false)} />
         <CategoryNav />
         <ScrollToTop>
           <Switch>

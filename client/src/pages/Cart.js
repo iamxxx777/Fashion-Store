@@ -1,11 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import Button from "@mui/material/Button"
 
+// REDUX ACTIONS
 import { updateQty } from '../redux/actions/cartActions'
 
+// COMPONENTS
 import CartItem from "../components/Cart/CartItem"
+
+// MUI ICONS
+import RemoveShoppingCartIconOutlined from '@mui/icons-material/RemoveShoppingCart'
 
 import '../styles/Cart.scss'
 
@@ -34,7 +38,8 @@ const Cart = () => {
             <div className="cart_container">
                 {cartItems.length === 0 && 
                     <div className="empty_cart">
-                        <h1>Your cart is empty. <Link to='/'>Go to home</Link> to shop some products</h1>
+                        <RemoveShoppingCartIconOutlined />
+                        <h1>Your cart is empty. <Link to='/products'>Click here</Link> to shop some products</h1>
                     </div>
                 }
                 {

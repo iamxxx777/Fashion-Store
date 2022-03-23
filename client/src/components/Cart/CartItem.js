@@ -9,17 +9,16 @@ import '../../styles/CartItem.scss'
 const Cartitem = ({ item, updateQty }) => {
     const dispatch = useDispatch()
 
-    var [qty, setQty] = useState(item.latestCount ? item.latestCount : item.qty)
+    const [qty, setQty] = useState(item.latestCount ? item.latestCount : item.qty)
 
     const handleRemove = () => {
         dispatch(removeFromCart(item.product, item.size))
     }
 
-
     const handleDecrease = () => {
         if (qty > 1) {
             setQty(qty => qty - 1)
-            updateQty(item, qty)
+            updateQty(item, qty - 1)
         }
     }
 
@@ -32,7 +31,7 @@ const Cartitem = ({ item, updateQty }) => {
         } else {
             if (qty < item.countInStock) {
                 setQty(qty => qty + 1)
-                updateQty(item, qty - 1)
+                updateQty(item, qty + 1)
             }
         }
     }
