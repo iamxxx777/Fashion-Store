@@ -20,9 +20,10 @@ router.post('/confirm', isAuthenticated, confirmOrderItems)
 
 router.get("/:id", isAuthenticated, getOrder)
 
+router.put("/:id", isAuthenticated, isAdmin, updateOrderStatus)
+
 router.get("/myorders/:id", isAuthenticated, getMyOrders)
 
-router.put("/:id/status", isAuthenticated, isAdmin, updateOrderToDelivered)
 
 
 

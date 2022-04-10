@@ -3,7 +3,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import Moment from 'react-moment'
 
+// REDUX
+import { UPDATE_ORDER_RESET } from '../../redux/constants/adminConstants'
 import { getOrder } from '../../redux/actions/orderActions'
+import { updateOrderStatus } from '../../redux/actions/adminActions'
 
 // Components
 import OrderItem from '../../components/Profile/OrderItem'
@@ -12,7 +15,9 @@ import Loader from '../../components/Loader/Loader'
 
 // ICONS
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined'
+import ArrowRightIcon from '@mui/icons-material/ArrowRight'
 
+// STYLES
 import '../../styles/CustomerOrder.scss'
 
 
@@ -22,8 +27,10 @@ const Order = () => {
     const history = useHistory()
 
     const { loading, order, error } = useSelector((state) => state.order)
+    const { updateLoading, update, updateError } = useSelector((state) => state.updateOrder)
     const [showOptions, setShowOptions] = useState(false)
-    const [orderStatus, setOrderStatus] = useState(order.status)
+    const [orderStatus, setOrderStatus] = useState(order?.status)
+    const [deliveryDate, setDeliveryDate] = useState(order?.deliveryDate)
 
     const colorScheme = {
         delivered: '#27cf2f',
@@ -33,8 +40,19 @@ const Order = () => {
     }
 
     const handleStatus = (value) => {
-        
+        dispatch(updateOrderStatus(id, { status: value }))
     }
+
+    useEffect(() => {
+        if(update && update.newStatus) {
+            setOrderStatus(update.newStatus)
+        }
+        if(update && update.deliveryDate) {
+            setDeliveryDate(update.deliveryDate)
+        }
+
+        dispatch({type: UPDATE_ORDER_RESET})
+    }, [update, dispatch])
 
     useEffect(() => {
         dispatch(getOrder(id))
@@ -48,8 +66,9 @@ const Order = () => {
         return <div className="user_order">{error}</div>
     }
     return (
-        <div className='user_order'>
+        <div className='user_order order'>
             <div className="order_container">
+                {updateError && <p style={{color: 'tomato'}}>{updateError}</p>}
                 <div className="order_header">
                     <div className="order_title">
                         <button onClick={() => history.goBack()}> 
@@ -58,7 +77,7 @@ const Order = () => {
                         <h1>Order Details</h1>
                     </div>
                     <div className="update">
-                        <h3>Update Status: <span>{orderStatus} <button className={showOptions ? 'rotate' : null} onClick={() => setShowOptions(!showOptions)}><ArrowRightIcon /></button></span></h3>
+                        <h3>Update Status: <span>{orderStatus || order.status} <button className={showOptions ? 'rotate' : null} onClick={() => setShowOptions(!showOptions)}><ArrowRightIcon /></button></span></h3>
                         {showOptions && <div className="options">
                             <button onClick={() => {handleStatus('pending'); setShowOptions(false)}}>Pending</button>
                             <button onClick={() => {handleStatus('cancelled'); setShowOptions(false)}}>Cancelled</button>
@@ -67,7 +86,7 @@ const Order = () => {
                         </div>}
                     </div>
                 </div>
-
+                {updateLoading && <Loader />}
                 <div className="order_key_info">
                     <div className="id">
                         <h2>Order No:</h2>
@@ -88,10 +107,16 @@ const Order = () => {
                     <div className="status">
                         <h2>Order Status:</h2>
                         <div className="status_div">
-                            <span style={{backgroundColor: colorScheme[`${order.status}`]}}></span>
-                            <h3 style={{color: colorScheme[`${order.status}`]}}>{order.status}</h3>
+                            <span style={{backgroundColor: colorScheme[`${orderStatus || order.status}`]}}></span>
+                            <h3 style={{color: colorScheme[`${orderStatus || order.status}`]}}>{orderStatus || order.status}</h3>
                         </div>
                     </div>
+                    {deliveryDate && 
+                        <div className="delivery">
+                            <h2>Delivery Date:</h2>
+                            <h3>{deliveryDate}</h3>
+                        </div>
+                    }
                 </div>
 
                 <div className="order_items">

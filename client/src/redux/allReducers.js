@@ -19,7 +19,6 @@ import {
     getOrderReducer,
     getAllOrdersReducer,
     myOrdersReducer,
-    updateOrderReducer,
     getPaymentKeyReducer
 } from "./reducers/orderReducer"
 
@@ -75,7 +74,7 @@ const reducers = combineReducers({
     addAddress: addAddressReducer,
     dashboard: getDashboardStatsReducer,
     adminOrders: getAdminOrdersReducer,
-    updateOrder: updateOrderReducer,
+    updateOrder: updateOrderReducer
 })
 
 

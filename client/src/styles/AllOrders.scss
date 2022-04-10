@@ -123,7 +123,6 @@
                             align-content: center;
                             grid-template-columns: 2.3fr 1.2fr 1.5fr 1fr 1fr 0.8fr 0.3fr;
                             gap: 1.5rem;
-                            border-radius: 5px;
                             background-color: transparent;
                             box-shadow: none;
                             border-bottom: solid 1px #efefef;
@@ -251,6 +250,7 @@
 @media (min-width: 1000px) {
     .allorders {
         padding: $p-1 $p-2;
+        padding-bottom: $p-3;
         .container {
             .orders_section {
                 .container {

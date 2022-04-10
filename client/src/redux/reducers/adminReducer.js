@@ -46,26 +46,24 @@ export const getAdminOrdersReducer = (state = { orders: {} }, action) => {
     }
 };
 
-export const updateOrderReducer = (state = {}, action) => {
+export const updateOrderReducer = (state = {update: {}}, action) => {
     switch(action.type) {
         case actionTypes.UPDATE_ORDER_REQUEST:
             return {
-                loading: true,
+                updateLoading: true,
             }
         case actionTypes.UPDATE_ORDER_SUCCESS:
             return {
-                loading: false,
-                success: true,
+                updateLoading: false,
+                update: action.payload,
             }
         case actionTypes.UPDATE_ORDER_FAIL:
             return {
-                loading: false,
-                error: action.payload,
+                updateLoading: false,
+                updateError: action.payload,
             }
         case actionTypes.UPDATE_ORDER_RESET:
-            return {
-                
-            }
+            return {}
         default:
             return state;
     }

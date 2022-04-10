@@ -1,4 +1,5 @@
 import * as actionTypes from '../constants/adminConstants'
+import { logOut } from "../actions/userActions"
 import axios from 'axios'
 
 
@@ -67,14 +68,14 @@ export const updateOrderStatus = (id, status) => async (dispatch, getState) => {
         const {
             loginUser: { userInfo },
         } = getState()
-      
+
         const config = {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
           },
         }
 
-        const { data } = await axios.put(`/api/orders/${id}/status`, config, details)
+        const { data } = await axios.put(`/api/orders/${id}`, status, config)
 
         dispatch({
             type: actionTypes.UPDATE_ORDER_SUCCESS,

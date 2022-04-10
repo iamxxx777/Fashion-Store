@@ -117,7 +117,9 @@ const getAllOrders = asyncHandler(async (req, res) => {
 })
 
 const updateOrderStatus = asyncHandler(async (req, res) => {
-    const status = req.body
+    console.log('Hi')
+    const { status } = req.body
+    console.log(status)
     const order = await Order.findById(req.params.id)
 
     if(order) {

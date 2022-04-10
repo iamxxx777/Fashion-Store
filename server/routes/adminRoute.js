@@ -2,7 +2,6 @@ require('dotenv').config()
 const router = require("express").Router()
 const { isAuthenticated, isAdmin } = require("../middleware/auth")
 
-
 const { 
     getDashboardStats,
     getOrders 
