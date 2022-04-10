@@ -7,6 +7,7 @@ import { getOrder } from '../../redux/actions/orderActions'
 
 // Components
 import OrderItem from '../../components/Profile/OrderItem'
+import Loader from '../../components/Loader/Loader'
 
 // ICONS
 import MenuIcon from '@mui/icons-material/Menu'
@@ -34,7 +35,7 @@ const UserOrder = ({ click }) => {
   }, [dispatch, id])
 
   if(loading) {
-    return <section className="user_order">Loading...</section>
+    return <section className="user_order"><Loader /></section>
   }
 
   if(error) {

@@ -1,0 +1,234 @@
+@import './Pallette.scss';
+@import './Mixins.scss';
+
+.admin {
+    min-height: 100vh;
+    width: 100%;
+    .admin_container {
+        width: 100%;
+        .screen {
+            width: 100%;
+        }
+    }
+}
+
+.admin_header {
+    width: 100%;
+    background-color: $background_1;
+    padding: $p-s $p;
+    .container {
+        width: 100%;
+        @include flex_column;
+        .header_info {
+            @include flex_btw;
+            width: 100%;
+            margin-bottom: 0.7rem;
+            .mb-btn {
+                svg {
+                    width: 1.2em;
+                    height: 1.2em;
+                }
+            }
+            .info {
+                .avatar {
+                    @include flex_center;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background-color: $background;
+                    font-weight: 400;
+                    font-size: $f-xl;
+                }
+            }
+        }
+        .search_form {
+            width: 100%;
+            form {
+                position: relative;
+                width: 100%;
+                height: 45px;
+                border-radius: 25px;
+                border: solid 1px #ddd;
+                input {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 25px;
+                    color: $primary-text-2;
+                    font-size: $f-s;
+                    font-weight: 400;
+                    padding: 0 3rem 0 1rem;
+                    background-color: transparent;
+                }
+                button {
+                    position: absolute;
+                    top: 11px;
+                    right: 17px;
+                    color: $pink;
+                }
+            }
+        }
+    }
+    
+
+}
+
+.admin_overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    cursor: pointer;
+}
+
+.admin_nav {
+    width: 220px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 10;
+    background-color: $background_1;
+    box-shadow: $shadow-3;
+    transform: translateX(-220px);
+    transition: 0.3s linear;
+    padding: $p-s;
+    .container {
+        overflow: auto;
+        height: 100%;
+        width: 100%;
+        .logo {
+            @include flex_btw;
+            width: 100%;
+            padding: $p-1 $p;
+            h2 {
+                font-size: $f-xxl;
+                font-weight: 600;
+            }
+            button {
+                svg {
+                    width: 1.3em;
+                    height: 1.3em;
+                }
+            }
+        }
+        .links {
+            padding: $p $p-s;
+            a {
+                width: 100%;
+                padding: 0.7rem $p-s;
+                display: inline-block;
+                &:active {
+                    background-color: $pink_shade;
+                    color: $pink;
+                }
+                div {
+                    @include flex-left;
+                    width: 100%;
+                    svg {
+                        margin-right: $m;
+                    }
+                    p {
+                        font-size: $f-md;
+                    }
+                }
+            }
+        }
+        .logout {
+            border-top: solid 1px $primary-text-3;
+            padding-top: $p-2;
+            button {
+                @include flex_left;
+                width: 100%;
+                padding: $p;
+                svg {
+                    fill: $pink;
+                    margin-right: $m;
+                }
+                p {
+                    font-size: $f-md;
+                }
+            }
+        }
+    }
+}
+
+
+.show {
+    transform: translateX(0);
+}
+
+
+@media (min-width: 800px) {
+    .admin {
+        .admin_container {
+            .screen {
+                width: calc(100% - 260px);
+                position: relative;
+                left: 260px;
+            }
+        }
+    }
+
+    .admin_nav {
+        width: 260px;
+        transform: translateX(0);
+        z-index: 0;
+        .container {
+            .logo {
+                button {
+                    display: none;
+                }
+            }
+            .links {
+                a {
+                    border-radius: 25px;
+                    &:hover, &:active, &:focus {
+                        background-color: $pink-shade;
+                        color: $pink;
+                    }
+                }
+            }
+            .logout {
+                button {
+                    border-radius: 25px;
+                    &:hover {
+                        background-color: $pink-shade;
+                        color: $pink;
+                    }
+                }
+            }
+        }
+    }
+
+    .admin_overlay {
+        display: none;
+    }
+
+    .admin_header {
+        padding: $p $p-1;
+        box-shadow: 0px 2px 3px -2px rgb(3 0 71 / 9%);
+        .container {
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            .search_form {
+                form {
+                    max-width: 500px;
+                    height: 50px;
+                    input {
+                        font-size: $f-md;
+                    }
+                }
+            }
+            .header_info {
+                justify-content: flex-end;
+
+                .mb-btn {
+                    display: none;
+                }
+            }
+        }
+    }
+}

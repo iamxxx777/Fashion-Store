@@ -3,14 +3,16 @@
 .signin_page {
     width: 100%;
     min-height: 80vh;
-    padding: $p;
-    padding-bottom: $p-2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $p-2 $p;
     .signin_page_container {
-        max-width: 650px;
+        max-width: 500px;
         margin: 0 auto;
         background-color: $background_1;
         box-shadow: $shadow-3;
-        padding: $p-2 0;
+        padding-top: $p-s;
         border-radius: 5px;
         .signin_tab_panel {
             padding-top: $p;

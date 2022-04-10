@@ -17,6 +17,8 @@ import Button from '@mui/material/Button'
 import CustomizedSteps from '../../components/Checkout/CustomizedSteps'
 import AddressCard from '../../components/Checkout/AddressCard'
 import Loader from '../../components/Loader/Loader'
+import Layout from '../../components/Layout/Layout'
+
 
 // STYLE
 import '../../styles/Checkout.scss'
@@ -115,75 +117,77 @@ const Payment = () => {
     }
 
     return (
-        <main className='payment'>
-            <div className="payment_container">
-                <CustomizedSteps activeStep={2} />
-                <section className="payment_method">
-                    <div className="circle">
-                        <div className="inner_circle"></div>
-                    </div>
-                    <h2>Pay with Paystack</h2>
-                </section>
-                <section className="payment_items_summary">
-                    <div className="shipping_details">
-                        <AddressCard address={address} type='payment' />
-                    </div>
-                    
-                    <div className="order_details">
-                        <h2>Order Summary</h2>
-                        <div className="order_details_header">
-                            <h3>Name</h3>
-                            <h3>Size</h3>
-                            <h3>Qty</h3>
-                            <h3>Price</h3>
+        <Layout>
+            <main className='payment'>
+                <div className="payment_container">
+                    <CustomizedSteps activeStep={2} />
+                    <section className="payment_method">
+                        <div className="circle">
+                            <div className="inner_circle"></div>
                         </div>
-                        <div className="item">
-                            {cartItems.map((item, i) => (
-                                <div key={i}>
-                                    <h3>{item.name}</h3>
-                                    <h3 className='center'>{item.size}</h3>
-                                    <h3 className='center'>{item.qty}</h3>
-                                    <h3 className='right'>{item.price}</h3>
-                                </div>
-                            ))}
+                        <h2>Pay with Paystack</h2>
+                    </section>
+                    <section className="payment_items_summary">
+                        <div className="shipping_details">
+                            <AddressCard address={address} type='payment' />
                         </div>
-                    </div>
-                </section>
+                        
+                        <div className="order_details">
+                            <h2>Order Summary</h2>
+                            <div className="order_details_header">
+                                <h3>Name</h3>
+                                <h3>Size</h3>
+                                <h3>Qty</h3>
+                                <h3>Price</h3>
+                            </div>
+                            <div className="item">
+                                {cartItems.map((item, i) => (
+                                    <div key={i}>
+                                        <h3>{item.name}</h3>
+                                        <h3 className='center'>{item.size}</h3>
+                                        <h3 className='center'>{item.qty}</h3>
+                                        <h3 className='right'>{item.price}</h3>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
 
-                <section className="payment_summary">
-                    <div className="order_summary_container">
-                        <div className="order_summary_item">
-                            <h2>Total Items</h2>
-                            <h3>{totalItems()}</h3>
-                        </div>
-                        <div className="order_summary_item">
-                            <h2>Items price</h2>
-                            <h3>₦{totalItemsPrice()}</h3>
-                        </div>
-                        <div className="order_summary_item">
-                            <h2>VAT</h2>
-                            <h3>₦{vat()}</h3>
-                        </div>
-                        <div className="order_summary_item">
-                            <h2>Shipping (Standard)</h2>
-                            <h3>₦{shippingFee}</h3>
-                        </div>
-                        <div className="order_summary_item">
-                            <h2>Total Price</h2>
-                            <h3>₦{totalPrice()}</h3>
-                        </div>
-                        <Grid container rowSpacing={2} columnSpacing={6} sx={{ mt: 1, '& button': { width: "100%" } }} >
-                            <Grid item xs={12} sm={6} md={12}>
-                                <Button size="large" variant="outlined"><Link to="/checkout/review">Back</Link></Button>
+                    <section className="payment_summary">
+                        <div className="order_summary_container">
+                            <div className="order_summary_item">
+                                <h2>Total Items</h2>
+                                <h3>{totalItems()}</h3>
+                            </div>
+                            <div className="order_summary_item">
+                                <h2>Items price</h2>
+                                <h3>₦{totalItemsPrice()}</h3>
+                            </div>
+                            <div className="order_summary_item">
+                                <h2>VAT</h2>
+                                <h3>₦{vat()}</h3>
+                            </div>
+                            <div className="order_summary_item">
+                                <h2>Shipping (Standard)</h2>
+                                <h3>₦{shippingFee}</h3>
+                            </div>
+                            <div className="order_summary_item">
+                                <h2>Total Price</h2>
+                                <h3>₦{totalPrice()}</h3>
+                            </div>
+                            <Grid container rowSpacing={2} columnSpacing={6} sx={{ mt: 1, '& button': { width: "100%" } }} >
+                                <Grid item xs={12} sm={6} md={12}>
+                                    <Button size="large" variant="outlined"><Link to="/checkout/review">Back</Link></Button>
+                                </Grid>
+                                <Grid item xs={12} sm={6} md={12}>
+                                    <PaystackButton className="pay_btn" {...componentProps} /> 
+                                </Grid>    
                             </Grid>
-                            <Grid item xs={12} sm={6} md={12}>
-                                <PaystackButton className="pay_btn" {...componentProps} /> 
-                            </Grid>    
-                        </Grid>
-                    </div>
-                </section>
-            </div>
-        </main>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </Layout>
     )
 }
 

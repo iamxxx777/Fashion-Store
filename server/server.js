@@ -6,6 +6,7 @@ const connectDB = require("./config/connectDB")
 const usersRoute = require("./routes/userRoute")
 const productsRoute = require("./routes/productRoute")
 const ordersRoute = require("./routes/orderRoute")
+const adminRoute = require("./routes/adminRoute")
 
 const { errorHandler, notFound } = require("./middleware/errorMiddleware")
 
@@ -18,6 +19,8 @@ app.use(express.urlencoded({ extended: false }))
 app.use("/api/users", usersRoute)
 app.use("/api/products", productsRoute)
 app.use("/api/orders", ordersRoute)
+app.use("/api/admin", adminRoute)
+
 
 app.get('/api/config/paystack', (req, res) =>
   res.send(process.env.PAYSTACK_PUBLIC)

@@ -8,7 +8,8 @@ const {
     getAllOrders,
     getOrder,
     confirmOrderItems,
-    updateOrderToDelivered
+    updateOrderStatus
+
 } = require("../controllers/ordersController")
 
 router.get("/", isAuthenticated, isAdmin, getAllOrders)
@@ -21,7 +22,7 @@ router.get("/:id", isAuthenticated, getOrder)
 
 router.get("/myorders/:id", isAuthenticated, getMyOrders)
 
-router.put("/:id/deliver", isAuthenticated, isAdmin, updateOrderToDelivered)
+router.put("/:id/status", isAuthenticated, isAdmin, updateOrderToDelivered)
 
 
 

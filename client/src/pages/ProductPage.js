@@ -20,6 +20,7 @@ import Ratings from '../components/Products/Ratings'
 import ProductCard from '../components/Products/ProductCard'
 import ProductCarousel from '../components/Products/ProductCarousel'
 import ProductTypeSelect from '../components/Products/ProductTypeSelect'
+import Layout from '../components/Layout/Layout'
 
 // STYLES
 import "../styles/ProductPage.scss"
@@ -129,108 +130,110 @@ const ProductPage = () => {
     }
 
     return (
-        <main className="product_page">
-            <div className="product_page_container">
-                <div className="product_basic_info">
-                        <div className="product_images">
-                            {product?.images && <ProductCarousel images={product?.images} title={product?.name} />}
-                        </div>
-                        <div className="product_title">
-                            <h1 className="product_name">{product?.name}</h1>
-                            <div className='product_title_double'><h4>Brand:</h4> <h2>{product?.brand}</h2></div>
-                            <div className='product_title_double'><h4>Ratings:</h4> <Ratings value={product?.ratings} /></div>
-                            <h2 className='price'>₦{product?.price}</h2>
-
-                            <div className="sizes">
-                                <h3>Please select a variation</h3>
-                                <div className="sizes_buttons">
-                                    {
-                                        product?.sizes.map((currentSize) => (
-                                            <button 
-                                                key={currentSize.name}
-                                                style={
-                                                    currentSize.count < 1 ? disable : null
-                                                }
-                                                onClick={displayVariation}
-
-                                            >{currentSize.name}</button>
-                                        ))
-                                    }
-                                </div>
+        <Layout>
+            <main className="product_page">
+                <div className="product_page_container">
+                    <div className="product_basic_info">
+                            <div className="product_images">
+                                {product?.images && <ProductCarousel images={product?.images} title={product?.name} />}
                             </div>
-                            
-                            {addedItems.length > 0 && 
-                                <div className="type_item_btns">
-                                    <div>
-                                        <button className='type_item_btn' onClick={displayVariation}>-</button>
-                                        <p>{reducedAddedItems}</p>
-                                        <button className='type_item_btn' onClick={displayVariation}>+</button>
+                            <div className="product_title">
+                                <h1 className="product_name">{product?.name}</h1>
+                                <div className='product_title_double'><h4>Brand:</h4> <h2>{product?.brand}</h2></div>
+                                <div className='product_title_double'><h4>Ratings:</h4> <Ratings value={product?.ratings} /></div>
+                                <h2 className='price'>₦{product?.price}</h2>
+
+                                <div className="sizes">
+                                    <h3>Please select a variation</h3>
+                                    <div className="sizes_buttons">
+                                        {
+                                            product?.sizes.map((currentSize) => (
+                                                <button 
+                                                    key={currentSize.name}
+                                                    style={
+                                                        currentSize.count < 1 ? disable : null
+                                                    }
+                                                    onClick={displayVariation}
+
+                                                >{currentSize.name}</button>
+                                            ))
+                                        }
                                     </div>
                                 </div>
-                            }
-
-                            {addedItems.length === 0 && <button className="show_variations_btn" onClick={displayVariation}>Add to Cart <ShoppingCartOutlinedIcon /></button>}
-
-                            {showVariation && <ProductTypeSelect 
-                                data={product?.sizes} 
-                                cartItems={addedItems}
-                                item={product} 
-                                handleCart={handleCart} 
-                                handleRemove={handleRemove}
-                                close={closeVariation}
-                            />}
-                        </div>
-                </div>
-
-                <div className="product_info">
-                        <div className="product_info_tabs">
-                            <Box sx={{ width: '100%' }}>
-                                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                                    <Tabs value={tabValue} onChange={handleTabChange} aria-label="product details tabs">
-                                        <Tab label="Product Details" {...a11yProps(0)} />
-                                        <Tab label="Product Review" {...a11yProps(1)} />
-                                    </Tabs>
-                                </Box>
-                                <TabPanel value={tabValue} index={0}>
-                                    <div className="product_description">
-                                        <p>{product?.description}</p>
-                                    </div>
-                                    {product?.details && (
-                                        <div className="product_details">
-                                            {product.details.map((detail, i) => (
-                                                <li key={i}>{detail}</li>
-                                            ))}
+                                
+                                {addedItems.length > 0 && 
+                                    <div className="type_item_btns">
+                                        <div>
+                                            <button className='type_item_btn' onClick={displayVariation}>-</button>
+                                            <p>{reducedAddedItems}</p>
+                                            <button className='type_item_btn' onClick={displayVariation}>+</button>
                                         </div>
-                                    )}
-                                </TabPanel>
-                                <TabPanel value={tabValue} index={1}>
-                                    Product Reviews
-                                </TabPanel>
-                            </Box>
-                        </div>
+                                    </div>
+                                }
+
+                                {addedItems.length === 0 && <button className="show_variations_btn" onClick={displayVariation}>Add to Cart <ShoppingCartOutlinedIcon /></button>}
+
+                                {showVariation && <ProductTypeSelect 
+                                    data={product?.sizes} 
+                                    cartItems={addedItems}
+                                    item={product} 
+                                    handleCart={handleCart} 
+                                    handleRemove={handleRemove}
+                                    close={closeVariation}
+                                />}
+                            </div>
+                    </div>
+
+                    <div className="product_info">
+                            <div className="product_info_tabs">
+                                <Box sx={{ width: '100%' }}>
+                                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                                        <Tabs value={tabValue} onChange={handleTabChange} aria-label="product details tabs">
+                                            <Tab label="Product Details" {...a11yProps(0)} />
+                                            <Tab label="Product Review" {...a11yProps(1)} />
+                                        </Tabs>
+                                    </Box>
+                                    <TabPanel value={tabValue} index={0}>
+                                        <div className="product_description">
+                                            <p>{product?.description}</p>
+                                        </div>
+                                        {product?.details && (
+                                            <div className="product_details">
+                                                {product.details.map((detail, i) => (
+                                                    <li key={i}>{detail}</li>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </TabPanel>
+                                    <TabPanel value={tabValue} index={1}>
+                                        Product Reviews
+                                    </TabPanel>
+                                </Box>
+                            </div>
+                    </div>
+                    {brandProducts?.length > 0 && 
+                        (
+                            <div className="related_items">
+                                <h2>More from {product?.brand}</h2>
+                                <div className="related_items_grid">
+                                    {brandProducts.map((product) => (<ProductCard key={product._id} product={product} />))}
+                                </div>
+                            </div>
+                        )
+                    }
+                    {categoryProducts?.length > 0 && 
+                        (
+                            <div className="related_items">
+                                <h2>Related Items</h2>
+                                <div className="related_items_grid">
+                                    {categoryProducts.map((product) => (<ProductCard key={product._id} product={product} />))}
+                                </div>
+                            </div>
+                        )
+                    }
                 </div>
-                {brandProducts?.length > 0 && 
-                    (
-                        <div className="related_items">
-                            <h2>More from {product?.brand}</h2>
-                            <div className="related_items_grid">
-                                {brandProducts.map((product) => (<ProductCard key={product._id} product={product} />))}
-                            </div>
-                        </div>
-                    )
-                }
-                {categoryProducts?.length > 0 && 
-                    (
-                        <div className="related_items">
-                            <h2>Related Items</h2>
-                            <div className="related_items_grid">
-                                {categoryProducts.map((product) => (<ProductCard key={product._id} product={product} />))}
-                            </div>
-                        </div>
-                    )
-                }
-            </div>
-        </main>
+            </main>
+        </Layout>
     )
 }
 

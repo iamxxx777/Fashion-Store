@@ -1,12 +1,17 @@
 import { useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+
+// COMPONENTS
 import CategoryTopProducts from '../components/Category/CategoryTopProducts';
 import Paginate from '../components/Pagination/Paginate'
 import ProductCard from '../components/Products/ProductCard'
+import Layout from '../components/Layout/Layout';
 
+// REDUX ACTIONS
 import { getCategoryProducts } from '../redux/actions/productActions'
 
+// STYLES
 import '../styles/CategoryPage.scss'
 
 const CategoryPage = () => {
@@ -31,20 +36,22 @@ const CategoryPage = () => {
 
 
     return (
-        <main className="category_page">
-            <div className="category_page_container">
-                <CategoryTopProducts products={products?.slice(0, 4)} />
-                <section className="category_products">
-                    <h1>All Products</h1>
-                    <div className="products">
-                        {products?.map((product) => (
-                            <ProductCard key={product._id} product={product} />
-                        ))}
-                    </div>
-                    <Paginate pages={pages} pageNumber={pageNumber} click={paginatePage} />
-                </section>
-            </div>
-        </main>
+        <Layout>
+            <main className="category_page">
+                <div className="category_page_container">
+                    <CategoryTopProducts products={products?.slice(0, 4)} />
+                    <section className="category_products">
+                        <h1>All Products</h1>
+                        <div className="products">
+                            {products?.map((product) => (
+                                <ProductCard key={product._id} product={product} />
+                            ))}
+                        </div>
+                        <Paginate pages={pages} pageNumber={pageNumber} click={paginatePage} />
+                    </section>
+                </div>
+            </main>
+        </Layout>
     )
 };
 

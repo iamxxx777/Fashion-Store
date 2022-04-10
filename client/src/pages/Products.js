@@ -11,6 +11,7 @@ import SearchTitle from '../components/Search/SearchTitle'
 import Paginate from '../components/Pagination/Paginate'
 import ProductCard from '../components/Products/ProductCard'
 import Loader from '../components/Loader/Loader'
+import Layout from '../components/Layout/Layout'
 
 // STYLES
 import "../styles/ProductsPage.scss"
@@ -85,25 +86,27 @@ const Products = () => {
         )
     }
 
-  return (
-    <main className="products_page">
-        <div className="products_container">
-            <section className="products_header">
-                <SearchTitle keyword={keyword} totalNumber={count} sort={handleSorting} sortKey={sortKey} />
-            </section>
-            <section className="products">
-                <div className="products_box">
-                    {products?.map((product) => (
-                        <ProductCard key={product._id} product={product} />
-                    ))}
+    return (
+        <Layout>
+            <main className="products_page">
+                <div className="products_container">
+                    <section className="products_header">
+                        <SearchTitle keyword={keyword} totalNumber={count} sort={handleSorting} sortKey={sortKey} />
+                    </section>
+                    <section className="products">
+                        <div className="products_box">
+                            {products?.map((product) => (
+                                <ProductCard key={product._id} product={product} />
+                            ))}
+                        </div>
+                    </section>
+                    <section className="pagination">
+                        <Paginate pages={pages} pageNumber={pageNumber} click={paginatePage} />
+                    </section>
                 </div>
-            </section>
-            <section className="pagination">
-                <Paginate pages={pages} pageNumber={pageNumber} click={paginatePage} />
-            </section>
-        </div>
-    </main>
-  )
+            </main>
+        </Layout>
+    )
 }
 
 export default Products

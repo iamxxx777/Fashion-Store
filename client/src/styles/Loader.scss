@@ -2,14 +2,14 @@
 
 .loader {
     width: 100%;
-    min-height: 75vh;
+    min-height: 90vh;
     background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
     .loader_item {
-        width: 75px;
-        height: 75px;
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
         background-color: $pink_shade;
         display: flex;
@@ -33,16 +33,5 @@
     } 
     100% {
         transform: scale(1);
-    }
-}
-
-@media (min-width: 768px) {
-    .loader {
-        .loader_item {
-            svg {
-                width: 40px;
-                height: 40px;
-            }
-        }
     }
 }

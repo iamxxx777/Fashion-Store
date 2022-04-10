@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getProducts, getTopProducts } from '../redux/actions/productActions'
 
 // COMPONENTS
+import Layout from '../components/Layout/Layout'
 import Jumbotron from '../components/Home/Jumbotron'
 import LatestProducts from '../components/Home/LatestProducts'
 import TopProductsSlide from '../components/Home/TopProductsSlide'
@@ -30,22 +31,24 @@ const Main = () => {
     }, [dispatch])
 
     if (loading) {
-      return (
-        <Loader />
-      )
+        return (
+            <Loader />
+        )
     }
 
 
     return (
-        <div className='main_page'>
-            <div className="main_container">
-                <Jumbotron />
-                <TopProductsSlide products={topProducts} />
-                <LatestProducts products={products.products} />
-                <FeaturedCategories />
-                <WhyUs />
-            </div>
-        </div>
+        <Layout>
+            <main className='main_page'>
+                <div className="main_container">
+                    <Jumbotron />
+                    <TopProductsSlide products={topProducts} />
+                    <LatestProducts products={products.products} />
+                    <FeaturedCategories />
+                    <WhyUs />
+                </div>
+            </main>
+        </Layout>
     )
 };
 

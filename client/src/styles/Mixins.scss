@@ -1,0 +1,63 @@
+@import './Pallette.scss';
+
+
+@mixin flex_center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex_btw {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flex_top_left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+@mixin flex_top_right {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+@mixin flex_left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+@mixin flex_right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+@mixin flex_column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex_column_left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+}
+
+@mixin button {
+    outline: none;
+    cursor: pointer;
+    color: inherit;
+    font-family: $family-2;
+    font-size: $f-md;
+    font-weight: 400;
+    background-color: transparent;
+    border: none;
+}

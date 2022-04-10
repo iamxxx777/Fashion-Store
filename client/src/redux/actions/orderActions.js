@@ -172,43 +172,6 @@ export const getOrder = (id) => async (dispatch, getState) => {
 }
 
 
-export const updateOrder = (id, details) => async (dispatch, getState) => {
-    try {
-        dispatch({ type: actionTypes.UPDATE_ORDER_REQUEST })
-
-        const {
-            loginUser: { userInfo },
-        } = getState()
-      
-        const config = {
-          headers: {
-            Authorization: `Bearer ${userInfo.token}`,
-          },
-        }
-
-        const { data } = await axios.put(`/api/orders/${id}/deliver`, config, details)
-
-        dispatch({
-            type: actionTypes.UPDATE_ORDER_SUCCESS,
-            payload: data
-        })
-
-    } catch (error) {
-        const message = error.response && error.response.data.message
-                        ? error.response.data.message
-                        : error.message
-
-        if (message == "Not authorized, token failed") {
-            logOut()
-        }
-
-        dispatch({
-            type: actionTypes.UPDATE_ORDER_FAIL,
-            payload: message,
-        })
-    }
-}
-
 
 
 

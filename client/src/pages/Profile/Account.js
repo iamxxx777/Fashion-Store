@@ -10,6 +10,7 @@ import { getMyOrders } from '../../redux/actions/orderActions'
 import AccountNav from '../../components/Profile/AccountNav'
 import Overlay from '../../components/Profile/Overlay'
 import Loader from '../../components/Loader/Loader'
+import Layout from '../../components/Layout/Layout'
 
 // Pages
 import UserProfile from './UserProfile'
@@ -57,24 +58,26 @@ const Account = () => {
     }
 
     return (
-        <main className="customer_account">
-            <Overlay click={() => setToggleNav(false)} toggle={toggleNav} />
-            <div className="customer_account_container">
-                <AccountNav logout={handleLogOut} toggle={toggleNav} click={() => setToggleNav(false)} />
-                <div className="screen">
-                    <Switch> 
-                        <Route path={`${url}/editprofile`}> <EditProfile user={user} click={() => setToggleNav(true)} /> </Route>
-                        <Route path={`${url}/changepass`}> <ChangePassword click={() => setToggleNav(true)} /> </Route>
-                        <Route path={`${url}/address/`}> <AddAddress user={user} click={() => setToggleNav(true)} /> </Route>
-                        <Route path={`${url}/editaddress/:id`}> <EditAddress click={() => setToggleNav(true)} /> </Route>
-                        <Route path={`${url}/addresses`}> <Addresses addresses={user.addresses} click={() => setToggleNav(true)} /> </Route>
-                        <Route path={`${url}/orders`}> <UserOrders click={() => setToggleNav(true)} orders={myOrders} /> </Route>
-                        <Route path={`${url}/order/:id`}> <UserOrder click={() => setToggleNav(true)} /> </Route>
-                        <Route exact path={url}> <UserProfile user={user} click={() => setToggleNav(true)} orders={myOrders} /> </Route>
-                    </Switch>
+        <Layout>
+            <main className="customer_account">
+                <Overlay click={() => setToggleNav(false)} toggle={toggleNav} />
+                <div className="customer_account_container">
+                    <AccountNav logout={handleLogOut} toggle={toggleNav} click={() => setToggleNav(false)} />
+                    <div className="screen">
+                        <Switch> 
+                            <Route path={`${url}/editprofile`}> <EditProfile user={user} click={() => setToggleNav(true)} /> </Route>
+                            <Route path={`${url}/changepass`}> <ChangePassword click={() => setToggleNav(true)} /> </Route>
+                            <Route path={`${url}/address/`}> <AddAddress user={user} click={() => setToggleNav(true)} /> </Route>
+                            <Route path={`${url}/editaddress/:id`}> <EditAddress click={() => setToggleNav(true)} /> </Route>
+                            <Route path={`${url}/addresses`}> <Addresses addresses={user.addresses} click={() => setToggleNav(true)} /> </Route>
+                            <Route path={`${url}/orders`}> <UserOrders click={() => setToggleNav(true)} orders={myOrders} /> </Route>
+                            <Route path={`${url}/order/:id`}> <UserOrder click={() => setToggleNav(true)} /> </Route>
+                            <Route exact path={url}> <UserProfile user={user} click={() => setToggleNav(true)} orders={myOrders} /> </Route>
+                        </Switch>
+                    </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </Layout>
     )
 };
 

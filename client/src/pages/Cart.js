@@ -7,10 +7,12 @@ import { updateQty } from '../redux/actions/cartActions'
 
 // COMPONENTS
 import CartItem from "../components/Cart/CartItem"
+import Layout from '../components/Layout/Layout'
 
 // MUI ICONS
 import RemoveShoppingCartIconOutlined from '@mui/icons-material/RemoveShoppingCart'
 
+// STYLES
 import '../styles/Cart.scss'
 
 const Cart = () => {
@@ -34,43 +36,45 @@ const Cart = () => {
 
 
     return (
-        <main className="cart">
-            <div className="cart_container">
-                {cartItems.length === 0 && 
-                    <div className="empty_cart">
-                        <RemoveShoppingCartIconOutlined />
-                        <h1>Your cart is empty. <Link to='/products'>Click here</Link> to shop some products</h1>
-                    </div>
-                }
-                {
-                    cartItems.length > 0 && 
-                    <>
-                        <h2 className="cart_header">Cart Items <span>({cartItems.length})</span></h2>
-                        <div className="cart_items_info">
-                            <div className="cart_items">
-                                {cartItems.map((item, i) => <CartItem key={i} updateQty={handleAdd} item={item}/>)}
-                            </div>
-                            <div className="cart_summary">
-                                <div className="cart_summary_container">
-                                    <div className="cart_summary_item">
-                                        <h2>Total Items</h2>
-                                        <h3>{totalItems()}</h3>
-                                    </div>
-                                    <div className="cart_summary_item">
-                                        <h2>Total Price</h2>
-                                        <h3>₦{totalPrice()}</h3>
-                                    </div>
-                                    <div className="cart_links">
-                                        <Link to="/" className="continue">Continue Shopping</Link>
-                                        <Link to="/checkout" className="checkout">Proceed To Checkout</Link>   
+        <Layout>
+            <main className="cart">
+                <div className="cart_container">
+                    {cartItems.length === 0 && 
+                        <div className="empty_cart">
+                            <RemoveShoppingCartIconOutlined />
+                            <h1>Your cart is empty. <Link to='/products'>Click here</Link> to shop some products</h1>
+                        </div>
+                    }
+                    {
+                        cartItems.length > 0 && 
+                        <>
+                            <h2 className="cart_header">Cart Items <span>({cartItems.length})</span></h2>
+                            <div className="cart_items_info">
+                                <div className="cart_items">
+                                    {cartItems.map((item, i) => <CartItem key={i} updateQty={handleAdd} item={item}/>)}
+                                </div>
+                                <div className="cart_summary">
+                                    <div className="cart_summary_container">
+                                        <div className="cart_summary_item">
+                                            <h2>Total Items</h2>
+                                            <h3>{totalItems()}</h3>
+                                        </div>
+                                        <div className="cart_summary_item">
+                                            <h2>Total Price</h2>
+                                            <h3>₦{totalPrice()}</h3>
+                                        </div>
+                                        <div className="cart_links">
+                                            <Link to="/" className="continue">Continue Shopping</Link>
+                                            <Link to="/checkout" className="checkout">Proceed To Checkout</Link>   
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </>
-                }
-            </div>
-        </main>
+                        </>
+                    }
+                </div>
+            </main>
+        </Layout>
     )
 }
 

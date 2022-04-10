@@ -14,6 +14,7 @@ import { updateQty } from '../../redux/actions/cartActions'
 import Cartitem from '../../components/Cart/CartItem'
 import CustomizedSteps from '../../components/Checkout/CustomizedSteps'
 import Loader from '../../components/Loader/Loader'
+import Layout from '../../components/Layout/Layout'
 
 // STYLE
 import '../../styles/Checkout.scss'
@@ -64,56 +65,58 @@ const OrderReview = () => {
     }
 
     return (
-        <main className="order_review">
-            <CustomizedSteps activeStep={1} />
-            <div className="order_review_container">
-                <section className="order_details">
-                    <div className="order_errors">
-                        {changedItems?.map((item) => (
-                            <h2>{`<b>${item.name}</b> of size <b>${item.size}</b> has only <b>${item.qty}</b> pieces left. Quantity has been adjusted in your cart`}</h2>
-                        ))}
-                        {changedItems.length === 0 && <h1>All items are valid</h1>}
-                    </div>
+        <Layout>
+            <main className="order_review">
+                <CustomizedSteps activeStep={1} />
+                <div className="order_review_container">
+                    <section className="order_details">
+                        <div className="order_errors">
+                            {changedItems?.map((item) => (
+                                <h2>{`<b>${item.name}</b> of size <b>${item.size}</b> has only <b>${item.qty}</b> pieces left. Quantity has been adjusted in your cart`}</h2>
+                            ))}
+                            {changedItems.length === 0 && <h1>All items are valid</h1>}
+                        </div>
 
-                    <div className="order_items">
-                        {orderItems.map((item, i) => <Cartitem key={i} item={item} updateQty={handleAdd} />)}
-                    </div>
-                </section>
+                        <div className="order_items">
+                            {orderItems.map((item, i) => <Cartitem key={i} item={item} updateQty={handleAdd} />)}
+                        </div>
+                    </section>
 
-                <section className="order_summary">
-                    <div className="order_summary_container">
-                        <div className="order_summary_item">
-                            <h2>Total Items</h2>
-                            <h3>{totalItems()}</h3>
-                        </div>
-                        <div className="order_summary_item">
-                            <h2>Items price</h2>
-                            <h3>₦{totalItemsPrice()}</h3>
-                        </div>
-                        <div className="order_summary_item">
-                            <h2>VAT</h2>
-                            <h3>₦{vat()}</h3>
-                        </div>
-                        <div className="order_summary_item">
-                            <h2>Shipping (Standard)</h2>
-                            <h3>₦{shipping}</h3>
-                        </div>
-                        <div className="order_summary_item">
-                            <h2>Total Price</h2>
-                            <h3>₦{totalPrice()}</h3>
-                        </div>
-                        <Grid container rowSpacing={2} columnSpacing={6} sx={{ mt: 1, '& button': { width: "100%" } }} >
-                            <Grid item xs={12} sm={6} md={12}>
-                                <Button size="large" variant="outlined"><Link to="/checkout">Back</Link></Button>
+                    <section className="order_summary">
+                        <div className="order_summary_container">
+                            <div className="order_summary_item">
+                                <h2>Total Items</h2>
+                                <h3>{totalItems()}</h3>
+                            </div>
+                            <div className="order_summary_item">
+                                <h2>Items price</h2>
+                                <h3>₦{totalItemsPrice()}</h3>
+                            </div>
+                            <div className="order_summary_item">
+                                <h2>VAT</h2>
+                                <h3>₦{vat()}</h3>
+                            </div>
+                            <div className="order_summary_item">
+                                <h2>Shipping (Standard)</h2>
+                                <h3>₦{shipping}</h3>
+                            </div>
+                            <div className="order_summary_item">
+                                <h2>Total Price</h2>
+                                <h3>₦{totalPrice()}</h3>
+                            </div>
+                            <Grid container rowSpacing={2} columnSpacing={6} sx={{ mt: 1, '& button': { width: "100%" } }} >
+                                <Grid item xs={12} sm={6} md={12}>
+                                    <Button size="large" variant="outlined"><Link to="/checkout">Back</Link></Button>
+                                </Grid>
+                                <Grid item xs={12} sm={6} md={12}>
+                                    <Button size="large" variant="contained"><Link to="/checkout/payment">Proceed to payment</Link></Button>
+                                </Grid>    
                             </Grid>
-                            <Grid item xs={12} sm={6} md={12}>
-                                <Button size="large" variant="contained"><Link to="/checkout/payment">Proceed to payment</Link></Button>
-                            </Grid>    
-                        </Grid>
-                    </div>
-                </section>
-            </div>
-        </main>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </Layout>
     )
 }
 

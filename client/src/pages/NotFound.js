@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 // Components
 import ProductCard from '../components/Products/ProductCard'
 import Loader from '../components/Loader/Loader'
+import Layout from '../components/Layout/Layout'
 
 // 404 Image
 import Image from '../assets/404.svg'
@@ -32,29 +33,31 @@ const NotFound = () => {
     }
 
     return (
-        <main className='not_found'>
-            <div className="container">
-                <div className="error_div">
-                    <div className="image">
-                        <img src={Image} alt="Not found" />
+        <Layout>
+            <main className='not_found'>
+                <div className="container">
+                    <div className="error_div">
+                        <div className="image">
+                            <img src={Image} alt="Not found" />
+                        </div>
+                        <div className="text">
+                            <h1>Oops 404 Error</h1>
+                            <h2>Don't you just hate when this happens?</h2>
+                            <p>
+                                The page you are looking for does not exist or it might have been removed by the administrator.
+                                Now don't fret, just checkout some of the items below and continue shopping.
+                            </p>
+                        </div>
                     </div>
-                    <div className="text">
-                        <h1>Oops 404 Error</h1>
-                        <h2>Don't you just hate when this happens?</h2>
-                        <p>
-                            The page you are looking for does not exist or it might have been removed by the administrator.
-                            Now don't fret, just checkout some of the items below and continue shopping.
-                        </p>
+                    <div className="items">
+                        <h2>Top Products</h2>
+                        <div className="items_container">
+                            {topProducts?.map((product) => <ProductCard key={product._id} product={product} />)}
+                        </div>
                     </div>
                 </div>
-                <div className="items">
-                    <h2>Top Products</h2>
-                    <div className="items_container">
-                        {topProducts?.map((product) => <ProductCard key={product._id} product={product} />)}
-                    </div>
-                </div>
-            </div>
-        </main>
+            </main>
+        </Layout>
     )
 }
 

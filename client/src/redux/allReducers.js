@@ -38,6 +38,12 @@ import {
     addAddressReducer
 } from "./reducers/userReducer"
 
+import {
+    getDashboardStatsReducer,
+    getAdminOrdersReducer,
+    updateOrderReducer
+} from "./reducers/adminReducer"
+
 
 const reducers = combineReducers({
     cart: cartReducer,
@@ -56,7 +62,6 @@ const reducers = combineReducers({
     order: getOrderReducer,
     allOrders: getAllOrdersReducer,
     myOrders: myOrdersReducer,
-    updateOrder: updateOrderReducer,
     deleteUser: deleteUserReducer,
     userDetails: userDetailsReducer,
     loginUser: userLoginReducer,
@@ -67,7 +72,10 @@ const reducers = combineReducers({
     allUsers: getAllUsersReducer,
     getAddress: getAddressReducer,
     editAddress: editAddressReducer,
-    addAddress: addAddressReducer
+    addAddress: addAddressReducer,
+    dashboard: getDashboardStatsReducer,
+    adminOrders: getAdminOrdersReducer,
+    updateOrder: updateOrderReducer,
 })
 
 

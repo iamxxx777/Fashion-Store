@@ -21,13 +21,15 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                padding: 0.8rem 0.4rem;
+                padding: 0.5rem 0.4rem;
                 position: relative;
                 svg {
                     margin-bottom: 0.4rem;
+                    width: 0.8em;
+                    height: 0.8em;
                 }
                 p {
-                    font-size: 13px;
+                    font-size: 12px;
                     font-weight: 400;
                     position: relative;
                     span {
@@ -44,6 +46,25 @@
             }
         }
         
+    }
+}
+
+@media (min-width: 500px) {
+    .mobile_nav {
+        .mobile_nav_container {
+            a, button {
+                .mobile_nav_link {
+                    padding: 0.7rem 0.4rem;
+                    svg {
+                        width: 1em;
+                        height: 1em;
+                    }
+                    p {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
     }
 }
 

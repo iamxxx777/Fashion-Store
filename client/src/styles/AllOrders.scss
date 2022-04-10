@@ -1,0 +1,276 @@
+@import './Pallette.scss';
+@import './Mixins.scss';
+
+
+.allorders {
+    width: 100%;
+    padding: $p;
+    padding-bottom: $p-3;
+    .container {
+        .title {
+            margin-bottom: $p-1;
+            h1 {
+                font-size: $f-xl;
+                font-weight: 600;
+                text-align: left;
+            }
+        }
+        .search_bar {
+            background-color: $background_1;
+            box-shadow: $shadow-3;
+            border-radius: 6px;
+            padding: $p;
+            margin-bottom: $m;
+            form {
+                position: relative;
+                width: 100%;
+                height: 45px;
+                margin-bottom: $m-s;
+                border-radius: 25px;
+                border: solid 1px #ddd;
+                input {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 25px;
+                    color: $primary-text-2;
+                    font-size: $f-s;
+                    font-weight: 400;
+                    padding: 0 3rem 0 1rem;
+                    background-color: transparent;
+                }
+                button {
+                    position: absolute;
+                    top: 11px;
+                    right: 17px;
+                    color: $pink;
+                }
+            }
+            .sort {
+                position: relative;
+                @include flex_left;
+                h3 {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    font-size: $f-s;
+                    font-weight: 400;
+                    span {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        border: solid 1px $border;
+                        border-radius: 5px;
+                        padding: 0.1rem 0.2rem;
+                        font-size: $f-xs;
+                        margin-left: $m-s;
+                        text-transform: capitalize;
+                        button {
+                            margin-left: $m-s;
+                            transform: rotate(0);
+                            transition: 0.3s linear;
+                        }
+                        .rotate {
+                            transform: rotate(90deg);
+                        }
+                    }
+                }
+                .options {
+                    background-color: $background_1;
+                    border-radius: 5px;
+                    box-shadow: $shadow-5;
+                    position: absolute;
+                    top: 40px;
+                    left: 0;
+                    width: 200px;
+                    button {
+                        width: 100%;
+                        padding: 0.7rem 1rem;
+                        font-size: $f-s;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+        .orders_section {
+            background-color: $background_1;
+            box-shadow: $shadow-3;
+            border-radius: 6px;
+            padding: $p;
+            width: 100%;
+            overflow-x: auto;
+            .container {
+                min-width: 900px;
+                .title {
+                    display: grid;
+                    align-content: center;
+                    grid-template-columns: 2.3fr 1.2fr 1.5fr 1fr 1fr 0.8fr 0.3fr;
+                    gap: 1rem;
+                    padding: 0.3rem 0.5rem;
+                    background-color: $background;
+                    h3 {
+                        font-weight: 600;
+                        font-size: $f-s;
+                        text-transform: uppercase;
+                        text-align: left;
+                    }
+                }
+                .orders {
+                    a {
+                        width: 100%;
+                        .user_order {
+                            width: 100%;
+                            display: grid;
+                            align-content: center;
+                            grid-template-columns: 2.3fr 1.2fr 1.5fr 1fr 1fr 0.8fr 0.3fr;
+                            gap: 1.5rem;
+                            border-radius: 5px;
+                            background-color: transparent;
+                            box-shadow: none;
+                            border-bottom: solid 1px #efefef;
+                            padding: $p $p-s;
+                            margin-bottom: $m;
+                            div {
+                                h3 {
+                                    font-size: $f-s;
+                                    font-weight: 400;
+                                    text-align: left;
+                                }
+                                a {
+                                    svg {
+                                        fill: $pink;
+                                    }
+                                }
+                            }
+                            .order_total {
+                                display: flex;
+                                justify-content: center;
+                            }
+                            .order_status {
+                                display: flex;
+                                justify-content: flex-start;
+                                align-items: center;
+                                span {
+                                    width: 8px;
+                                    height: 8px;
+                                    border-radius: 50%;
+                                    margin-right: $m-s;
+                                }
+                            }
+                            .order_name {
+                                display: flex;
+                                justify-content: flex-start;
+                                h3 {
+                                    margin-right: 0.3rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .pagination {
+            @include flex_btw;
+            margin-top: $m-2;
+            .orders_total {
+                h3 {
+                    font-weight: 600;
+                    font-size: $f-sm;
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 600px) {
+    .allorders {
+        .container {
+            .search_bar {
+                @include flex_btw;
+                form {
+                    width: 400px;
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 800px) {
+    .allorders {
+        .container {
+            .title {
+                h1 {
+                    font-size: $f-xxl;
+                }
+            }
+            .search_bar {
+                form {
+                    &:hover {
+                        border-color: #4b4a4a;
+                    }
+                }
+                .sort {
+                    h3 {
+                        font-size: $f-sm;
+                        span {
+                            padding: 0.2rem 0.4rem;
+                            font-size: $f-s;
+                        }
+                    }
+                    .options {
+                        button {
+                            &:hover {
+                                background-color: $background;
+                            } 
+                        }
+                    }
+                }
+            }
+            .orders_section {
+                padding: $p-2;
+                .container {
+                    .title {
+                        padding: 0.5rem;
+                    }
+                }
+            }
+            .pagination {
+                @include flex_btw;
+                margin-top: $m-1;
+                .orders_total {
+                    h3 {
+                        font-size: $f-md;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1000px) {
+    .allorders {
+        padding: $p-1 $p-2;
+        .container {
+            .orders_section {
+                .container {
+                    .orders {
+                        a {
+                            .user_order {
+                                padding: $p 0;
+                                &:hover {
+                                    border-color: #ccc;
+                                }
+                                div {
+                                    h3 {
+                                        font-size: $f-sm;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

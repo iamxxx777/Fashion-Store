@@ -6,15 +6,6 @@ import ScrollToTop from './ScrollToTop'
 import PrivateRoute from "./components/Routes/PrivateRoute"
 import AdminRoute from "./components/Routes/AdminRoute"
 
-// Components
-import MiniNav from './components/Nav/MiniNav'
-import MobileNav from './components/Nav/MobileNav'
-import Nav from './components/Nav/Nav'
-import CategoryNav from './components/Nav/CategoryNav'
-import SideCategory from './components/Nav/SideCategory'
-import Overlay from './components/Nav/Overlay'
-import Footer from './components/Footer/Footer'
-
 // Pages
 import Home from './pages/Home'
 import ProductPage from './pages/ProductPage'
@@ -27,6 +18,7 @@ import Account from './pages/Profile/Account'
 import CategoryPage from './pages/CategoryPage'
 import Products from './pages/Products'
 import NotFound from './pages/NotFound'
+import AdminPage from './pages/Admin/AdminPage'
 
 import './App.css'
 
@@ -37,12 +29,6 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <MiniNav />
-        <MobileNav click={() => setToggleSideNav(true)} />
-        <Nav />
-        <Overlay show={toggleSideNav} click={() => setToggleSideNav(false)} />
-        <SideCategory show={toggleSideNav} click={() => setToggleSideNav(false)} />
-        <CategoryNav />
         <ScrollToTop>
           <Switch>
             <Route path="/signin" component={Signin} /> 
@@ -56,6 +42,7 @@ function App() {
             <PrivateRoute exact path="/checkout" component={Shipping} />
             <PrivateRoute path="/checkout/review" component={OrderReview} />
             <PrivateRoute path='/checkout/payment' component={Payment} />
+            <AdminRoute path="/admin" component={AdminPage} />
             <Route path="/category/:category/page/:pageNumber" component={CategoryPage} />
             <Route path="/category/:category" component={CategoryPage} />
             <Route path="/404" component={NotFound} />
@@ -63,7 +50,6 @@ function App() {
             <Route path="/*"> <Redirect from="/" to="/404" /> </Route>
           </Switch>
         </ScrollToTop>
-        <Footer />
       </div>
     </Router>
 
