@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import CategoryTopProducts from '../components/Category/CategoryTopProducts';
 import Paginate from '../components/Pagination/Paginate'
 import ProductCard from '../components/Products/ProductCard'
-import Layout from '../components/Layout/Layout';
+import Layout from '../components/Layout/Layout'
+import Loader from '../components/Loader/Loader'
 
 // REDUX ACTIONS
 import { getCategoryProducts } from '../redux/actions/productActions'
@@ -23,7 +24,7 @@ const CategoryPage = () => {
     const page = params.pageNumber || 1
     const category = params.category
 
-    const { categoryProducts } = useSelector((state) => state.categoryProducts)
+    const { categoryProducts, loading, error } = useSelector((state) => state.categoryProducts)
     const { products, pages, pageNumber } = categoryProducts
 
     const paginatePage = async (value) => {
@@ -34,6 +35,15 @@ const CategoryPage = () => {
         dispatch(getCategoryProducts(category, page))
     }, [dispatch, page, category])
 
+    if(loading) {
+        return <Layout><Loader /></Layout>
+    }
+
+    if(error) {
+        return <Layout>
+            <main className="category_page">{error}</main>
+        </Layout>
+    }
 
     return (
         <Layout>

@@ -47,13 +47,17 @@ const Account = () => {
 
     if(loading) {
         return (
-            <main className="customer_account"><Loader /></main>
+            <Layout>
+                <main className="customer_account"><Loader /></main>
+            </Layout>
         )
     }
 
     if(error) {
         return (
-            <main className="customer_account">{error}</main>
+            <Layout>
+                <main className="customer_account">{error}</main>
+            </Layout>
         )
     }
 

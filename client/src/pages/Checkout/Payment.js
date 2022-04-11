@@ -112,8 +112,8 @@ const Payment = () => {
         dispatch(getPaymentKey())
     }, [dispatch])
 
-    if(loading) {
-        return <Loader />
+    if (loading) {
+        return <Layout><Loader /></Layout>
     }
 
     return (

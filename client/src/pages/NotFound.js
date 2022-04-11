@@ -29,7 +29,7 @@ const NotFound = () => {
     }
 
     if (error) {
-        return <main className="not_found">{error}</main>
+        return <Layout><main className="not_found">{error}</main></Layout>
     }
 
     return (

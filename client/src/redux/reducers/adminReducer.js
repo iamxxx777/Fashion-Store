@@ -23,6 +23,27 @@ export const getDashboardStatsReducer = (state = {dashboard: {}}, action) => {
     }
 }
 
+export const getAdminProductsReducer = (state = { products: {} }, action) => {
+    switch(action.type) {
+        case actionTypes.GET_ADMIN_PRODUCTS_REQUEST:
+            return {
+                loading: true,
+                products: [],
+            }
+        case actionTypes.GET_ADMIN_PRODUCTS_SUCCESS:
+            return {
+                loading: false,
+                products: action.payload,
+            }
+        case actionTypes.GET_ADMIN_PRODUCTS_FAIL:
+            return {
+                loading: false,
+                error: action.payload,
+            }
+        default:
+            return state;
+    }
+};
 
 export const getAdminOrdersReducer = (state = { orders: {} }, action) => {
     switch(action.type) {

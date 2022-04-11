@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams, useHistory } from 'react-router-dom'
+import { Link, useParams, useHistory } from 'react-router-dom'
 import Moment from 'react-moment'
 
 // REDUX
@@ -46,12 +46,12 @@ const Order = () => {
     useEffect(() => {
         if(update && update.newStatus) {
             setOrderStatus(update.newStatus)
-        }
-        if(update && update.deliveryDate) {
-            setDeliveryDate(update.deliveryDate)
+            if(update.deliveryDate) {
+                setDeliveryDate(update.deliveryDate)
+            }
+            dispatch({type: UPDATE_ORDER_RESET})
         }
 
-        dispatch({type: UPDATE_ORDER_RESET})
     }, [update, dispatch])
 
     useEffect(() => {
@@ -87,36 +87,52 @@ const Order = () => {
                     </div>
                 </div>
                 {updateLoading && <Loader />}
-                <div className="order_key_info">
-                    <div className="id">
-                        <h2>Order No:</h2>
-                        <h3>{order._id}</h3>
+                <div className="key_info">
+                    <div className="order_key_info">
+                        <div className="id">
+                            <h2>Order No:</h2>
+                            <h3>{order._id}</h3>
+                        </div>
+                        <div className="total_items">
+                            <h2>Total Items:</h2>
+                            <h3>{order.orderItems?.length}</h3>
+                        </div>
+                        <div className="date_placed">
+                            <h2>Placed On:</h2>
+                            <h3><Moment format="MMM DD, YYYY">{order.paymentDate}</Moment></h3>
+                        </div>
+                        <div className="price">
+                            <h2>Total Price:</h2>
+                            <h3>₦{order.totalPrice}</h3>
+                        </div>
+                        <div className="status">
+                            <h2>Order Status:</h2>
+                            <div className="status_div">
+                                <span style={{backgroundColor: colorScheme[`${orderStatus || order.status}`]}}></span>
+                                <h3 style={{color: colorScheme[`${orderStatus || order.status}`]}}>{orderStatus || order.status}</h3>
+                            </div>
+                        </div>
+                        {deliveryDate && 
+                            <div className="delivery">
+                                <h2>Delivery Date:</h2>
+                                <h3>{deliveryDate}</h3>
+                            </div>
+                        }
                     </div>
-                    <div className="total_items">
-                        <h2>Total Items:</h2>
-                        <h3>{order.orderItems?.length}</h3>
-                    </div>
-                    <div className="date_placed">
-                        <h2>Placed On:</h2>
-                        <h3><Moment format="MMM DD, YYYY">{order.paymentDate}</Moment></h3>
-                    </div>
-                    <div className="price">
-                        <h2>Total Price:</h2>
-                        <h3>₦{order.totalPrice}</h3>
-                    </div>
-                    <div className="status">
-                        <h2>Order Status:</h2>
-                        <div className="status_div">
-                            <span style={{backgroundColor: colorScheme[`${orderStatus || order.status}`]}}></span>
-                            <h3 style={{color: colorScheme[`${orderStatus || order.status}`]}}>{orderStatus || order.status}</h3>
+
+                    <div className="customer">
+                        <div className="container">
+                            <h2>Customer</h2>
+                            <div className="customer_info">
+                                <h3><span>{order.user?.firstName}</span>
+                                    <span>{order.user?.lastName}</span>
+                                </h3>
+                                <h3 className="email">{order.user?.email}</h3>
+                                <h3>{order.user?.phone}</h3>
+                                <Link to={`/admin/users/${order.user?._id}`}>View Customer</Link>
+                            </div>
                         </div>
                     </div>
-                    {deliveryDate && 
-                        <div className="delivery">
-                            <h2>Delivery Date:</h2>
-                            <h3>{deliveryDate}</h3>
-                        </div>
-                    }
                 </div>
 
                 <div className="order_items">

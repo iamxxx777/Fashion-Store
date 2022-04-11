@@ -32,6 +32,36 @@ export const getDashboardStats = () => async (dispatch, getState) => {
     }
 }
 
+export const getAdminProducts = (pageNumber = '', sortKey = '', sortValue = '', filterKey = '') => async (dispatch, getState) => {
+
+    try {
+        dispatch({type: actionTypes.GET_ADMIN_PRODUCTS_REQUEST})
+
+        const { userInfo } = getState().loginUser
+      
+        const config = {
+          headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        }
+
+        const { data } = await axios.get(`/api/admin/products?pageNumber=${pageNumber}&sortKey=${sortKey}&sortValue=${sortValue}&filterKey=${filterKey}`, config)
+        
+        dispatch({
+            type: actionTypes.GET_ADMIN_PRODUCTS_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: actionTypes.GET_ADMIN_PRODUCTS_FAIL,
+            payload: error.response && error.response.data.message
+                        ? error.response.data.message
+                        : error.message,
+        });
+    }
+};
+
 export const getOrders = (keyword = "", pageNumber = "") => async (dispatch, getState) => {
     try {
         dispatch({ type: actionTypes.GET_ADMIN_ORDERS_REQUEST })

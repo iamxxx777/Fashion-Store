@@ -30,7 +30,7 @@ const AdminNav = ({ toggle, click, logout }) => {
                             <p>Home</p>
                         </div>
                     </Link>
-                    <Link to="/admin" onClick={() => click()}>
+                    <Link to="/admin/products" onClick={() => click()}>
                         <div>
                             <ShoppingBagOutlinedIcon />
                             <p>Products</p>
@@ -42,7 +42,7 @@ const AdminNav = ({ toggle, click, logout }) => {
                             <p>Orders</p>
                         </div>
                     </Link>
-                    <Link to="/admin" onClick={() => click()}>
+                    <Link to="/admin/addproduct" onClick={() => click()}>
                         <div>
                             <AddCircleOutlineOutlinedIcon />
                             <p>Add Product</p>

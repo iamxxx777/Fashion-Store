@@ -1,0 +1,86 @@
+@import './Pallette.scss';
+@import './Mixins.scss';
+
+
+.admin_product {
+    width: 100%;
+    background-color: $background_1;
+    box-shadow: $shadow-3;
+    border-radius: 6px;
+    padding: $p;
+    .container {
+        .img_container {
+            width: 100%;
+            @include flex_center;
+            margin-bottom: $m;
+            img {
+                width: 100%;
+                height: 200px;
+                object-fit: contain;
+            }
+        }
+        .info {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1rem;
+            .product_info {
+                @include flex_column_left;
+                h2 {
+                    font-size: $f-sm;
+                    font-weight: 400;
+                    margin-bottom: $m-s;
+                    text-align: left;
+                    text-transform: capitalize;
+                }
+                div {
+                    margin-bottom: $m-s;
+                    .MuiRating-root {
+                        font-size: 1.1rem;
+                    }
+                }
+                h3 {
+                    font-size: $f-s;
+                    font-weight: 600;
+                    color: $pink;
+                }
+            }
+            .btns {
+                @include flex_right;
+                align-items: flex-end;
+                button {
+                    margin-left: $m-s;
+                    border: solid 1px rgba(210, 63, 87, 0.5);
+                    border-radius: 5px;
+                    padding: 4px;
+                    background-color: transparent;
+                    transition: 0.3s linear;
+                    svg {
+                        color: $pink;
+                        width: 0.8em;
+                        height: 0.8em;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 768px) {
+    .admin_product {
+        .container {
+            .info {
+                .btns {
+                    button {
+                        &:hover {
+                            background-color: $pink;
+                            svg {
+                                color: $secondary-text;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

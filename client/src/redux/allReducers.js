@@ -40,7 +40,8 @@ import {
 import {
     getDashboardStatsReducer,
     getAdminOrdersReducer,
-    updateOrderReducer
+    updateOrderReducer,
+    getAdminProductsReducer
 } from "./reducers/adminReducer"
 
 
@@ -74,7 +75,8 @@ const reducers = combineReducers({
     addAddress: addAddressReducer,
     dashboard: getDashboardStatsReducer,
     adminOrders: getAdminOrdersReducer,
-    updateOrder: updateOrderReducer
+    updateOrder: updateOrderReducer,
+    adminProducts: getAdminProductsReducer
 })
 
 

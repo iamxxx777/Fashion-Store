@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import { useState } from 'react'
 import ScrollToTop from './ScrollToTop'
 
 //Routes
@@ -23,9 +22,6 @@ import AdminPage from './pages/Admin/AdminPage'
 import './App.css'
 
 function App() {
-
-  const [toggleSideNav, setToggleSideNav] = useState(false)
-
   return (
     <Router>
       <div className="App">

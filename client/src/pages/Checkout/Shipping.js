@@ -97,8 +97,8 @@ const Shipping = () => {
     }
 
 
-    if(loading) {
-        return <main className="shipping_address"><Loader /></main>
+    if (loading) {
+        return <Layout><Loader /></Layout>
     }
 
     return (

@@ -15,6 +15,33 @@ const getDashboardStats = asyncHandler(async (req, res) => {
     res.json({amount, totalOrders, totalProducts})
 })
 
+const getProducts = asyncHandler(async(req, res) => {
+    const pageSize = 10
+    const pageNumber = Number(req.query.pageNumber) || 1
+    const sortKey = req.query.sortKey
+    const sortValue = req.query.sortValue.toLowerCase() || 'desc'
+    const sort =  sortKey ? { [sortKey]: sortValue } : {}
+    const keyword = req.query.filterKey.toLowerCase() 
+        ? {
+            category: {
+                $regex: req.query.filterKey,
+                $options: "i"
+            },
+        } : {}
+    const count = await Product.countDocuments({ ...keyword })
+
+    const products = await Product.find({...keyword})
+        .sort({...sort})
+        .skip(pageSize * (pageNumber - 1))
+        .limit(pageSize)
+
+    res.json({
+        products,
+        pageNumber,
+        pages: Math.ceil(count / pageSize),
+        count
+    })
+})
 
 const getOrders = asyncHandler(async (req, res) => {
     const pageSize = 10
@@ -45,5 +72,6 @@ const getOrders = asyncHandler(async (req, res) => {
 
 module.exports = {
     getDashboardStats,
-    getOrders
+    getOrders,
+    getProducts
 }

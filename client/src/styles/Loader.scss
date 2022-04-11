@@ -2,7 +2,10 @@
 
 .loader {
     width: 100%;
-    min-height: 90vh;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
     background-color: transparent;
     display: flex;
     justify-content: center;

@@ -72,17 +72,21 @@ const Products = () => {
 
     if(loading) {
         return (
-            <main className="products_page">
-                <Loader />
-            </main>
+            <Layout>
+                <main className="products_page">
+                    <Loader />
+                </main>
+            </Layout>
         )
     }
 
     if(error) {
         return (
-            <main className="products_page">
-                <h1>{error}</h1>
-            </main>
+            <Layout>
+                <main className="products_page">
+                    <h1>{error}</h1>
+                </main>
+            </Layout>
         )
     }
 

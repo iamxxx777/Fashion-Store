@@ -1,0 +1,217 @@
+@import './Pallette.scss';
+@import './Mixins.scss';
+
+.allproducts {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: $p;
+    padding-bottom: $p-3;
+    .container {
+        .title_section {
+            margin-bottom: $m-2;
+            .title {
+                padding: $p-s;
+                background-color: $background_1;
+                box-shadow: $shadow-3;
+                border-radius: 4px;
+                .top {
+                    @include flex_btw;
+                    margin-bottom: $m;
+                    h1 {
+                        font-size: $f-xl;
+                        font-weight: 600;
+                        text-align: left;
+                    }
+                    a {
+                        button {
+                            @include flex_center;
+                            padding: 0.4rem 0.7rem;
+                            background-color: $pink;
+                            color: $secondary-text;
+                            border-radius: 4px;
+                            font-size: $f-sm;
+                            border: solid 1px rgba(210, 63, 87, 0.5);
+                        }
+                    }
+                }
+                .filters {
+                    @include flex_btw;
+                    .sort, .filter {
+                        position: relative;
+                        h3 {
+                            display: flex;
+                            justify-content: flex-end;
+                            align-items: center;
+                            font-size: $f-s;
+                            font-weight: 400;
+                            span {
+                                display: flex;
+                                justify-content: flex-start;
+                                align-items: center;
+                                border: solid 1px $border;
+                                border-radius: 5px;
+                                padding: 0.1rem 0.2rem;
+                                font-size: $f-xs;
+                                margin-left: $m-s;
+                                text-transform: capitalize;
+                                button {
+                                    margin-left: $m-s;
+                                    transform: rotate(0);
+                                    transition: 0.3s linear;
+                                }
+                                .rotate {
+                                    transform: rotate(90deg);
+                                }
+                            }
+                        }
+                        .options {
+                            background-color: $background_1;
+                            border-radius: 5px;
+                            box-shadow: $shadow-5;
+                            position: absolute;
+                            top: 40px;
+                            left: 0;
+                            width: 200px;
+                            z-index: 2;
+                            button {
+                                width: 100%;
+                                padding: 0.7rem 1rem;
+                                font-size: $f-s;
+                                text-align: left;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .products_section {
+            margin-bottom: $m-2;
+            .products_box {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1.5rem 1rem;
+            }
+        }
+        .pagination {
+            @include flex_column_left;
+            margin-top: $m-2;
+            .orders_total {
+                margin-bottom: $m-s;
+                h3 {
+                    font-weight: 400;
+                    font-size: $f-sm;
+                    text-align: left;
+                    text-transform: capitalize;
+                    
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 600px) {
+    .allproducts {
+        .container {
+            .products_section {
+                .products_box {
+                    grid-template-columns: 1fr 1fr;
+                }
+            }
+            .pagination {
+                @include flex_btw;
+                flex-direction: row;
+                .orders_total {
+                    margin-bottom: 0;
+                    h3 {
+                        font-size: $f-md;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .allproducts {
+        .container {
+            .title_section {
+                .title {
+                    padding: $p-s $p;
+                    @include flex_btw;
+                    align-items: flex-start;
+                    .top {
+                        @include flex_column_left;
+                        margin-bottom: 0;
+                        h1 {
+                            font-size: $f-xxl;
+                            margin-bottom: 0.75rem;
+                        }
+                        a {
+                            button {
+                                padding: 0.6rem 0.8rem;
+                                font-size: $f-sm;
+                                &:hover {
+                                    background-color: transparent;
+                                    color: $pink;
+                                }
+                            }
+                        }
+                    }
+                    .filters {
+                        @include flex_btw;
+                        .sort, .filter {
+                            position: relative;
+                            h3 {
+                                font-size: $f-sm;
+                                font-weight: 400;
+                                span {
+                                    padding: 0.3rem 0.7rem;
+                                    font-size: $f-s;
+                                }
+                            }
+                            .options {
+                                button {
+                                    &:hover {
+                                        background-color: $background;
+                                    } 
+                                }
+                            }
+                        }
+                        .sort {
+                            margin-left: $m;
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+}
+
+
+@media (min-width: 1000px) {
+    .allproducts {
+        padding: $p-1 $p-2;
+        padding-bottom: $p-3;
+        .container {
+            .products_section {
+                .products_box {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1250px) {
+    .allproducts {
+        .container {
+            .products_section {
+                .products_box {
+                    grid-template-columns: repeat(4, 1fr);
+                }
+            }
+        }
+    }
+}

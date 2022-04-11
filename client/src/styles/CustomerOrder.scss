@@ -85,15 +85,13 @@
                     margin-bottom: $m-1;
                     width: 100%;
                     display: grid;
-                    grid-template-columns: 1fr 2fr;
+                    grid-template-columns: max-content 2fr;
                     gap: 0.5rem 1rem;
                     .order_item_img {
-                        display: flex;
-                        justify-content: flex-start;
-                        align-items: flex-start;
+                        @include flex_center;
                         img {
-                            width: 100%;
-                            height: auto;
+                            width: 70px;
+                            height: 70px;
                             object-fit: contain;
                         }
                     }
@@ -332,6 +330,48 @@
                 }
             }
         }
+        .customer {
+            background-color: $background_1;
+            border-radius: 5px;
+            box-shadow: $shadow-3;
+            padding: $p;
+            margin-bottom: $m-2;
+            .container {
+                h2 {
+                    font-weight: 400;
+                    font-size: $f-sm;
+                    margin-bottom: $m-s;
+                    text-transform: uppercase;
+                    text-align: left;
+                    background-color: $background;
+                    padding: $p-s;
+                }
+                .customer_info {
+                    @include flex_column_left;
+                    padding: $p-s;
+                    h3 {
+                        font-weight: 400;
+                        font-size: $f-s;
+                        margin-bottom: 0.75rem;
+                        text-transform: capitalize;
+                        text-align: left;
+                        span {
+                            margin-right: $m-s;
+                        }
+                    }
+                    .email {
+                        text-transform: lowercase;
+                    }
+                    a {
+                        color: $pink;
+                        text-decoration: underline 1px $pink;
+                        text-transform: uppercase;
+                        font-size: $f-s;
+                        text-align: left;
+                    }
+                }
+            }
+        }
         .order_items {
             .items_container {
                 .order_item {
@@ -400,8 +440,8 @@
                         .order_item_img {
                             justify-content: center;
                             img {
-                                width: 120px;
-                                height: 100px;
+                                width: 85px;
+                                height: 80px;
                             }
                         }
                         .order_item_info {
@@ -577,5 +617,21 @@
     }
     .order {
         padding: $p $p-2 $p-2;
+        .key_info {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1rem;
+        }
+        .order_container {
+            .customer {
+                .container {
+                    .customer_info {
+                        h3 {
+                            font-size: $f-sm;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

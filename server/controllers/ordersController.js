@@ -100,7 +100,7 @@ const getMyOrders = asyncHandler(async (req, res) => {
 })
 
 const getOrder = asyncHandler(async (req, res) => {
-    const order = await Order.findById(req.params.id).populate("user", "name email")
+    const order = await Order.findById(req.params.id).populate("user", "firstName lastName phone email")
     
     if(order) {
         res.json(order)
@@ -111,22 +111,19 @@ const getOrder = asyncHandler(async (req, res) => {
 })
 
 const getAllOrders = asyncHandler(async (req, res) => {
-    const orders = await Order.find({}).populate("user", "name email").sort({createdAt: 'desc'})
+    const orders = await Order.find({}).populate("user", "firstName lastName email").sort({createdAt: 'desc'})
 
     res.json(orders)
 })
 
 const updateOrderStatus = asyncHandler(async (req, res) => {
-    console.log('Hi')
     const { status } = req.body
-    console.log(status)
     const order = await Order.findById(req.params.id)
 
     if(order) {
         if(status === 'delivered') {
             order.deliveryDate = Date.now
             order.status = status
-
             await order.save()
         } else {
             order.status = status

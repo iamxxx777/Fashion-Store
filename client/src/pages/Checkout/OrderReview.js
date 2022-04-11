@@ -57,11 +57,15 @@ const OrderReview = () => {
     }
      
     if (loading) {
-        return <Loader />
+        return <Layout><Loader /></Layout>
     }
 
     if (error) {
-        return <main className="order_review"><h1>{error}</h1></main>
+        return (
+            <Layout>
+                <main className="order_review"><h1>{error}</h1></main>
+            </Layout>
+        )
     }
 
     return (

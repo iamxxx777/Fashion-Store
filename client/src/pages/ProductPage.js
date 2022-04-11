@@ -126,7 +126,9 @@ const ProductPage = () => {
     }
 
     if (error) {
-        return <div className="product_page">{error}</div>
+        return <Layout>
+                <div className="product_page">{error}</div>
+            </Layout>
     }
 
     return (
