@@ -33,7 +33,6 @@ const Addresses = ({ click, addresses }) => {
                 window.location.reload()
             }
         } catch (error) {
-            console.log(error)
             alert.error(error)
         }
         

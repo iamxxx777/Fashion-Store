@@ -122,19 +122,24 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
 
     if(order) {
         if(status === 'delivered') {
-            order.deliveryDate = Date.now
+            order.deliveryDate = Date.now()
             order.status = status
-            await order.save()
+            const updatedOrder = await order.save()
+            console.log(updatedOrder)
+            
+            const newStatus = updatedOrder.status
+            const deliveryDate = updatedOrder.deliveryDate
+            res.json({newStatus, deliveryDate})
         } else {
             order.status = status
 
-            await order.save()
+            const updatedOrder = await order.save()
+
+            const newStatus = updatedOrder.status
+            const deliveryDate = updatedOrder.deliveryDate
+            res.json({newStatus, deliveryDate})
         }
         
-        const updatedOrder = await Order.findById(req.params.id)
-        const newStatus = updatedOrder.status
-        const deliveryDate = updatedOrder.deliveryDate
-        res.json({newStatus, deliveryDate})
     } else {
         res.status(404)
         throw new Error("Order not found")

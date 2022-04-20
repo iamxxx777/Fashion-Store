@@ -16,11 +16,12 @@ const getDashboardStats = asyncHandler(async (req, res) => {
 })
 
 const getProducts = asyncHandler(async(req, res) => {
+    console.log(req.query.filterKey)
     const pageSize = 10
     const pageNumber = Number(req.query.pageNumber) || 1
     const sortKey = req.query.sortKey
     const sortValue = req.query.sortValue.toLowerCase() || 'desc'
-    const sort =  sortKey ? { [sortKey]: sortValue } : {}
+    const sort =  sortKey ? { [sortKey]: sortValue } : { updatedAt: 'desc' }
     const keyword = req.query.filterKey.toLowerCase() 
         ? {
             category: {

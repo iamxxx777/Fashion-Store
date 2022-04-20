@@ -12,6 +12,8 @@ const ProductsTitle = ({ sort, sortKey, filter, filterKey, keyword }) => {
 
     if(sortKey === 'updatedAt') sortKey = 'Date'
     if(sortKey === 'undefined') sortKey = 'Popularity'
+    if(filterKey === 'undefined') sortKey = 'All'
+
 
     return (
         <div className='title'>

@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useAlert } from 'react-alert'
 
+// MUI COMPONENTS
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
@@ -188,15 +189,15 @@ const AddAddress = ({ click, user }) => {
 
                     <Grid container rowSpacing={2} columnSpacing={6} sx={{ mt: 2, '& button': { width: "100%" } }} >
                         <Grid item xs={12}>
-                        <LoadingButton
-                            endIcon={<SaveIcon />}
-                            loading={loading}
-                            loadingPosition="end"
-                            variant="contained"
-                            type="submit"
-                        >
-                            Save
-                        </LoadingButton>
+                            <LoadingButton
+                                endIcon={<SaveIcon />}
+                                loading={loading}
+                                loadingPosition="end"
+                                variant="contained"
+                                type="submit"
+                            >
+                                Save
+                            </LoadingButton>
                         </Grid>    
                     </Grid>
                 </form>

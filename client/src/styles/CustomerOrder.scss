@@ -330,6 +330,11 @@
                 }
             }
         }
+        .order_key_info {
+            .delivery {
+                margin-top: $m;
+            }
+        }
         .customer {
             background-color: $background_1;
             border-radius: 5px;

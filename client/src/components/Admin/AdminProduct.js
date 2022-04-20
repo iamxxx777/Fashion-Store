@@ -1,13 +1,14 @@
+import { Link } from 'react-router-dom'
 import Ratings from "../Products/Ratings"
 
 // MUI ICONS
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined'
 
 // STYLES
 import '../../styles/AdminProduct.scss'
 
-const AdminProduct = ({ product }) => {
+const AdminProduct = ({ product, deleteItem }) => {
     return (
         <div className='admin_product'>
             <div className="container">
@@ -21,8 +22,8 @@ const AdminProduct = ({ product }) => {
                         <h3>₦{product.price}</h3>
                     </div>
                     <div className="btns">
-                        <button className="del_btn"><DeleteOutlineOutlinedIcon /></button>
-                        <button className="add_btn"><AddOutlinedIcon /></button>
+                        <button className="del_btn" onClick={() => deleteItem(product._id)}><DeleteOutlineOutlinedIcon /></button>
+                        <button className="add_btn"><Link to={`/admin/editproduct/${product._id}`}><EditOutlinedIcon /></Link></button>
                     </div>
                 </div>
             </div>

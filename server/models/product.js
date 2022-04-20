@@ -19,11 +19,10 @@ const productSchema = new Schema({
         type: String,
         required: [true, "Please provide a description about the product"]
     },
-    details: {
-        type: String,
-    },
+    details: [String],
     gender: {
-        type: String
+        type: String,
+        default: 'Unisex'
     },
     images: [
         {   

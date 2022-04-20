@@ -112,10 +112,10 @@ const Order = () => {
                                 <h3 style={{color: colorScheme[`${orderStatus || order.status}`]}}>{orderStatus || order.status}</h3>
                             </div>
                         </div>
-                        {deliveryDate && 
+                        {order.deliveryDate && 
                             <div className="delivery">
                                 <h2>Delivery Date:</h2>
-                                <h3>{deliveryDate}</h3>
+                                <h3><Moment format="MMM DD, YYYY">{deliveryDate || order.deliveryDate}</Moment></h3>
                             </div>
                         }
                     </div>

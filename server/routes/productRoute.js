@@ -18,16 +18,15 @@ router.get("/top", getTopProducts)
 
 router.get("/", getProducts)
 
-router.post("/", isAuthenticated, isAdmin, upload.array("image"), createProduct)
+router.post("/", isAuthenticated, isAdmin, upload.any("images"), createProduct)
 
 router.get("/:id", getProduct)
 
-router.post("/:id/reviews", isAuthenticated, addProductReview)
-
-router.put("/:id", isAuthenticated, isAdmin, editProduct)
+router.put("/:id", isAuthenticated, isAdmin, upload.any("images"), editProduct)
 
 router.delete("/:id", isAuthenticated, isAdmin, deleteProduct)
 
+router.post("/:id/reviews", isAuthenticated, addProductReview)
 
 
 

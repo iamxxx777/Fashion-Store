@@ -26,7 +26,6 @@ export const loginUser = (details) => async (dispatch) => {
     }
 }
 
-
 export const registerUser = (details) => async (dispatch) => {
     try {
         dispatch({ type: actionTypes.SIGNUP_REQUEST })
@@ -56,7 +55,6 @@ export const registerUser = (details) => async (dispatch) => {
     }
 }
 
-
 export const logOut = () => async (dispatch) => {
 
     localStorage.removeItem("userInfo")
@@ -68,7 +66,6 @@ export const logOut = () => async (dispatch) => {
     document.location.href = '/signin'
 
 }
-
 
 export const deleteUser = (id) => async (dispatch, getState) => {
     try {

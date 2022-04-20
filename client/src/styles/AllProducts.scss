@@ -27,11 +27,12 @@
                         button {
                             @include flex_center;
                             padding: 0.4rem 0.7rem;
-                            background-color: $pink;
-                            color: $secondary-text;
+                            background-color: $pink-shade;
+                            color: $pink;
                             border-radius: 4px;
+                            border: solid 1px transparent;
                             font-size: $f-sm;
-                            border: solid 1px rgba(210, 63, 87, 0.5);
+                            font-weight: 500;
                         }
                     }
                 }
@@ -153,7 +154,7 @@
                                 font-size: $f-sm;
                                 &:hover {
                                     background-color: transparent;
-                                    color: $pink;
+                                    border-color: rgba(210, 63, 87, 0.5);
                                 }
                             }
                         }

@@ -87,7 +87,6 @@ export const getTopProducts = () => async (dispatch) => {
     }
 };
 
-
 export const postProductReview = (id, review) => async (dispatch, getState) => {
     try {
         dispatch({ type: actionTypes.ADD_PRODUCT_REVIEW_REQUEST })
@@ -124,8 +123,7 @@ export const postProductReview = (id, review) => async (dispatch, getState) => {
     }
 }
 
-
-export const newProduct = (details) => async (dispatch, getState) => {
+export const createProduct = (details) => async (dispatch, getState) => {
     try {
         dispatch({ type: actionTypes.NEW_PRODUCT_REQUEST })
 
@@ -136,6 +134,7 @@ export const newProduct = (details) => async (dispatch, getState) => {
         const config = {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
+            'content-type': 'multipart/form-data',
           },
         }
 
@@ -160,7 +159,6 @@ export const newProduct = (details) => async (dispatch, getState) => {
         })
     }
 };
-
 
 export const deleteProduct = (id) => async (dispatch, getState) => {
     try {
@@ -198,9 +196,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
     }
 };
 
-
-
-export const updateProduct = (id) => async (dispatch, getState) => {
+export const updateProduct = (id, details) => async (dispatch, getState) => {
     try {
         dispatch({ type: actionTypes.UPDATE_PRODUCT_REQUEST })
 
@@ -211,10 +207,11 @@ export const updateProduct = (id) => async (dispatch, getState) => {
         const config = {
           headers: {
             Authorization: `Bearer ${userInfo.token}`,
+            'content-type': 'multipart/form-data',
           },
         }
 
-        const { data } = await axios.delete(`/api/products/${id}`, config)
+        const { data } = await axios.put(`/api/products/${id}`, details, config)
 
         dispatch({ 
             type: actionTypes.UPDATE_PRODUCT_SUCCESS,

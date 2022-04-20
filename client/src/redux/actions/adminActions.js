@@ -34,6 +34,10 @@ export const getDashboardStats = () => async (dispatch, getState) => {
 
 export const getAdminProducts = (pageNumber = '', sortKey = '', sortValue = '', filterKey = '') => async (dispatch, getState) => {
 
+    if(sortKey === 'undefined') sortKey = ''
+    if(sortValue === 'undefined') sortValue = ''
+    if(filterKey === 'undefined') filterKey = ''
+
     try {
         dispatch({type: actionTypes.GET_ADMIN_PRODUCTS_REQUEST})
 

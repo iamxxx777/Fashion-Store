@@ -144,6 +144,7 @@ const Signin = () => {
                                             <TextField 
                                                 required
                                                 fullWidth
+                                                size="small"
                                                 label="Email" 
                                                 type='email'
                                                 variant="outlined" 
@@ -152,7 +153,7 @@ const Signin = () => {
                                             />
                                         </Grid>
                                         <Grid item xs={12}>
-                                            <FormControl variant="outlined" fullWidth>
+                                                <FormControl variant="outlined" size="small" fullWidth >
                                                 <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                                                 <OutlinedInput
                                                     id="outlined-adornment-password"
@@ -203,6 +204,7 @@ const Signin = () => {
                                             <TextField 
                                                 required
                                                 fullWidth
+                                                size="small"
                                                 label="Email" 
                                                 type='email'
                                                 variant="outlined" 
@@ -215,6 +217,7 @@ const Signin = () => {
                                             <TextField 
                                                 required
                                                 fullWidth
+                                                size="small"
                                                 label="First Name" 
                                                 type='text'
                                                 variant="outlined" 
@@ -227,6 +230,7 @@ const Signin = () => {
                                             <TextField 
                                                 required
                                                 fullWidth
+                                                size="small"
                                                 label="Last Name" 
                                                 type='text'
                                                 variant="outlined" 
@@ -236,7 +240,7 @@ const Signin = () => {
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <FormControl variant="outlined" fullWidth>
+                                            <FormControl variant="outlined" size="small" fullWidth>
                                                 <InputLabel htmlFor="register-password">Password</InputLabel>
                                                 <OutlinedInput
                                                     id="register-password"

@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams, useHistory, useLocation } from 'react-router-dom'
+import { useParams, useHistory, useLocation } from 'react-router-dom'
 import queryString from 'query-string'
 
 // REDUX ACTIONS
 import { getAdminProducts } from "../../redux/actions/adminActions"
+import { deleteProduct } from '../../redux/actions/productActions'
+import { DELETE_PRODUCT_RESET } from '../../redux/constants/productConstants'
 
 // COMPONENTS
 import ProductsTitle from '../../components/Admin/ProductsTitle'
@@ -30,6 +32,7 @@ const AllProducts = () => {
     const [sortValue, setSortValue] = useState("")
 
     const { products: { pages, pageNumber, products, count }, loading, error } = useSelector((state) => state.adminProducts)
+    const { delProduct, loading: delLoading, error: delError } = useSelector((state) => state.deleteProduct)
 
     const handleSorting = (key, value) => {
         setSortKey(key)
@@ -64,9 +67,39 @@ const AllProducts = () => {
         }
     }
 
+    const deleteProductItem = async (id) => {
+        try {
+            if(window.confirm('Delete this product')) {
+                dispatch(deleteProduct(id))
+            }
+        } catch (error) {
+            alert.error(error)
+        }
+        
+    }
+
+    // HANDLE PRODUCT DELETE ACTIONS
+    useEffect(() => {
+        if(delProduct && delProduct.success) {
+            alert.success('Product Deleted Successfully')
+            dispatch({ type: DELETE_PRODUCT_RESET })
+            window.location.reload()
+        }
+
+        if(delProduct && delProduct.message) {
+            alert.error(delProduct.message)
+            dispatch({ type: DELETE_PRODUCT_RESET })
+        }
+    }, [delProduct, dispatch, alert])
+
     // GET QUERY STRINGS FROM URL
     useEffect(() => {
-        const { sortKey, sortValue, filterKey } = queryString.parse(location.search)
+        let { sortKey, sortValue, filterKey } = queryString.parse(location.search)
+
+        if(sortKey === 'undefined') sortKey = ''
+        if(sortValue === 'undefined') sortValue = ''
+        if(filterKey === 'undefined') filterKey = ''
+
         setSortKey(sortKey)
         setSortValue(sortValue)
         setFilterKey(filterKey)
@@ -76,6 +109,7 @@ const AllProducts = () => {
     useEffect(() => {
         dispatch(getAdminProducts(page, sortKey, sortValue, filterKey))
     }, [dispatch, page, sortKey, sortValue, filterKey])
+
 
     if(loading) {
         return (
@@ -96,13 +130,14 @@ const AllProducts = () => {
     return (
         <div className='allproducts'>
             <div className="container">
+                {delError && <p className="error">{delError}</p>}
                 <section className="title_section">
                     <ProductsTitle sort={handleSorting} sortKey={sortKey} filter={handleFilter} filterKey={filterKey} keyword={keyword} />
                 </section>
                 <section className="products_section">
                     <div className="products_box">
                         {products?.map((product) => (
-                            <AdminProduct key={product._id} product={product} />
+                            <AdminProduct key={product._id} product={product} deleteItem={deleteProductItem} />
                         ))}
                     </div>
                 </section>
@@ -112,6 +147,7 @@ const AllProducts = () => {
                     </div>
                     <Paginate pages={pages} pageNumber={pageNumber} click={paginatePage} />
                 </section>
+                {delLoading && <Loader />}
             </div>
         </div>
     )

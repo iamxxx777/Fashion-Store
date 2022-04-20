@@ -32,7 +32,6 @@ const getProducts = asyncHandler(async (req, res) => {
     })
 })
 
-
 const getCategoryProducts = asyncHandler(async (req, res) => {
     const pageSize = 10
     const pageNumber = Number(req.query.pageNumber) || 1
@@ -50,7 +49,6 @@ const getCategoryProducts = asyncHandler(async (req, res) => {
         pages: Math.ceil(count / pageSize)
     })
 })
-
 
 const getProduct = asyncHandler(async (req, res) => {
     const id = req.params.id
@@ -92,6 +90,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
     if(product) {
         await Product.findByIdAndDelete(id)
+        res.json({success: true})
     } else {
         res.status(404)
         throw new Error("Product not found")
@@ -100,13 +99,31 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
 const createProduct = asyncHandler(async (req, res) => {
     const data = req.body
-    let images
+    
+    let images = [], details
 
-    const uploader = async (path) => cloudinary.uploads(path, 'Products')
+    // Convert Sizes String to Array of Objects
+    const sizes = data.sizes.split(",").map((size) => {
+        var splitSize = size.split("=")
+        return { name: String(splitSize[0]), count: Number(splitSize[1]) }
+    })
 
-    if(req.files) {
+    // Get the overall items total
+    const countInStock = sizes.reduce((total, size) => {
+        return total + size.count
+    }, 0)
+
+    // Convert Details String to Lists
+    if(data.details) {
+        details = data.details.split(".")
+    }
+
+
+    // Upload Images
+    const uploader = async (path) => cloudinary.uploads(path, 'Store')
+    
+    if(req.files.length > 0) {
         const files = req.files
-
         for(const file of files) {
             const { path } = file
             const newImage = await uploader(path)
@@ -115,27 +132,31 @@ const createProduct = asyncHandler(async (req, res) => {
         }
     }
 
+    // Create Product
     const newProduct = new Product({
         user: req.user._id,
         name: data.name,
         category: data.category,
         description: data.description,
+        brand: data.brand,
+        gender: data.gender,
         images: images,
         price: data.price,
-        reviews: [],
-        countInStock: data.countInStock,
-        sizes: data.sizes
+        details,
+        countInStock,
+        sizes
     })
 
     await newProduct.save()
-    res.json(newProduct)
+    res.json({ success: true })
 })
 
 
 const editProduct = asyncHandler(async (req, res) => {
-    let data = req.body
+    const data = req.body
     const id = req.params.id
-    let imageUrl
+    let images = [], delImages = [], details
+    
 
     const product = await Product.findById(id)
 
@@ -144,27 +165,58 @@ const editProduct = asyncHandler(async (req, res) => {
         throw new Error("Product not found")
     }
 
-    if(req.file) {
-        await cloudinaryV.uploader.destroy(product.image_url.cloudId)
+    // Convert Sizes String to Array of Objects
+    const sizes = data.sizes.split(",").map((size) => {
+        var splitSize = size.split("=")
+        return { name: String(splitSize[0]), count: Number(splitSize[1]) }
+    })
 
-        const result = await cloudinaryV.uploader.upload(req.file.path);
-        if(result.secure_url) {
-            imageUrl = {
-                url: result.secure_url,
-                cloudId: result.public_id
-            }
-        }
+    // Get the overall items total
+    const countInStock = sizes.reduce((total, size) => {
+        return total + size.count
+    }, 0)
+
+    // Convert Details String to Lists
+    if(data.details) {
+        details = data.details.split(".")
     }
 
-    data.image_url = imageUrl
+    if(req.files.length > 0) {
+        // Delete Previous Image from cloudinary
+        const destroyer = async (cloudId) => cloudinary.destroy(cloudId)
+
+        const prevImages = product.images
+        for(const image of prevImages) {
+            if(image.cloudId) {
+                const result = await destroyer(image.cloudId)
+                delImages.push(result)
+            }
+        }
+
+        // Upload New Ones
+        const uploader = async (path) => cloudinary.uploads(path, 'Store')
+        
+        const files = req.files
+        for(const file of files) {
+            const { path } = file
+            const newImage = await uploader(path)
+            images.push(newImage)
+            fs.unlinkSync(path)
+        }
+
+        data.images = images
+    }
+
+    data.sizes = sizes
+    data.details = details
+    data.countInStock = countInStock
 
     Product.findByIdAndUpdate(id, {$set: data}, {new: true}, (err, doc) => {
         if(err) {
           res.status(500)
           throw new Error("Error updating product")
         } else {
-            console.log(doc)
-            res.json(doc);
+            res.json({ success: true });
         }
     })
 })
@@ -206,7 +258,6 @@ const addProductReview = asyncHandler(async (req, res) => {
     }
   
 })
-
 
 
 
