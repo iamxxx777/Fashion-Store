@@ -87,8 +87,20 @@ const getTopProducts = asyncHandler(async (req, res) => {
 const deleteProduct = asyncHandler(async (req, res) => {
     const id = req.params.id
     const product = await Product.findById(id)
+    let delImages = []
 
     if(product) {
+        // Delete Images from cloudinary
+        const destroyer = async (cloudId) => cloudinary.destroy(cloudId)
+
+        const images = product.images
+        for(const image of images) {
+            if(image.cloudId) {
+                const result = await destroyer(image.cloudId)
+                delImages.push(result)
+            }
+        }
+
         await Product.findByIdAndDelete(id)
         res.json({success: true})
     } else {
@@ -271,3 +283,10 @@ module.exports = {
     editProduct,
     addProductReview
 }
+
+// Danami presents yet another unique quality shirt in this beautiful red long sleeve. Crafted with premium silk and featuring intricate details; a sure sign of superior craftsmanship, keep your cool and update your business wear collection with this classic, chic design. You are guaranteed to stand out in this fit
+
+// Material type: silk. 
+// Colour: red. 
+// Unisex. 
+// Long sleeve. 

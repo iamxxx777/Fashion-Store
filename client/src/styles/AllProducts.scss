@@ -8,6 +8,15 @@
     padding: $p;
     padding-bottom: $p-3;
     .container {
+        .error {
+            margin-bottom: $m-1;
+            width: 100%;
+            padding: $p-s;
+            background-color: rgba(255, 0, 0, 0.2);
+            color: red;
+            text-align: center;
+            border-radius: 5px;
+        }
         .title_section {
             margin-bottom: $m-2;
             .title {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams, useHistory, useLocation } from 'react-router-dom'
+import { useAlert } from 'react-alert'
 import queryString from 'query-string'
 
 // REDUX ACTIONS
@@ -23,6 +24,7 @@ const AllProducts = () => {
     const params = useParams()
     const history = useHistory()
     const location = useLocation()
+    const alert = useAlert()
 
     const page = params.pageNumber || 1
     const keyword = params.keyword || ""
