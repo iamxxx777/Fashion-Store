@@ -22,7 +22,7 @@ const AdminProduct = ({ product, deleteItem }) => {
                         <h3>₦{product.price}</h3>
                     </div>
                     <div className="btns">
-                        <button className="del_btn" onClick={() => deleteItem(product._id)}><DeleteOutlineOutlinedIcon /></button>
+                        <button className="del_btn" onClick={() => deleteItem(product._id, product.name)}><DeleteOutlineOutlinedIcon /></button>
                         <button className="add_btn"><Link to={`/admin/editproduct/${product._id}`}><EditOutlinedIcon /></Link></button>
                     </div>
                 </div>

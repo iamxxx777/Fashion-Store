@@ -15,6 +15,8 @@ const Nav = () => {
     const handleSearch = (e) => {
         e.preventDefault()
 
+        if(e.target.search.value === "") return
+        
         const keyword = e.target.search.value.toLowerCase()
 
         history.push(`/search/${keyword}`)

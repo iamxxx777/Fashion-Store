@@ -5,69 +5,34 @@ import { useAlert } from 'react-alert'
 import queryString from 'query-string'
 
 // REDUX ACTIONS
-import { getAdminProducts } from "../../redux/actions/adminActions"
 import { deleteProduct, getProducts } from '../../redux/actions/productActions'
 import { DELETE_PRODUCT_RESET } from '../../redux/constants/productConstants'
 
+
 // COMPONENTS
-import ProductsTitle from '../../components/Admin/ProductsTitle'
+import SearchTitle from '../../components/Admin/SearchTitle'
 import Paginate from '../../components/Pagination/Paginate'
 import AdminProduct from '../../components/Admin/AdminProduct'
 import Loader from '../../components/Loader/Loader'
 
-// STYLES
+// STYLE
 import '../../styles/AllProducts.scss'
 
-const AllProducts = () => {
 
+const SearchProducts = () => {
     const dispatch = useDispatch()
     const params = useParams()
     const history = useHistory()
     const location = useLocation()
     const alert = useAlert()
 
-    const page = params.pageNumber || 1
-    const keyword = params.keyword || ""
-
-    const [filterKey, setFilterKey] = useState("")
+    const [page, setPage] = useState(1)
+    const [keyword, setKeyword] = useState("")
     const [sortKey, setSortKey] = useState("")
     const [sortValue, setSortValue] = useState("")
 
-    const { products: { pages, pageNumber, products, count }, loading, error } = useSelector((state) => state.adminProducts)
+    const { products: { pages, pageNumber, products, count }, loading, error } = useSelector((state) => state.products)
     const { delProduct, loading: delLoading, error: delError } = useSelector((state) => state.deleteProduct)
-
-    const handleSorting = (key, value) => {
-        setSortKey(key)
-        setSortValue(value)
-
-        if(keyword) {
-            history.push(`/admin/search/${keyword}/${pageNumber}?sortKey=${key}&sortValue=${value}&filterKey=${filterKey}`)
-        } else {
-            history.push(`/admin/products/${pageNumber}?sortKey=${key}&sortValue=${value}&filterKey=${filterKey}`)
-        }
-    }
-
-    const handleFilter = (value) => {
-        setFilterKey(value)
-
-        history.push(`/admin/products/${pageNumber}?sortKey=${sortKey}&sortValue=${sortValue}&filterKey=${value}`)
-    }
-
-    const paginatePage = (value) => {
-        if(keyword) {
-            if(sortKey) {
-                history.push(`/admin/search/${keyword}/${value}?sortKey=${sortKey}&sortValue=${sortValue}&filterKey=${filterKey}`)
-            } else {
-                history.push(`/admin/search/${keyword}/${value}`)
-            }
-        } else {
-            if(sortKey) {
-                history.push(`/admin/products/${value}?sortKey=${sortKey}&sortValue=${sortValue}&filterKey=${filterKey}`)
-            } else {
-                history.push(`/admin/products/${value}`)
-            }
-        }
-    }
 
     const deleteProductItem = async (id, name) => {
         try {
@@ -78,6 +43,21 @@ const AllProducts = () => {
             alert.error(error)
         }
         
+    }
+
+    const handleSorting = (key, value) => {
+        setSortKey(key)
+        setSortValue(value)
+
+        history.push(`/admin/search/?keyword=${keyword}&page=${pageNumber}&sortKey=${key}&sortValue=${value}`)
+    }
+
+    const paginatePage = (value) => {
+        if(sortKey) {
+            history.push(`/admin/search/?keyword=${keyword}&page=${value}&sortKey=${sortKey}&sortValue=${sortValue}`)
+        } else {
+            history.push(`/admin/search/?keyword=${keyword}&page=${value}`)
+        }
     }
 
     // HANDLE PRODUCT DELETE ACTIONS
@@ -96,21 +76,19 @@ const AllProducts = () => {
 
     // GET QUERY STRINGS FROM URL
     useEffect(() => {
-        let { sortKey, sortValue, filterKey } = queryString.parse(location.search)
-
-        if(sortKey === 'undefined') sortKey = ''
-        if(sortValue === 'undefined') sortValue = ''
-        if(filterKey === 'undefined') filterKey = ''
-
+        const { sortKey, sortValue, page, keyword } = queryString.parse(location.search)
         setSortKey(sortKey)
         setSortValue(sortValue)
-        setFilterKey(filterKey)
+        setPage(page)
+        setKeyword(keyword)
     }, [location.search])
 
     // FETCH PRODUCTS
     useEffect(() => {
-        dispatch(getAdminProducts(page, sortKey, sortValue, filterKey))
-    }, [dispatch, page, sortKey, sortValue, filterKey])
+        if(keyword) {
+            dispatch(getProducts(keyword, page, sortKey, sortValue))
+        }
+    }, [dispatch, keyword, page, sortKey, sortValue])
 
 
     if(loading) {
@@ -129,12 +107,13 @@ const AllProducts = () => {
         )
     }
 
+
     return (
         <div className='allproducts'>
             <div className="container">
                 {delError && <p className="error">{delError}</p>}
                 <section className="title_section">
-                    <ProductsTitle sort={handleSorting} sortKey={sortKey} filter={handleFilter} filterKey={filterKey} keyword={keyword} />
+                    <SearchTitle keyword={keyword} totalNumber={count} sort={handleSorting} sortKey={sortKey} />
                 </section>
                 <section className="products_section">
                     <div className="products_box">
@@ -155,4 +134,4 @@ const AllProducts = () => {
     )
 }
 
-export default AllProducts
+export default SearchProducts

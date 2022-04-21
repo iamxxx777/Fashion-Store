@@ -283,10 +283,3 @@ module.exports = {
     editProduct,
     addProductReview
 }
-
-// Danami presents yet another unique quality shirt in this beautiful red long sleeve. Crafted with premium silk and featuring intricate details; a sure sign of superior craftsmanship, keep your cool and update your business wear collection with this classic, chic design. You are guaranteed to stand out in this fit
-
-// Material type: silk. 
-// Colour: red. 
-// Unisex. 
-// Long sleeve. 

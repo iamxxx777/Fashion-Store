@@ -17,6 +17,7 @@ import Header from '../../components/Admin/Header'
 import Dashboard from './Dashboard'
 import AllOrders from './AllOrders'
 import AllProducts from './AllProducts'
+import SearchProducts from './SearchProducts'
 import AddProduct from './AddProduct'
 import Order from './Order'
 
@@ -55,8 +56,7 @@ const AdminPage = () => {
                         <Route exact path={`${url}/order/:id`}> <Order /> </Route>
                         <Route exact path={`${url}/products/:pageNumber`}> <AllProducts /> </Route>
                         <Route exact path={`${url}/products`}> <AllProducts /> </Route>
-                        <Route exact path={`${url}/search/:keyword`}> <AllProducts /> </Route>
-                        <Route exact path={`${url}/search/:keyword/:page`}> <AllProducts /> </Route>
+                        <Route exact path={`${url}/search`}> <SearchProducts /> </Route>
                         <Route exact path={`${url}/addproduct`}> <AddProduct type="add" /> </Route>
                         <Route exact path={`${url}/editproduct/:id`}> <AddProduct type="edit" /> </Route>
                         <Route exact path={url}> <Dashboard stats={dashboard} orders={latestOrders} /> </Route>

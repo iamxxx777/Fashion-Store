@@ -8,7 +8,7 @@
     background-color: $background_1;
     box-shadow: $shadow-3;
     border-radius: 4px;
-    .title {
+    .titlee {
         margin-bottom: $m-s;
         h2 {
             font-size: $f-s;
@@ -17,12 +17,11 @@
             text-align: left;
             span {
                 color: $pink;
-                font-weight: 600;
             }
         }
         .mega {
             font-size: $f-l;
-            font-weight: 600;
+            font-weight: 400;
         }
         h3 {
             font-size: $f-s;
@@ -31,7 +30,6 @@
             text-align: left;
             span {
                 color: $pink;
-                font-weight: 600;
             }
         }
     }
@@ -89,7 +87,7 @@
         justify-content: space-between;
         align-items: center;
         padding: $p-s $p;
-        .title {
+        .titlee {
             margin-bottom: 0;
             h2 {
                 font-size: $f-md;
@@ -127,11 +125,10 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        .title {
+        .titlee {
             margin-bottom: 0;
             h2 {
                 font-size: $f-md;
-                font-weight: 600;
             }
             .mega {
                 font-size: $f-xxl;

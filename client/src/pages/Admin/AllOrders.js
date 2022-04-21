@@ -99,7 +99,7 @@ const AllOrders = () => {
                         <button><SearchOutlinedIcon /></button>
                     </form>
                     <div className="sort">
-                        <h3>Sort by: <span>{keyword || 'All'} <button className={showOptions ? 'rotate' : null} onClick={() => setShowOptions(!showOptions)}><ArrowRightIcon /></button></span></h3>
+                        <h3>Filter: <span>{keyword || 'All'} <button className={showOptions ? 'rotate' : null} onClick={() => setShowOptions(!showOptions)}><ArrowRightIcon /></button></span></h3>
                         {showOptions && <div className="options">
                             <button onClick={() => {handleFilter(''); setShowOptions(false)}}>All</button>
                             <button onClick={() => {handleFilter('pending'); setShowOptions(false)}}>Pending</button>
