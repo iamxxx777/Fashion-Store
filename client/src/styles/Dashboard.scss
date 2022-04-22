@@ -29,7 +29,7 @@
                     height: 45px;
                     border-radius: 50%;
                     @include flex_center;
-                    margin-right: 1rem;
+                    margin-right: $m;
                 }
                 .stat {
                     text-align: left;
@@ -70,9 +70,31 @@
                 }
             }
         }
+        .charts {
+            width: 100%;
+            margin-top: $m-2;
+            .charts_container {
+                background-color: $background_1;
+                border-radius: 4px;
+                box-shadow: $shadow-3;
+                padding: $p;
+                @include flex_left;
+                .contain {
+                    overflow-x: auto;
+                    overflow-y: hidden;
+                    h2 {
+                        font-weight: 600;
+                        font-size: $f-l;
+                        margin-bottom: $m-2;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+        
         .orders {
             width: 100%;
-            margin-top: $m-1;
+            margin-top: $m-2;
             background-color: $background_1;
             border-radius: 4px;
             box-shadow: $shadow-3;
@@ -159,6 +181,28 @@
             }
             .stats {
                 grid-template-columns: 1fr 1fr;
+                .sales, .orders, .products {
+                    padding: $p;
+                    .icon {
+                        width: 50px;
+                        height: 50px;
+                        margin-right: $m-1;
+                    }
+                    .stat {
+                        h2 {
+                            font-size: $f-md;
+                        }
+                    }
+                }
+            }
+            .charts {
+                .charts_container {
+                    .contain {
+                        h2 {
+                            font-size: $f-xl;
+                        }
+                    }
+                }
             }
             .orders {
                 padding: $p-2;
@@ -176,6 +220,10 @@
         .container {
             .stats {
                 grid-template-columns: repeat(3, 1fr);
+            }
+            .charts {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
             }
             .orders {
                 .container {

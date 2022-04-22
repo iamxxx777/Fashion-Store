@@ -5,6 +5,7 @@ import PaidIcon from '@mui/icons-material/Paid'
 
 // COMPONENTS
 import OrderItem from '../../components/Admin/OrderItem'
+import Chart from '../../components/Admin/Chart'
 
 import '../../styles/Dashboard.scss'
 
@@ -44,6 +45,7 @@ const Dashboard = ({ stats, orders }) => {
                         </div>
                     </div>
                 </div>
+                <Chart data={stats?.graphData}/>
                 <div className="orders">
                     <h2>Latest Orders</h2>
                     <div className="container">

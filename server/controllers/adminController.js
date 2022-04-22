@@ -2,17 +2,32 @@ const asyncHandler = require('express-async-handler')
 const Product = require('../models/product')
 const Order = require("../models/order")
 
-// const { getAllOrders } = require('./ordersController')
-
 
 const getDashboardStats = asyncHandler(async (req, res) => {
     const totalProducts = await Product.countDocuments({})
     const orders = await Order.find({}).populate("user", "name email").sort({createdAt: 'desc'})
 
+    // Total amount made on Orders
     const amount = orders.reduce((price, item) => item.totalPrice + price, 0)
+    
     const totalOrders = orders.length
 
-    res.json({amount, totalOrders, totalProducts})
+    // Get Graph data
+    const options = { month: 'short' }
+
+    // Get months 
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+    
+    let graphData = []
+
+    // Loop through each month and match it with orders made in the same month
+    //  and get the total number
+    months.forEach((month) => {
+        let value = orders.filter((mon) => new Intl.DateTimeFormat('en-US', options).format(new Date(mon.createdAt)) === month).length
+        graphData.push({month: month, value: value})
+    })
+
+    res.json({amount, totalOrders, totalProducts, graphData})
 })
 
 const getProducts = asyncHandler(async(req, res) => {
