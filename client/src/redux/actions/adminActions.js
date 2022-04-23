@@ -121,7 +121,7 @@ export const updateOrderStatus = (id, status) => async (dispatch, getState) => {
                         ? error.response.data.message
                         : error.message
 
-        if (message == "Not authorized, token failed") {
+        if (message === "Not authorized, token failed") {
             logOut()
         }
 

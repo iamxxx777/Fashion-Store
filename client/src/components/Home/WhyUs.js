@@ -1,7 +1,5 @@
-import LocalAtmOutlinedIcon from '@mui/icons-material/LocalAtmOutlined'
 import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined'
 import AirportShuttleOutlinedIcon from '@mui/icons-material/AirportShuttleOutlined'
-import EmojiNatureOutlinedIcon from '@mui/icons-material/EmojiNatureOutlined'
 import CreditScoreIcon from '@mui/icons-material/CreditScore'
 import AtmIcon from '@mui/icons-material/Atm'
 
@@ -17,7 +15,7 @@ const WhyUs = () => {
                 </div>
                 <div className="trait_info">
                     <h3>Express Delivery</h3>
-                    <p>Get your orders delivered swiftly to your doorstep</p>
+                    <p>Within 3 days</p>
                 </div>    
               </div>
 
@@ -26,8 +24,8 @@ const WhyUs = () => {
                   <AtmIcon />
                 </div>
                 <div className="trait_info">
-                    <h3>Money Back</h3>
-                    <p>Get 100% of your money back within 24 hrs of application</p>
+                    <h3>Cash Returns</h3>
+                    <p>Within 24 hours</p>
                 </div>    
               </div>
 
@@ -36,8 +34,8 @@ const WhyUs = () => {
                     <CreditScoreIcon />
                 </div>
                 <div className="trait_info">
-                    <h3>Secure Payment</h3>
-                    <p>Secure, fast and easy to use integrated payment geteway</p>
+                    <h3>Payment</h3>
+                    <p>Secure system</p>
                 </div>    
               </div>
 
@@ -46,8 +44,8 @@ const WhyUs = () => {
                     <SupportAgentOutlinedIcon />
                 </div>
                 <div className="trait_info">
-                    <h3>24/7 Service</h3>
-                    <p>You can contact our support staff anytime of the day for any assistance</p>
+                    <h3>Support Staff</h3>
+                    <p>24/7 365 Days</p>
                 </div>    
               </div>
 

@@ -25,7 +25,7 @@ const NotFound = () => {
     }, [dispatch])
 
     if(loading) {
-        return <Loader />
+        return <Layout><main className="not_found"> <Loader /> </main></Layout>
     }
 
     if (error) {

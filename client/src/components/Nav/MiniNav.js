@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
@@ -24,10 +25,10 @@ const MiniNav = () => {
                     </div>
                 </div>
                 <div className="mini_links">
-                    <a href="#">Terms</a>
-                    <a href="#">FAQ</a>
-                    <a href="#">FAQ</a>
-                </div>
+                    <Link href="/">Terms</Link>
+                    <Link href="/">FAQ</Link>
+                    <Link href="/">FAQ</Link>
+              </div>
             </div>
         </div>
     )

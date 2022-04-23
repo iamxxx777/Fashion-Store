@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams, useHistory, useLocation } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import { useAlert } from 'react-alert'
 import queryString from 'query-string'
 
@@ -21,7 +21,6 @@ import '../../styles/AllProducts.scss'
 
 const SearchProducts = () => {
     const dispatch = useDispatch()
-    const params = useParams()
     const history = useHistory()
     const location = useLocation()
     const alert = useAlert()

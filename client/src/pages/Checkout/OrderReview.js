@@ -57,7 +57,7 @@ const OrderReview = () => {
     }
      
     if (loading) {
-        return <Layout><Loader /></Layout>
+        return <Layout> <main className="order_review"> <Loader /> </main></Layout>
     }
 
     if (error) {

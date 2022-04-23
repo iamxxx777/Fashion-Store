@@ -34,12 +34,12 @@
                     height: 30px;
                 }
                 div {
-                    margin-bottom: $m-s;
                     .MuiRating-root {
                         font-size: 1.1rem;
                     }
                 }
                 h3 {
+                    margin-top: $m-s;
                     font-size: $f-s;
                     font-weight: 600;
                     color: $pink;

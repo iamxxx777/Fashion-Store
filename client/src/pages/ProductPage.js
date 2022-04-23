@@ -85,13 +85,6 @@ const ProductPage = () => {
         categoryProducts = categoryProducts.filter((item) => item._id !== product._id)
     }
 
-
-    var productListDetails = []
-
-    if (product?.details) {
-        productListDetails = product.details.split(".")
-    }
-
     // Check if item is already in cart and do the needful
     const addedItems = cartItems.filter((item) => item.product === id)
     var reducedAddedItems = addedItems.reduce((count, item) => item.qty + count, 0)
@@ -122,13 +115,21 @@ const ProductPage = () => {
     }, [id, dispatch])
 
     if(loading) {
-        return <Loader />
+        return (
+            <Layout>
+                <div className="product_page">
+                    <Loader />
+                </div>
+            </Layout>
+        )
     }
 
     if (error) {
-        return <Layout>
+        return (
+            <Layout>
                 <div className="product_page">{error}</div>
             </Layout>
+        )
     }
 
     return (
@@ -200,10 +201,13 @@ const ProductPage = () => {
                                             <p>{product?.description}</p>
                                         </div>
                                         {product?.details && (
-                                            <div className="product_details">
-                                                {product.details.map((detail, i) => (
-                                                    <li key={i}>{detail}</li>
-                                                ))}
+                                            <div className="product_key_details">
+                                                <h3>Key Details</h3>
+                                                <ul>
+                                                    {product.details.map((detail, i) => (
+                                                        <li key={i}>{detail}</li>
+                                                    ))}
+                                                </ul>
                                             </div>
                                         )}
                                     </TabPanel>

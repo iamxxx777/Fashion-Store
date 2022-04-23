@@ -113,7 +113,7 @@ const Payment = () => {
     }, [dispatch])
 
     if (loading) {
-        return <Layout><Loader /></Layout>
+        return <Layout> <main className='payment'> <Loader /> </main></Layout>
     }
 
     return (

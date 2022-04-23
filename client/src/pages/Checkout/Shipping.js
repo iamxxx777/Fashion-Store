@@ -36,7 +36,6 @@ const Shipping = () => {
     const { user, loading } = useSelector((state) => state.userDetails)
 
     const [shippingAddress, setShippingAddress] = useState({})
-    const [disabled, setDisabled] = useState(shippingAddress ? false : true)
     const [showModal, setShowModal] = useState(false)
     const [activeModal, setActiveModal] = useState(1)
 
@@ -98,7 +97,7 @@ const Shipping = () => {
 
 
     if (loading) {
-        return <Layout><Loader /></Layout>
+        return <Layout> <main className="shipping_address"> <Loader /> </main></Layout>
     }
 
     return (
@@ -144,7 +143,7 @@ const Shipping = () => {
                                     <Button size="large" variant="outlined"><Link to="/checkout">Back</Link></Button>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={12}>
-                                    <Button onClick={proceedToReview} disabled={disabled} size="large" variant="contained">Proceed to review</Button>
+                                    <Button onClick={proceedToReview} size="large" variant="contained">Proceed to review</Button>
                                 </Grid>    
                             </Grid>
                         </div>

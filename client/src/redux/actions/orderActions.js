@@ -49,7 +49,7 @@ export const getPaymentKey = () => async (dispatch) => {
                         ? error.response.data.message
                         : error.message
 
-        if (message == "Not authorized, token failed") {
+        if (message === "Not authorized, token failed") {
             logOut()
         }
 
@@ -84,7 +84,7 @@ export const getAllOrders = () => async (dispatch, getState) => {
                         ? error.response.data.message
                         : error.message
 
-        if (message == "Not authorized, token failed") {
+        if (message === "Not authorized, token failed") {
             logOut()
         }
                         
@@ -121,7 +121,7 @@ export const getMyOrders = (id) => async (dispatch, getState) => {
                         ? error.response.data.message
                         : error.message
 
-        if (message == "Not authorized, token failed") {
+        if (message === "Not authorized, token failed") {
             logOut()
         }
                         
@@ -131,8 +131,6 @@ export const getMyOrders = (id) => async (dispatch, getState) => {
         })
     }
 }
-
-
 
 export const getOrder = (id) => async (dispatch, getState) => {
     try {
@@ -160,7 +158,7 @@ export const getOrder = (id) => async (dispatch, getState) => {
                         ? error.response.data.message
                         : error.message
 
-        if (message == "Not authorized, token failed") {
+        if (message === "Not authorized, token failed") {
             logOut()
         }
 

@@ -116,7 +116,7 @@
         .related_items {
             margin-top: $m-3;
             h2 {
-                color: $pink;
+                font-weight: 600;
                 font-size: $f-xxl;
                 margin-bottom: $m-1;
                 text-align: left;
@@ -172,6 +172,28 @@
         text-align: left;
         font-size: $f-sm;
         line-height: 1.5;
+    }
+}
+
+.product_key_details {
+    max-width: 400px;
+    margin-top: $m-2;
+    h3 {
+        text-transform: uppercase;
+        text-align: left;
+        font-size: $f-l;
+        font-weight: 600;
+        margin-bottom: $m;
+    }
+    ul {
+        padding-left: $p-1;
+        li {
+            margin-bottom: $m-s;
+            font-size: $f-sm;
+            font-weight: 400;
+            color: $primary-text;
+            text-align: left;
+        }
     }
 }
 
@@ -252,8 +274,6 @@
         }
     }
 }
-
-
 
 
 

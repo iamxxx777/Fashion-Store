@@ -36,7 +36,7 @@ const CategoryPage = () => {
     }, [dispatch, page, category])
 
     if(loading) {
-        return <Layout><Loader /></Layout>
+        return <Layout><main className="category_page"> <Loader /> </main></Layout>
     }
 
     if(error) {

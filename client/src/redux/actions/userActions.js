@@ -84,7 +84,8 @@ export const deleteUser = (id) => async (dispatch, getState) => {
         const { data } = await axios.delete(`/api/users/profile/${id}`, config)
 
         dispatch({
-            type: actionTypes.DELETE_USER_SUCCESS
+            type: actionTypes.DELETE_USER_SUCCESS,
+            payload: data
         })
 
     } catch (error) {
@@ -124,7 +125,7 @@ export const getUserInfo = (id) => async (dispatch, getState) => {
                         ? error.response.data.message
                         : error.message;
 
-        if (message == "Not authorized, token failed") {
+        if (message === "Not authorized, token failed") {
             logOut()
         }
 
@@ -162,7 +163,7 @@ export const editProfile = (formData) => async (dispatch, getState) => {
                         ? error.response.data.message
                         : error.message;
 
-        if (message == "Not authorized, token failed") {
+        if (message === "Not authorized, token failed") {
             logOut()
         }
 
@@ -198,7 +199,7 @@ export const updatePassword = (formData) => async (dispatch, getState) => {
                         ? error.response.data.message
                         : error.message;
 
-        if (message == "Not authorized, token failed") {
+        if (message === "Not authorized, token failed") {
             logOut()
         }
 
@@ -236,7 +237,7 @@ export const upgradeUser = (id) => async (dispatch, getState) => {
                         ? error.response.data.message
                         : error.message;
 
-        if (message == "Not authorized, token failed") {
+        if (message === "Not authorized, token failed") {
             logOut()
         }
 
@@ -246,7 +247,6 @@ export const upgradeUser = (id) => async (dispatch, getState) => {
         });
     }
 }
-
 
 export const getAllUsers = () => async (dispatch, getState) => {
     try {
@@ -274,7 +274,7 @@ export const getAllUsers = () => async (dispatch, getState) => {
                         ? error.response.data.message
                         : error.message;
 
-        if (message == "Not authorized, token failed") {
+        if (message === "Not authorized, token failed") {
             logOut()
         }
 
@@ -284,7 +284,6 @@ export const getAllUsers = () => async (dispatch, getState) => {
         });
     }
 }
-
 
 export const getAddress = (id) => async (dispatch, getState) => {
     try {
@@ -312,7 +311,7 @@ export const getAddress = (id) => async (dispatch, getState) => {
                         ? error.response.data.message
                         : error.message;
 
-        if (message == "Not authorized, token failed") {
+        if (message === "Not authorized, token failed") {
             logOut()
         }
 
@@ -349,7 +348,7 @@ export const editAddress = (id, address) => async (dispatch, getState) => {
                         ? error.response.data.message
                         : error.message;
 
-        if (message == "Not authorized, token failed") {
+        if (message === "Not authorized, token failed") {
             logOut()
         }
 
@@ -386,7 +385,7 @@ export const addAddress = (formData) => async (dispatch, getState) => {
                         ? error.response.data.message
                         : error.message;
 
-        if (message == "Not authorized, token failed") {
+        if (message === "Not authorized, token failed") {
             logOut()
         }
 

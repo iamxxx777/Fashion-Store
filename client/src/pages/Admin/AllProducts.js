@@ -6,7 +6,7 @@ import queryString from 'query-string'
 
 // REDUX ACTIONS
 import { getAdminProducts } from "../../redux/actions/adminActions"
-import { deleteProduct, getProducts } from '../../redux/actions/productActions'
+import { deleteProduct } from '../../redux/actions/productActions'
 import { DELETE_PRODUCT_RESET } from '../../redux/constants/productConstants'
 
 // COMPONENTS
