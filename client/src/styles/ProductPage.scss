@@ -1,4 +1,5 @@
 @import './Pallette.scss';
+@import './Mixins.scss';
 
 .product_page {
     min-height: 90vh;
@@ -196,6 +197,18 @@
         }
     }
 }
+
+.product_reviews {
+    max-width: 400px;
+    min-height: 250px;
+    @include flex_center;
+    h5 {
+        text-align: center;
+        font-weight: 400;
+        font-size: $f-md;
+    }
+}
+
 
 @media (max-width: 340px) {
     .product_page {

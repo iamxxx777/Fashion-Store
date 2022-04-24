@@ -17,6 +17,7 @@ import { addToCart, removeFromCart } from '../redux/actions/cartActions'
 // Components
 import Loader from '../components/Loader/Loader'
 import Ratings from '../components/Products/Ratings'
+import Comment from '../components/Products/Comment'
 import ProductCard from '../components/Products/ProductCard'
 import ProductCarousel from '../components/Products/ProductCarousel'
 import ProductTypeSelect from '../components/Products/ProductTypeSelect'
@@ -212,7 +213,12 @@ const ProductPage = () => {
                                         )}
                                     </TabPanel>
                                     <TabPanel value={tabValue} index={1}>
-                                        Product Reviews
+                                        <div className="product_reviews">
+                                            {product?.reviews.length > 0 ? 
+                                                product.reviews.map((comment) => <Comment key={comment._id} comment={comment} />)
+                                                : <h5>No reviews available</h5>
+                                            }
+                                        </div>
                                     </TabPanel>
                                 </Box>
                             </div>

@@ -25,9 +25,9 @@ const MiniNav = () => {
                     </div>
                 </div>
                 <div className="mini_links">
-                    <Link href="/">Terms</Link>
-                    <Link href="/">FAQ</Link>
-                    <Link href="/">FAQ</Link>
+                    <Link to="/">Terms</Link>
+                    <Link to="/">FAQ</Link>
+                    <Link to="/">FAQ</Link>
               </div>
             </div>
         </div>

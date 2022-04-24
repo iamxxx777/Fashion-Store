@@ -2,3 +2,46 @@
 @import './Mixins.scss';
 
 
+.comment {
+    width: 100%;
+    margin-bottom: $m-1;
+    .container {
+        .name {
+            margin-bottom: $m-s;
+            h2 {
+                font: {
+                    weight: 600;
+                    size: $f-sm
+                }
+                text-align: left;
+            }
+        }
+        .rating {
+            @include flex_left;
+            flex-wrap: wrap;
+            margin-bottom: $m-1;
+            h3 {
+                margin-left: $m-s;
+                font: {
+                    weight: 600;
+                    size: $f-sm;
+                }
+            }
+            h4 {
+                margin-left: $m-s;
+                font: {
+                    weight: 400;
+                    size: $f-s;
+                }
+                color: $primary-text-3;
+            }
+        }
+        .comment_msg {
+            p {
+                font-size: $f-sm;
+                font-weight: 400;
+                line-height: 1.5;
+            }
+        }
+    }
+}

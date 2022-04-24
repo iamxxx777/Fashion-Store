@@ -9,7 +9,7 @@ const getProducts = asyncHandler(async (req, res) => {
     const pageNumber = Number(req.query.pageNumber) || 1
     const sortKey = req.query.sortKey
     const sortValue = req.query.sortValue.toLowerCase() || 'desc'
-    const sort =  sortKey ? { [sortKey]: sortValue } : {}
+    const sort =  sortKey ? { [sortKey]: sortValue } : { updatedAt: 'desc' }
     const keyword = req.query.keyword.toLowerCase() 
         ? {
             name: {
