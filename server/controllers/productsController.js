@@ -249,13 +249,14 @@ const addProductReview = asyncHandler(async (req, res) => {
 
         if(alreadyReviewed) {
             res.status(400)
-            throw new Error("Already reviewed bu user")
+            throw new Error("Already reviewed by user")
         }
 
         const newReview = { 
             user: req.user._id,
             comment,
-            rating: Number(rating)
+            rating: Number(rating),
+            date: Date.now()
         }
 
         product.reviews = [...product.reviews, newReview]
