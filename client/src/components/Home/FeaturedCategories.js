@@ -18,7 +18,7 @@ const FeaturedCategories = () => {
                         <div className="category_info">
                             <h2>For Her</h2>
                             <h3>You want it, we got it</h3>
-                            <Link to="/">Shop Now</Link>
+                            <Link to="/gender/for-women">Shop Now</Link>
                         </div>
                     </div>
 
@@ -29,7 +29,7 @@ const FeaturedCategories = () => {
                         <div className="category_info">
                             <h2>For Him</h2>
                             <h3>You want it, we got it</h3>
-                            <Link to="/gender/for-him">Shop Now</Link>
+                            <Link to="/gender/for-men">Shop Now</Link>
                         </div>
                     </div>
 

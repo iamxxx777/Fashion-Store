@@ -25,12 +25,13 @@ const GenderProducts = () => {
 
     const params = useParams()
     const page = params.pageNumber || 1
-    const gender = params.gender.replace() 
+    const gender = params.gender.replace(/-/g, ' ') // if gender contains dashes, change it to a whitespace
     
     const [sortKey, setSortKey] = useState("")
     const [sortValue, setSortValue] = useState("")
 
-    const { genderProducts : { products, pages, count, pageNumber }, loading, error } = useSelector((state) => state.categoryProducts)
+    const { genderProducts, loading, error } = useSelector((state) => state.categoryProducts)
+    const { products, pages, count, pageNumber } = genderProducts
 
     const paginatePage = async (value) => {
         if(sortKey) {

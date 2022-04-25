@@ -27,12 +27,6 @@ const CategoryNav = () => {
                         </div>
                     </button>
                     <div className={`header_dropdown ${drop && "show"}`}>
-                        <Link to="/" onClick={() => setDrop(false)}>
-                            <div>
-                                <FitnessCenterOutlinedIcon />
-                                <p>All</p>
-                            </div>
-                        </Link>
                         <Link to="/category/sneakers" onClick={() => setDrop(false)}>
                             <div>
                                 <FitnessCenterOutlinedIcon />
@@ -69,10 +63,22 @@ const CategoryNav = () => {
                                 <p>Trousers</p>
                             </div>
                         </Link>
-                        <Link to="/" onClick={() => setDrop(false)}>
+                        <Link to="/gender/unisex" onClick={() => setDrop(false)}>
                             <div>
                                 <EmojiNatureOutlinedIcon />
                                 <p>Unisex</p>
+                            </div>
+                        </Link>
+                        <Link to="/gender/for-men" onClick={() => setDrop(false)}>
+                            <div>
+                                <FitnessCenterOutlinedIcon />
+                                <p>For Men</p>
+                            </div>
+                        </Link>
+                        <Link to="/gender/for-women" onClick={() => setDrop(false)}>
+                            <div>
+                                <FitnessCenterOutlinedIcon />
+                                <p>For Women</p>
                             </div>
                         </Link>
                     </div>
