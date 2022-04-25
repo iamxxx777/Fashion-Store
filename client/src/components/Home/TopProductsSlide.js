@@ -59,7 +59,7 @@ const TopProductsSlide = ({ products }) => {
         <div className="top_products_slide">
             <div className="top_products_slide_container">
                 <div className="top_products_slide_title">
-                    <h1>Top Rated</h1>
+                    <h2>Top Rated</h2>
                     <Link to='/products'><div><span>See All</span> <ArrowRightIcon /></div></Link>
                 </div>
                 <div className="top_products_slider">

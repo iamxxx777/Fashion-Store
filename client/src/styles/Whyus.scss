@@ -17,11 +17,17 @@
                 border-radius: 6px;
                 .trait_icon {
                     margin-bottom: $m-s;
-                    svg {
-                        width: 2em;
-                        height: 2em;
-                        fill: $pink;
+                    .bubble {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        background-color: $pink-shade;
+                        @include flex_center;
+                        svg {
+                            fill: $pink;
+                        }
                     }
+                    
                 }
                 .trait_info {
                     h3 {
@@ -49,7 +55,7 @@
             .trait {
                 flex-direction: row;
                 justify-content: flex-start;
-                padding: 1.2rem $p;
+                padding: $p-1 $p;
                 .trait_icon {
                     margin-bottom: 0;
                     margin-right: $m-1;
@@ -67,6 +73,7 @@
     .traits {
         .traits_items {
             grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
         }
     }
 }

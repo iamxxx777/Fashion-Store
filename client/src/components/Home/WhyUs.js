@@ -11,7 +11,9 @@ const WhyUs = () => {
             <div className="traits_items">
               <div className="trait">
                 <div className="trait_icon">
-                    <AirportShuttleOutlinedIcon />
+                    <div className="bubble">
+                      <AirportShuttleOutlinedIcon />
+                    </div>
                 </div>
                 <div className="trait_info">
                     <h3>Express Delivery</h3>
@@ -21,7 +23,9 @@ const WhyUs = () => {
 
               <div className="trait">
                 <div className="trait_icon">
-                  <AtmIcon />
+                    <div className="bubble">
+                      <AtmIcon />
+                    </div>
                 </div>
                 <div className="trait_info">
                     <h3>Cash Returns</h3>
@@ -31,7 +35,9 @@ const WhyUs = () => {
 
               <div className="trait">
                 <div className="trait_icon">
-                    <CreditScoreIcon />
+                    <div className="bubble">
+                      <CreditScoreIcon />
+                    </div>
                 </div>
                 <div className="trait_info">
                     <h3>Payment</h3>
@@ -41,7 +47,9 @@ const WhyUs = () => {
 
               <div className="trait">
                 <div className="trait_icon">
-                    <SupportAgentOutlinedIcon />
+                    <div className="bubble">
+                      <SupportAgentOutlinedIcon />
+                    </div>
                 </div>
                 <div className="trait_info">
                     <h3>Support Staff</h3>
@@ -54,5 +62,5 @@ const WhyUs = () => {
     )
 }
 
-export default WhyUs;
+export default WhyUs
 

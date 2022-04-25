@@ -4,6 +4,7 @@ const { isAuthenticated, isAdmin } = require("../middleware/auth")
 const {
     getProducts,
     getCategoryProducts,
+    getGenderProducts,
     getProduct,
     getTopProducts,
     addProductReview,
@@ -13,6 +14,8 @@ const {
 } = require("../controllers/productsController")
 
 router.get('/category', getCategoryProducts)
+
+router.get('/gender', getGenderProducts)
 
 router.get("/top", getTopProducts)
 

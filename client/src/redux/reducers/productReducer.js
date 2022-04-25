@@ -44,6 +44,28 @@ export const getCategoryProductsReducer = (state = { categoryProducts: {} }, act
     }
 };
 
+export const getGenderProductsReducer = (state = { genderProducts: {} }, action) => {
+    switch(action.type) {
+        case actionTypes.GET_GENDER_PRODUCTS_REQUEST:
+            return {
+                loading: true,
+                genderProducts: [],
+            }
+        case actionTypes.GET_GENDER_PRODUCTS_SUCCESS:
+            return {
+                loading: false,
+                genderProducts: action.payload,
+            }
+        case actionTypes.GET_GENDER_PRODUCTS_FAIL:
+            return {
+                loading: false,
+                error: action.payload,
+            }
+        default:
+            return state;
+    }
+};
+
 export const getProductDetailsReducer = (state = {productDetails: {}}, action) => {
     switch(action.type) {
         case actionTypes.GET_PRODUCT_DETAILS_REQUEST:

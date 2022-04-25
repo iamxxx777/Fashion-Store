@@ -8,7 +8,7 @@ const FeaturedCategories = () => {
         <div className="featured_categories">
             <div className="featured_categories_container">
                 <div className="featured_categories_title">
-                    <h1>Featured Categories</h1>
+                    <h2>Featured Categories</h2>
                 </div>
                 <div className="categories">
                     <div className="category">
@@ -29,7 +29,7 @@ const FeaturedCategories = () => {
                         <div className="category_info">
                             <h2>For Him</h2>
                             <h3>You want it, we got it</h3>
-                            <Link to="/">Shop Now</Link>
+                            <Link to="/gender/for-him">Shop Now</Link>
                         </div>
                     </div>
 
@@ -40,7 +40,7 @@ const FeaturedCategories = () => {
                         <div className="category_info">
                             <h2>Sneakers</h2>
                             <h3>You want it, we got it</h3>
-                            <Link to="/">Shop Now</Link>
+                            <Link to="/category/sneakers">Shop Now</Link>
                         </div>
                     </div>
 
@@ -51,7 +51,7 @@ const FeaturedCategories = () => {
                         <div className="category_info">
                             <h2>Fitness</h2>
                             <h3>You want it, we got it</h3>
-                            <Link to="/">Shop Now</Link>
+                            <Link to="/category/gym">Shop Now</Link>
                         </div>
                     </div>
 

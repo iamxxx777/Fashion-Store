@@ -15,6 +15,7 @@ import OrderReview from './pages/Checkout/OrderReview'
 import Payment from './pages/Checkout/Payment'
 import Account from './pages/Profile/Account'
 import CategoryPage from './pages/CategoryPage'
+import GenderProducts from './pages/GenderProducts'
 import Products from './pages/Products'
 import NotFound from './pages/NotFound'
 import AdminPage from './pages/Admin/AdminPage'
@@ -41,6 +42,8 @@ function App() {
             <AdminRoute path="/admin" component={AdminPage} />
             <Route path="/category/:category/page/:pageNumber" component={CategoryPage} />
             <Route path="/category/:category" component={CategoryPage} />
+            <Route path="/gender/:gender/page/:pageNumber" component={GenderProducts} />
+            <Route path="/gender/:gender" component={GenderProducts} />
             <Route path="/404" component={NotFound} />
             <Route exact path="/" component={Home} /> 
             <Route path="/*"> <Redirect from="/" to="/404" /> </Route>

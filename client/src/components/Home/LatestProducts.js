@@ -69,7 +69,7 @@ const LatestProducts = ({ products }) => {
         <div className="latest_products">
             <div className="latest_products_container">
                 <div className="latest_products_title">
-                    <h1>New Arrivals</h1>
+                    <h2>New Arrivals</h2>
                     <Link to='/products'><div><span>See All</span> <ArrowRightIcon /></div></Link>
                 </div>
                 <div className="latest_products_slider">

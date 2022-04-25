@@ -46,6 +46,28 @@ export const getCategoryProducts = (category = 'dresses', pageNumber = '', sortK
     }
 };
 
+export const getGenderProducts = (gender = 'unisex', pageNumber = '', sortKey = '', sortValue = '') => async (dispatch) => {
+
+    try {
+        dispatch({type: actionTypes.GET_GENDER_PRODUCTS_REQUEST})
+
+        const { data } = await axios.get(`/api/products/gender/?gender=${gender}&pageNumber=${pageNumber}&sortKey=${sortKey}&sortValue=${sortValue}`)
+        
+        dispatch({
+            type: actionTypes.GET_GENDER_PRODUCTS_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: actionTypes.GET_GENDER_PRODUCTS_FAIL,
+            payload: error.response && error.response.data.message
+                        ? error.response.data.message
+                        : error.message,
+        });
+    }
+};
+
 export const getProductDetails = (id) => async (dispatch) => {
     try {    
         dispatch({ type: actionTypes.GET_PRODUCT_DETAILS_REQUEST });

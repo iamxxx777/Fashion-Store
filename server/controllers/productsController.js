@@ -46,6 +46,26 @@ const getCategoryProducts = asyncHandler(async (req, res) => {
     res.json({
         products,
         pageNumber,
+        count,
+        pages: Math.ceil(count / pageSize)
+    })
+})
+
+const getGenderProducts = asyncHandler(async (req, res) => {
+    const pageSize = 10
+    const pageNumber = Number(req.query.pageNumber) || 1
+    const gender = req.query.gender.toLowerCase()
+    
+    const count = await Product.countDocuments({gender: gender})
+
+    const products = await Product.find({gender: gender})
+        .skip(pageSize * (pageNumber - 1))
+        .limit(pageSize)
+
+    res.json({
+        products,
+        pageNumber,
+        count,
         pages: Math.ceil(count / pageSize)
     })
 })
@@ -277,6 +297,7 @@ const addProductReview = asyncHandler(async (req, res) => {
 module.exports = {
     getProducts,
     getCategoryProducts,
+    getGenderProducts,
     getProduct,
     getTopProducts,
     deleteProduct,

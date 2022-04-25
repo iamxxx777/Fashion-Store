@@ -8,11 +8,10 @@
         flex-direction: column;
         .featured_categories_title {
             margin-bottom: 1.5rem;
-            h1 {
-                font-size: 24px;
+            h2 {
+                font-size: 22px;
                 font-weight: 600;
                 text-align: left;
-                color: $pink;
                 font-family: 'Poppins', sans-serif;
             }
         }
@@ -88,8 +87,8 @@
     .featured_categories {
         .featured_categories_container {
             .featured_categories_title {
-                h1 {
-                    font-size: 30px;
+                h2 {
+                    font-size: 26px;
                 }
             }
             .categories {

@@ -201,7 +201,7 @@ const ProductPage = () => {
                                         <div className="product_description">
                                             <p>{product?.description}</p>
                                         </div>
-                                        {product?.details && (
+                                        {product?.details.length > 0 && (
                                             <div className="product_key_details">
                                                 <h3>Key Details</h3>
                                                 <ul>
