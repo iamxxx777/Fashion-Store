@@ -2,18 +2,20 @@
 
 .category_page {
     width: 100%;
-    padding: 2rem 1rem;
+    padding: $p-2 $p;
     min-height: 80vh;
     .category_page_container {
         max-width: 1250px;
         margin: 0 auto;
         .category_top_products {
-            margin-bottom: 3rem;
+            margin-bottom: $p-3;
+            margin-top: $p;
             .heading {
                 width: 100%;
-                margin-bottom: 1.5rem;
+                margin-bottom: $m-1;
                 h1 {
-                    font-size: 22px;
+                    font-size: 20px;
+                    font-weight: 600;
                     text-align: left;
                     color: $primary-text;
                     font-family: $family-2;
@@ -65,7 +67,8 @@
         .category_products {
             width: 100%;
             h1 {
-                font-size: 22px;
+                font-size: 20px;
+                font-weight: 600;
                 width: 100%;
                 text-align: left;
                 margin-bottom: 1.5rem;
@@ -85,7 +88,6 @@
 
 @media (min-width: 450px) {
     .category_page {
-        padding: 3rem 1.5rem;
         .category_page_container {
             .category_products {
                 .products {
@@ -102,19 +104,9 @@
 
 @media (min-width: 650px) {
     .category_page {
-        padding: 3rem 1.5rem;
+        padding: 2rem 1.5rem 3rem;
         .category_page_container {
-            .category_top_products {
-                .heading {
-                    h1 {
-                        font-size: 26px;
-                    }
-                }
-            }
             .category_products {
-                h1 {
-                    font-size: 26px;
-                }
                 .products {
                     grid-template-columns: repeat(3, 1fr);
                     gap: 1.5rem;
@@ -129,7 +121,17 @@
 @media (min-width: 900px) {
     .category_page {
         .category_page_container {
+            .category_top_products {
+                .heading {
+                    h1 {
+                        font-size: 24px;
+                    }
+                }
+            }
             .category_products {
+                h1 {
+                    font-size: 24px;
+                }
                 .products {
                     grid-template-columns: repeat(4, 1fr);
                     gap: 2rem;

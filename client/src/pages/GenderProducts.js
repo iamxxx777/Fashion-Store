@@ -30,8 +30,7 @@ const GenderProducts = () => {
     const [sortKey, setSortKey] = useState("")
     const [sortValue, setSortValue] = useState("")
 
-    const { genderProducts, loading, error } = useSelector((state) => state.categoryProducts)
-    const { products, pages, count, pageNumber } = genderProducts
+    const { genderProducts : { products, pages, count, pageNumber }, loading, error } = useSelector((state) => state.genderProducts)
 
     const paginatePage = async (value) => {
         if(sortKey) {
@@ -39,7 +38,6 @@ const GenderProducts = () => {
         } else {
             history.push(`/gender/${gender}/page/${value}`)
         }
-        
     }
 
     const handleSorting = (key, value) => {

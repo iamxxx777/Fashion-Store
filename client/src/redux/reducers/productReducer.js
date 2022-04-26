@@ -27,7 +27,7 @@ export const getCategoryProductsReducer = (state = { categoryProducts: {} }, act
         case actionTypes.GET_CATEGORY_PRODUCTS_REQUEST:
             return {
                 loading: true,
-                categoryProducts: [],
+                categoryProducts: {},
             }
         case actionTypes.GET_CATEGORY_PRODUCTS_SUCCESS:
             return {
@@ -49,7 +49,7 @@ export const getGenderProductsReducer = (state = { genderProducts: {} }, action)
         case actionTypes.GET_GENDER_PRODUCTS_REQUEST:
             return {
                 loading: true,
-                genderProducts: [],
+                genderProducts: {},
             }
         case actionTypes.GET_GENDER_PRODUCTS_SUCCESS:
             return {
@@ -160,7 +160,6 @@ export const newProductReducer = (state = { newProduct: {} }, action) => {
             return state;
     }
 };
-
 
 export const deleteProductReducer = (state = { delProduct: {} }, action) => {
     switch(action.type) {

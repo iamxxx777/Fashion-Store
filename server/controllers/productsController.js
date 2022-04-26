@@ -52,13 +52,23 @@ const getCategoryProducts = asyncHandler(async (req, res) => {
 })
 
 const getGenderProducts = asyncHandler(async (req, res) => {
-    const pageSize = 10
+    const pageSize = 3
     const pageNumber = Number(req.query.pageNumber) || 1
-    const gender = req.query.gender.toLowerCase()
+    const sortKey = req.query.sortKey
+    const sortValue = req.query.sortValue.toLowerCase() || 'desc'
+    const sort =  sortKey ? { [sortKey]: sortValue } : { updatedAt: 'desc' }
+    const gender = req.query.gender.toLowerCase() 
+        ? {
+            gender: {
+                $regex: req.query.gender,
+                $options: "i"
+            },
+        } : {}
     
-    const count = await Product.countDocuments({gender: gender})
+    const count = await Product.countDocuments({...gender})
 
-    const products = await Product.find({gender: gender})
+    const products = await Product.find({...gender})
+        .sort({...sort})
         .skip(pageSize * (pageNumber - 1))
         .limit(pageSize)
 

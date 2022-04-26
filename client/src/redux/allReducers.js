@@ -5,6 +5,7 @@ import { cartReducer, shippingReducer, confirmCartItems } from './reducers/cartR
 import { 
     getProductsReducer, 
     getCategoryProductsReducer,
+    getGenderProductsReducer,
     getProductDetailsReducer,
     getTopProductsReducer,
     updateProductReducer,
@@ -51,6 +52,7 @@ const reducers = combineReducers({
     shippingAddress: shippingReducer,
     products: getProductsReducer,
     categoryProducts: getCategoryProductsReducer,
+    genderProducts: getGenderProductsReducer,
     productDetails: getProductDetailsReducer,
     topProducts: getTopProductsReducer,
     updateProduct: updateProductReducer,
