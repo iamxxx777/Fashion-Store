@@ -99,7 +99,7 @@
         .jumbo_container {
             .jumbo_grid {
                 display: grid;
-                grid-template-columns: 1fr 1.5fr;
+                grid-template-columns: 1fr 2fr;
                 gap: 1.5rem;
                 .jumbo_dresses {
                     grid-row: 1 / span 2;
