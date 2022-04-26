@@ -7,7 +7,7 @@ import '../../styles/Whyus.scss'
 
 const WhyUs = () => {
     return (
-        <div className='traits'>
+        <section className='traits'>
             <div className="traits_items">
               <div className="trait">
                 <div className="trait_icon">
@@ -58,7 +58,7 @@ const WhyUs = () => {
               </div>
 
             </div>
-        </div>
+        </section>
     )
 }
 

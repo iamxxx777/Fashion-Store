@@ -33,7 +33,7 @@ const CategoryNav = () => {
                                 <p>Sneakers</p>
                             </div>
                         </Link>
-                        <Link to="/category/jackets and hoodies" onClick={() => setDrop(false)}>
+                        <Link to="/category/jackets-and-hoodies" onClick={() => setDrop(false)}>
                             <div>
                                 <EmojiNatureOutlinedIcon />
                                 <p>Jackets and Hoodies</p>

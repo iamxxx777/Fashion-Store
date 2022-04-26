@@ -14,7 +14,7 @@ import Shipping from './pages/Checkout/Shipping'
 import OrderReview from './pages/Checkout/OrderReview'
 import Payment from './pages/Checkout/Payment'
 import Account from './pages/Profile/Account'
-import CategoryPage from './pages/CategoryPage'
+import CategoryProducts from './pages/CategoryProducts'
 import GenderProducts from './pages/GenderProducts'
 import Products from './pages/Products'
 import NotFound from './pages/NotFound'
@@ -40,8 +40,8 @@ function App() {
             <PrivateRoute path="/checkout/review" component={OrderReview} />
             <PrivateRoute path='/checkout/payment' component={Payment} />
             <AdminRoute path="/admin" component={AdminPage} />
-            <Route path="/category/:category/page/:pageNumber" component={CategoryPage} />
-            <Route path="/category/:category" component={CategoryPage} />
+            <Route path="/category/:category/page/:pageNumber" component={CategoryProducts} />
+            <Route path="/category/:category" component={CategoryProducts} />
             <Route path="/gender/:gender/page/:pageNumber" component={GenderProducts} />
             <Route path="/gender/:gender" component={GenderProducts} />
             <Route path="/404" component={NotFound} />

@@ -12,13 +12,19 @@ const SideCategory = ({ click, show }) => {
   return (
     <div className={`side_category ${show && 'slide'}`}>
         <div className="container">
+            <Link to="/products" onClick={click}>
+                <div>
+                    <EmojiNatureOutlinedIcon />
+                    <p>All</p>
+                </div>
+            </Link>
             <Link to="/category/sneakers" onClick={click}>
                 <div>
                     <FitnessCenterOutlinedIcon />
                     <p>Sneakers</p>
                 </div>
             </Link>
-            <Link to="/category/jackets and hoodies" onClick={click}>
+            <Link to="/category/jackets-and-hoodies" onClick={click}>
                 <div>
                     <EmojiNatureOutlinedIcon />
                     <p>Jackets and Hoodies</p>
@@ -48,10 +54,22 @@ const SideCategory = ({ click, show }) => {
                     <p>Trousers</p>
                 </div>
             </Link>
-            <Link to="/" onClick={click}>
+            <Link to="/gender/unisex" onClick={click}>
                 <div>
                     <EmojiNatureOutlinedIcon />
                     <p>Unisex</p>
+                </div>
+            </Link>
+            <Link to="/gender/for-men" onClick={click}>
+                <div>
+                    <FitnessCenterOutlinedIcon />
+                    <p>For Men</p>
+                </div>
+            </Link>
+            <Link to="/gender/for-women" onClick={click}>
+                <div>
+                    <FitnessCenterOutlinedIcon />
+                    <p>For Women</p>
                 </div>
             </Link>
         </div>

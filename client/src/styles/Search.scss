@@ -17,20 +17,18 @@
             text-align: left;
             span {
                 color: $pink;
+                font-weight: 600;
             }
         }
         .mega {
-            font-size: $f-l;
-            font-weight: 400;
+            font-size: $f-md;
+            font-weight: 600;
         }
         h3 {
             font-size: $f-s;
             font-weight: 400;
             color: $primary-text-3;
             text-align: left;
-            span {
-                color: $pink;
-            }
         }
     }
     .sort {
@@ -127,13 +125,6 @@
         align-items: center;
         .titlee {
             margin-bottom: 0;
-            h2 {
-                font-size: $f-md;
-            }
-            
-            h3 {
-                font-size: $f-sm;
-            }
         }
     }
 }

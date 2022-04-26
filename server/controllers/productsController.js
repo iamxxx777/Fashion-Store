@@ -35,11 +35,20 @@ const getProducts = asyncHandler(async (req, res) => {
 const getCategoryProducts = asyncHandler(async (req, res) => {
     const pageSize = 10
     const pageNumber = Number(req.query.pageNumber) || 1
-    const category = req.query.category.toLowerCase()
+    const sortKey = req.query.sortKey
+    const sortValue = req.query.sortValue.toLowerCase() || 'desc'
+    const sort =  sortKey ? { [sortKey]: sortValue } : { updatedAt: 'desc' }
+    const category = req.query.category.toLowerCase() 
+        ? {
+            category: {
+                $regex: req.query.category,
+                $options: "i"
+            },
+        } : {}
     
-    const count = await Product.countDocuments({category: category})
+    const count = await Product.countDocuments({...category})
 
-    const products = await Product.find({category: category})
+    const products = await Product.find({...category})
         .skip(pageSize * (pageNumber - 1))
         .limit(pageSize)
 
@@ -52,7 +61,7 @@ const getCategoryProducts = asyncHandler(async (req, res) => {
 })
 
 const getGenderProducts = asyncHandler(async (req, res) => {
-    const pageSize = 3
+    const pageSize = 10
     const pageNumber = Number(req.query.pageNumber) || 1
     const sortKey = req.query.sortKey
     const sortValue = req.query.sortValue.toLowerCase() || 'desc'

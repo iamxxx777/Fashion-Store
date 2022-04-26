@@ -5,7 +5,7 @@ import '../../styles/FeaturedCategories.scss'
 
 const FeaturedCategories = () => {
     return (
-        <div className="featured_categories">
+        <section className="featured_categories">
             <div className="featured_categories_container">
                 <div className="featured_categories_title">
                     <h2>Featured Categories</h2>
@@ -57,7 +57,7 @@ const FeaturedCategories = () => {
 
                 </div>
             </div>
-        </div>
+        </section>
     )
 };
 

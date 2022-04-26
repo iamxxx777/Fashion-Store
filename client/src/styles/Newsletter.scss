@@ -1,0 +1,101 @@
+@import './Pallette.scss';
+@import './Mixins.scss';
+
+.newsletter {
+    width: 100%;
+    padding: $p-2 0;
+    .newsletter_container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        background-color: $background_1;
+        border-radius: 6px;
+        box-shadow: $shadow-6;
+        padding: $p-3 $p;
+        .info {
+            width: 100%;
+            h2 {
+                font: {
+                    size: $f-lg;
+                    weight: 700;
+                    family: $family-2;
+                }
+                margin-bottom: $m-s;
+                text-align: center;
+            }
+            p {
+                font-size: $f-sm;
+                text-align: center;
+                color: $primary-text-3;
+            }
+        }
+        .letter_form {
+            width: 100%;
+            form {
+                width: 100%;
+                input {
+                    width: calc(100% - 100px);
+                    height: 45px;
+                    background-color: transparent;
+                    box-shadow: $shadow-6;
+                    border: none;
+                    outline: none;
+                    font-size: $f-sm;
+                    padding: $m-s;
+                    border-top-left-radius: 6px;
+                    border-bottom-left-radius: 6px;
+                }
+                button {
+                    background-color: $pink;
+                    color: $secondary-text;
+                    width: 100px;
+                    height: 47px;
+                    font-size: $f-md;
+                    border: none;
+                    border-bottom-right-radius: 6px;
+                    border-top-right-radius: 6px;
+                }
+            }
+        }
+    }
+}
+
+
+@media (min-width: 500px) {
+    .newsletter {
+        .newsletter_container {
+            padding: $p-3 $p-2;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .newsletter {
+        .newsletter_container {
+            grid-template-columns: 1fr 1fr;
+            .info {
+                h2 {
+                    font-size: $f-xl;
+                    text-align: right;
+                    margin-bottom: 0.3rem;
+                }
+                p {
+                    line-height: 20px;
+                    text-align: right;
+                }
+            }
+            .letter_form {
+                form {
+                    max-width: 500px;
+                    input {
+                        height: 50px;
+                        padding: 0 $p;
+                    } 
+                    button {
+                        height: 52px;
+                    }
+                }
+            }
+        }
+    }
+}

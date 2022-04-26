@@ -11,6 +11,7 @@ import LatestProducts from '../components/Home/LatestProducts'
 import TopProductsSlide from '../components/Home/TopProductsSlide'
 import FeaturedCategories from '../components/Home/FeaturedCategories'
 import WhyUs from '../components/Home/WhyUs'
+import NewsLetter from '../components/Home/NewsLetter'
 import Loader from '../components/Loader/Loader'
 
 // STYLES
@@ -46,6 +47,7 @@ const Main = () => {
                     <LatestProducts products={products.products} />
                     <FeaturedCategories />
                     <WhyUs />
+                    <NewsLetter />
                 </div>
             </main>
         </Layout>

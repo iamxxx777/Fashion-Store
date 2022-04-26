@@ -37,14 +37,6 @@
     .products_page {
         padding: $p-2 $p-1;
         padding-top: $p;
-        .products_container {
-            .products {
-                .products_box {
-                    grid-template-columns: 1fr 1fr;
-                    gap: 1.5rem 1rem;
-                }
-            }
-        }
     }
 }
 
@@ -53,6 +45,7 @@
         .products_page {
             .products_container {
                 .products_header {
+                    margin-bottom: $m-2;
                     h1 {
                         font-size: $f-xxxl;
                     }
@@ -82,12 +75,12 @@
     }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1150px) {
     .products_page {
         .products_container {
             .products {
                 .products_box {
-                    grid-template-columns: repeat(4, 1fr);
+                    grid-template-columns: repeat(5, 1fr);
                     gap: 2rem;
                 }
             }

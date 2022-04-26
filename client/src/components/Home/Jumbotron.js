@@ -5,7 +5,7 @@ import '../../styles/Jumbotron.scss'
 
 const Jumbotron = () => {
     return (
-        <div className="jumbotron">
+        <section className="jumbotron">
             <div className="jumbo_container">
                 <div className="jumbo_grid">
                     <div className="jumbo_grid_item jumbo_dresses">
@@ -43,7 +43,7 @@ const Jumbotron = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 };
 

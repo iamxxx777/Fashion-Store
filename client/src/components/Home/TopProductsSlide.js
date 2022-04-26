@@ -56,7 +56,7 @@ const TopProductsSlide = ({ products }) => {
 
 
     return (
-        <div className="top_products_slide">
+        <section className="top_products_slide">
             <div className="top_products_slide_container">
                 <div className="top_products_slide_title">
                     <h2>Top Rated</h2>
@@ -72,8 +72,8 @@ const TopProductsSlide = ({ products }) => {
                     </Slider>
                 </div>
             </div>
-        </div>
+        </section>
     )
-};
+}
 
 export default TopProductsSlide;

@@ -66,7 +66,7 @@ const LatestProducts = ({ products }) => {
 
     
     return (
-        <div className="latest_products">
+        <section className="latest_products">
             <div className="latest_products_container">
                 <div className="latest_products_title">
                     <h2>New Arrivals</h2>
@@ -82,7 +82,7 @@ const LatestProducts = ({ products }) => {
                     </Slider>
                 </div>
             </div>
-        </div>
+        </section>
     )
 };
 

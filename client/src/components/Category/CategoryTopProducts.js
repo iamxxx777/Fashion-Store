@@ -1,4 +1,4 @@
-import Product from '../Products/Product'
+import ProductCard from '../Products/ProductCard'
 
 const CategoryTopProducts = ({ products }) => {
     return ( 
@@ -10,7 +10,7 @@ const CategoryTopProducts = ({ products }) => {
                         <h1>Top picks for you</h1>
                     </div>
                     <div className="top_products">
-                        {products.map((product) => (<Product key={product._id} product={product} />))}
+                        {products.map((product) => (<ProductCard key={product._id} product={product} />))}
                     </div>
                 </>
                 )
