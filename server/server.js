@@ -1,8 +1,12 @@
 require('dotenv').config()
+
+const path = require("path")
 const express = require("express")
-const app = express()
 
 const connectDB = require("./config/connectDB")
+connectDB()
+
+
 const usersRoute = require("./routes/userRoute")
 const productsRoute = require("./routes/productRoute")
 const ordersRoute = require("./routes/orderRoute")
@@ -10,7 +14,8 @@ const adminRoute = require("./routes/adminRoute")
 
 const { errorHandler, notFound } = require("./middleware/errorMiddleware")
 
-connectDB()
+const app = express()
+
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -29,6 +34,17 @@ app.get('/api/config/paystack', (req, res) =>
 
 app.use(errorHandler)
 app.use(notFound)
+
+
+const __currentDirectory = path.resolve();
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__currentDirectory, '/client/build')));
+
+  app.get('/*', function (req, res) {
+    res.sendFile(path.resolve(__currentDirectory, 'client', 'build', 'index.html'));
+  });
+}
 
 const port = process.env.PORT || 5000
 

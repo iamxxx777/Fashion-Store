@@ -47,8 +47,6 @@ export const userLoginReducer = (state = {userInfo : {}}, action) => {
     }
 }
 
-
-
 export const userRegisterReducer = (state = {userData: {}}, action) => {
     switch(action.type) {
         case actionTypes.SIGNUP_REQUEST:
@@ -73,7 +71,6 @@ export const userRegisterReducer = (state = {userData: {}}, action) => {
             return state;
     }
 }
-
 
 export const userDetailsReducer = (state = {user: {}}, action) => {
     switch(action.type) {
@@ -264,3 +261,27 @@ export const addAddressReducer = (state = {result: {}}, action) => {
     }
 }
 
+
+export const deleteAddressReducer = (state = {result: {}}, action) => {
+    switch(action.type) {
+        case actionTypes.DELETE_ADDRESS_REQUEST:
+            return {
+                loading: true,
+                result: {},
+            }
+        case actionTypes.DELETE_ADDRESS_SUCCESS:
+            return {
+                loading: false,
+                result: action.payload,
+            }
+        case actionTypes.DELETE_ADDRESS_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            }
+        case actionTypes.DELETE_ADDRESS_RESET:
+            return {}
+        default:
+            return state;
+    }
+}

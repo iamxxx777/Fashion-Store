@@ -35,7 +35,8 @@ import {
     getAllUsersReducer,
     getAddressReducer,
     editAddressReducer,
-    addAddressReducer
+    addAddressReducer,
+    deleteAddressReducer
 } from "./reducers/userReducer"
 
 import {
@@ -75,6 +76,7 @@ const reducers = combineReducers({
     getAddress: getAddressReducer,
     editAddress: editAddressReducer,
     addAddress: addAddressReducer,
+    deleteAddress: deleteAddressReducer,
     dashboard: getDashboardStatsReducer,
     adminOrders: getAdminOrdersReducer,
     updateOrder: updateOrderReducer,

@@ -9,9 +9,9 @@ const NewsLetter = () => {
                     <p>Recieve updates about latest products and promos when you sign up to our newsletter</p>
                 </div>
                 <div className="letter_form">
-                    <form>
+                    <form onClick={(e) => e.preventDefault()}>
                         <input type="email" name="email" placeholder="janedoe@gmail.com" />
-                        <button>Submit</button>
+                        <button>Subscribe</button>
                     </form>
                 </div>
             </div>

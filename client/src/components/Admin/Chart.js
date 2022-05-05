@@ -8,7 +8,7 @@ const Chart = ({ data }) => {
                     <h2>Sale Stats</h2>
                     <LineChart width={620} height={300} data={data}>
                         <Line type="monotone" dataKey="value" stroke="#D23F57" margin={{ top: 5, right: 10, bottom: 5, left: 0 }} />
-                        <CartesianGrid stroke="#2B3445" strokeDasharray="2 2" />
+                        <CartesianGrid stroke="#2B3445" strokeDasharray="2 5" />
                         <XAxis dataKey="month" />
                         <YAxis />
                     </LineChart>

@@ -14,7 +14,12 @@ export const loginUser = (details) => async (dispatch) => {
         })
 
         localStorage.setItem("userInfo", JSON.stringify(data))
-        document.location.href = '/account'
+
+        if(data.isAdmin === true) {
+            document.location.href = '/admin'
+        } else {
+            document.location.href = '/account'
+        }
 
     } catch (error) {
         dispatch({
@@ -391,6 +396,43 @@ export const addAddress = (formData) => async (dispatch, getState) => {
 
         dispatch({
             type: actionTypes.ADD_ADDRESS_FAIL,
+            payload: message,
+        })
+    }
+}
+
+export const deleteAddress = (id) => async (dispatch, getState) => {
+    try {
+        dispatch({ type: actionTypes.DELETE_ADDRESS_REQUEST })
+
+        const {
+            loginUser: { userInfo },
+        } = getState()
+      
+        const config = {
+          headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        }
+
+        const { data } = await axios.delete(`api/users/profile/${userInfo._id}/address/${id}`, config)
+
+        dispatch({
+            type: actionTypes.DELETE_ADDRESS_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        const message = error.response && error.response.data.message
+                        ? error.response.data.message
+                        : error.message;
+
+        if (message === "Not authorized, token failed") {
+            logOut()
+        }
+
+        dispatch({
+            type: actionTypes.DELETE_ADDRESS_FAIL,
             payload: message,
         })
     }

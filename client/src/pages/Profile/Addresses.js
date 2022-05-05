@@ -1,42 +1,44 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom' 
-import { useSelector } from 'react-redux'
-import axios from 'axios'
+import { useSelector, useDispatch } from 'react-redux'
 import { useAlert } from 'react-alert'
 
-
+// MUI ICONS
 import MenuIcon from '@mui/icons-material/Menu'
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
 
+// COMPONENT
 import Address from "../../components/Profile/Address"
+
+// REDUX ACTIONS
+import { deleteAddress } from '../../redux/actions/userActions'
+import { DELETE_ADDRESS_RESET } from '../../redux/constants/userConstants'
+
 
 import '../../styles/ProfileAddresses.scss'
 
 const Addresses = ({ click, addresses }) => {
 
     const sortedAddresses = addresses?.sort((a, b) => b.main - a.main)
-    const { userInfo } = useSelector((state) => state.loginUser)
+    const { result, error } = useSelector((state) => state.deleteAddress)
+
     const alert = useAlert()
+    const dispatch = useDispatch()
 
-    const config = {
-        headers: {
-            Authorization: `Bearer ${userInfo.token}`,
-        },
-    }  
 
-    const handleDelete = async (id) => {
-        try {
-            if(window.confirm('Delete this address')) {
-                const { data } = await axios.delete(`/api/users/profile/${userInfo._id}/address/${id}`, config)
-                if(data.success) {
-                    alert.success("Address deleted successfully")
-                }
-                window.location.reload()
-            }
-        } catch (error) {
+    const handleDelete = (id) => {
+        dispatch(deleteAddress(id))
+    }
+
+    useEffect(() => {
+        if(result && result.success) {
+            alert.success("Address deleted successfully")
+            dispatch({type: DELETE_ADDRESS_RESET})
+            window.location.reload()
+        } else if(error) {
             alert.error(error)
         }
-        
-    }
+    }, [dispatch, result, error, alert])
 
     return (
         <section className="customer_addresses">
