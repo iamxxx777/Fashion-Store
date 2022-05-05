@@ -96,7 +96,7 @@ const Payment = () => {
             handlePayment(response)
         },
         onClose: () => {
-            alert.show("You no wan buy from cultist, you wan collect")          
+            alert.show("Why na, you wan collect")          
         },
     }
 
