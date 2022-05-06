@@ -1,18 +1,20 @@
 {
-  "name": "store",
+  "name": "Chavonn",
   "version": "1.0.0",
-  "description": "E-commerce Store",
+  "description": "E-commerce Fashion Store",
   "main": "server.js",
   "scripts": {
     "start": "node server/server.js",
     "client": "npm start --prefix client",
     "server": "nodemon server/server.js",
-    "populateProducts": "node server/seedProducts.js"
+    "populateProducts": "node server/seedProducts.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [
     "E-COMMERCE",
     "REACT",
-    "EXPRESS"
+    "EXPRESS",
+    "PAYSTACK"
   ],
   "author": "Dayo-ajobiewe Hope",
   "license": "MIT",
