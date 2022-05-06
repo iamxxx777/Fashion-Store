@@ -32,9 +32,6 @@ app.get('/api/config/paystack', (req, res) =>
 )
 
 
-app.use(errorHandler)
-app.use(notFound)
-
 
 const __currentDirectory = path.resolve();
 
@@ -45,6 +42,9 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__currentDirectory, 'client', 'build', 'index.html'));
   });
 }
+
+app.use(errorHandler)
+app.use(notFound)
 
 const port = process.env.PORT || 5000
 
