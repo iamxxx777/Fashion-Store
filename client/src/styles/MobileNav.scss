@@ -11,6 +11,7 @@
     .mobile_nav_container {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
+        max-width: 100%;
         a, button {
             &:hover, :focus, :visited {
                 background-color: $pink-shade;
