@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const path = require("path")
 const express = require("express")
-const expressStaticGzip = require("express-static-gzip")
+const expressStaticGzip = require('express-static-gzip')
 
 const connectDB = require("./config/connectDB")
 connectDB()
@@ -37,7 +37,9 @@ app.get('/api/config/paystack', (req, res) =>
 const __currentDirectory = path.resolve();
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__currentDirectory, expressStaticGzip('/client/build'))));
+  // app.use(express.static(path.join(__currentDirectory, '/client/build')));
+
+  app.use("/", expressStaticGzip(path.join(__currentDirectory, '/client/build')));
 
   app.get('/*', function (req, res) {
     res.sendFile(path.resolve(__currentDirectory, 'client', 'build', 'index.html'));
