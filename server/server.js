@@ -22,10 +22,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 
-app.use("/api/users", expressStaticGzip(usersRoute))
-app.use("/api/products", expressStaticGzip(productsRoute))
-app.use("/api/orders", expressStaticGzip(ordersRoute))
-app.use("/api/admin", expressStaticGzip(adminRoute))
+app.use("/api/users", usersRoute)
+app.use("/api/products", productsRoute)
+app.use("/api/orders", ordersRoute)
+app.use("/api/admin", adminRoute)
 
 
 app.get('/api/config/paystack', (req, res) =>
@@ -37,7 +37,7 @@ app.get('/api/config/paystack', (req, res) =>
 const __currentDirectory = path.resolve();
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__currentDirectory, '/client/build')));
+  app.use(express.static(path.join(__currentDirectory, expressStaticGzip('/client/build'))));
 
   app.get('/*', function (req, res) {
     res.sendFile(path.resolve(__currentDirectory, 'client', 'build', 'index.html'));
