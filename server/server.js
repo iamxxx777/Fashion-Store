@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const path = require("path")
 const express = require("express")
+const expressStaticGzip = require("express-static-gzip")
 
 const connectDB = require("./config/connectDB")
 connectDB()
@@ -21,10 +22,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 
-app.use("/api/users", usersRoute)
-app.use("/api/products", productsRoute)
-app.use("/api/orders", ordersRoute)
-app.use("/api/admin", adminRoute)
+app.use("/api/users", expressStaticGzip(usersRoute))
+app.use("/api/products", expressStaticGzip(productsRoute))
+app.use("/api/orders", expressStaticGzip(ordersRoute))
+app.use("/api/admin", expressStaticGzip(adminRoute))
 
 
 app.get('/api/config/paystack', (req, res) =>
