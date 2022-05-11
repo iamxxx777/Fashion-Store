@@ -4,9 +4,6 @@
     width: 100%;
     background-color: $background-1;
     padding: $p-s $p-1;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
     z-index: 3;
     .header_container {
         max-width: 1250px;
@@ -59,6 +56,9 @@
     }
 
     .header {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
         .header_container {
             display: flex;
             flex-direction: column;
