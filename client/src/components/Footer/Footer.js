@@ -7,22 +7,22 @@ const Footer = () => {
       <footer className='footer'>
         <div className="footer_container">
             <div className="footer_about">
-                <h2>G-Store</h2>
+                <Link to="/"><h2>Chavonn</h2></Link>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                    Esse velit quas hic ad ut magni nobis ullam omnis! Iusto repellat 
-                    voluptates vero nemo ea autem!
+                    We are a brand focused on bringing the best and only the best of premium and high end fashion items to your doorstep.
+                    Browse through different categories of products to find the one that best suit your taste.
+                    Whatever you want, we got it.
                 </p>
             </div>
             <div className="footer_categories">
                 <h2>Categories</h2>
                 <div>
-                    <Link to="/cart">Unisex</Link>
-                    <Link to="/cart">For Women</Link>
-                    <Link to="/cart">For Men</Link>
-                    <Link to="/cart">Shirts</Link>
-                    <Link to="/cart">Gym</Link>
-                    <Link to="/cart">Jackets and Hoodies</Link>
+                    <Link to="/gender/unisex">Unisex</Link>
+                    <Link to="/gender/for-women">For Women</Link>
+                    <Link to="/gender/for-men">For Men</Link>
+                    <Link to="/category/shirts">Shirts</Link>
+                    <Link to="/category/gym">Gym</Link>
+                    <Link to="/category/jackets-and-hoodies">Jackets and Hoodies</Link>
                 </div>
             </div>
 

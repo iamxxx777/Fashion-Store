@@ -11,10 +11,10 @@ const MiniNav = () => {
         <div className='mini_nav'>
             <div className="container mini_container">
                 <div className="mini_logo">
-                    <h2>Gstore</h2>
+                    <Link to="/"><h2>Chavonn</h2></Link>
                 </div>
                 <div className="mini_contact">
-                    <div>
+                    <div className='mini-phone'>
                         <LocalPhoneOutlinedIcon />
                         <a href="tel:+2348166179988">+23408166179988</a>
                     </div>

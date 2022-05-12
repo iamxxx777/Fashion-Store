@@ -32,8 +32,9 @@
         }
         .cart_header {
             font-size: $f-l;
+            font-weight: 600;
             text-align: left;
-            margin-bottom: $m;
+            margin-bottom: $m-1;
             span {
                 color: $pink;
             }
@@ -46,21 +47,30 @@
                 display: flex;
                 justify-content: flex-end;
                 .cart_summary_container {
-                    width: 250px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-end;
+                    max-width: 300px;
+                    width: 100%;
+                    padding: 1.5rem;
+                    background-color: $background_1;
+                    box-shadow: $shadow_3;
+                    border-radius: 6px;
+                    .summary {
+                        text-align: left;
+                        font-size: $f-md;
+                        font-weight: 500;
+                        text-transform: uppercase;
+                        margin-bottom: 1.5rem;
+                        width: 100%;
+                    }
                     .cart_summary_item {
                         padding: 0.6rem 0;
                         display: flex;
                         justify-content: space-between;
-                        border-bottom: solid 1px $primary-text;
-                        margin-bottom: $m;
                         width: 100%;
                         h2 {
                             font-size: $f-s;
-                            font-weight: 600;
+                            font-weight: 400;
                             text-transform: uppercase;
+                            color: $primary-text-2;
                         }
                         h3 {
                             font-size: $f-md;
@@ -140,14 +150,6 @@
                 display: grid;
                 grid-template-columns: 2fr 1fr;
                 gap: 1rem;
-                .cart_summary {
-                    .cart_summary_container {
-                        width: 300px;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: flex-end;
-                    }
-                }
             }
         }
     }

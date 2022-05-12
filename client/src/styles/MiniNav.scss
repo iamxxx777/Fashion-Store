@@ -15,8 +15,8 @@
         align-items: center;
         .mini_logo {
             h2 {
-                font-size: 22px;
-                font-weight: 700;
+                font-size: $f-md;
+                font-weight: 600;
             }
         }
         .mini_contact {
@@ -32,8 +32,14 @@
                     font-weight: 400;
                     margin-left: 0.5rem;
                 }
+                svg {
+                    width: 0.75em;
+                    height: 0.75em;
+                }
             }
-            
+            .mini-phone {
+                display: none;
+            }
         }
         .mini_links {
             display: none;
@@ -58,6 +64,18 @@
             }
             .mini_contact {
                 justify-content: flex-end;
+                div {
+                    svg {
+                        width: 1em;
+                        height: 1em;
+                    }
+                }
+                .mini-phone {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    margin-right: 0.6rem;
+                }
             }
             .mini_links {
                 display: flex;

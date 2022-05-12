@@ -28,7 +28,7 @@ const Nav = () => {
             <div className="header_container">
                 <div className="search_div">
                     <div className="header_logo hide">
-                        <h2>G-Store</h2>
+                        <Link to="/"><h2>Chavonn</h2></Link>
                     </div>
                     <div className="search_bar">
                         <div className="search">

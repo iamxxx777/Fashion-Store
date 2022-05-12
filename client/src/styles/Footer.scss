@@ -15,13 +15,14 @@
         .footer_about {
             text-align: left;
             h2 {
-                font-size: 30px;
+                font-size: $f-xl;
+                font-weight: 600;
                 margin-bottom: 1rem;
                 color: $pink;
                 font-family: 'Poppins', sans-serif;
             }
             p {
-                font-size: 15px;
+                font-size: $f-sm;
                 line-height: 20px;
             }
         }
@@ -29,7 +30,8 @@
         .footer_customer_care {
             h2 {
                         text-align: left;
-                        font-size: 22px;
+                        font-size: $f-lg;
+                        font-weight: 600;
                         margin-bottom: 1rem;
                         color: $secondary-text;
                         font-family: 'Poppins', sans-serif;
@@ -62,7 +64,8 @@
         .footer_contact {
                     h2 {
                         text-align: left;
-                        font-size: 22px;
+                        font-size: $f-lg;
+                        font-weight: 600;
                         margin-bottom: 1rem;
                         color: $secondary-text;
                         font-family: 'Poppins', sans-serif;
@@ -142,6 +145,17 @@
         padding: 3rem;
         .footer_container {
             grid-template-columns: 1.5fr 1fr 1fr;
+            .footer_about {
+                h2 {
+                    font-size: $f-xxl;
+                }
+            }
+            .footer_categories,
+            .footer_customer_care {
+                h2 {
+                    font-size: $f-xl;
+                }
+            }
         }
     }
 }

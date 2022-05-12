@@ -55,6 +55,7 @@ const Cart = () => {
                                 </div>
                                 <div className="cart_summary">
                                     <div className="cart_summary_container">
+                                        <h3 className="summary">Cart Summary</h3>
                                         <div className="cart_summary_item">
                                             <h2>Total Items</h2>
                                             <h3>{totalItems()}</h3>
