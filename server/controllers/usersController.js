@@ -65,7 +65,6 @@ const loginUser = asyncHandler(async (req, res) => {
 
 const updatePassword = asyncHandler(async (req, res) => {
     const { currentPassword, newPassword } = req.body
-    console.log(req.body)
     const user = await User.findById(req.params.id)
 
     const match = await bcrypt.compare(currentPassword, user.password)
@@ -143,7 +142,6 @@ const getUserProfile = asyncHandler(async(req, res) => {
         throw new Error("User does not exist")
     }
 })
-
 
 const getAllUsers = asyncHandler(async (req, res) => {
     const users = await User.find({}).select("-password")
