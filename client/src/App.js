@@ -11,17 +11,20 @@ import Loader from './components/Loader/Loader'
 // Pages
 import Home from './pages/Home'
 import ProductPage from './pages/ProductPage'
-// import Signin from './pages/Signin'
 import Cart from './pages/Cart'
+import Products from './pages/Products'
+// import Signin from './pages/Signin'
 // import Shipping from './pages/Checkout/Shipping'
 // import OrderReview from './pages/Checkout/OrderReview'
 // import Payment from './pages/Checkout/Payment'
 // import Account from './pages/Profile/Account'
 // import CategoryProducts from './pages/CategoryProducts'
 // import GenderProducts from './pages/GenderProducts'
-import Products from './pages/Products'
 // import NotFound from './pages/NotFound'
 // import AdminPage from './pages/Admin/AdminPage'
+
+import "./App.css";
+
 
 //Splitted Pages
 // These pages would be loaded on request by the user
@@ -36,7 +39,6 @@ const OrderReview = React.lazy(() => import("./pages/Checkout/OrderReview"));
 const Payment = React.lazy(() => import("./pages/Checkout/Payment"));
 const NotFound = React.lazy(() => import('./pages/NotFound'))
 
-import './App.css'
 
 function App() {
     return (
