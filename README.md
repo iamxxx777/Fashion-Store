@@ -29,7 +29,7 @@ Chavonn is a MERN Stack E-commerce application for a fashion retailing company.
 Chavonn features a modern and clean UI that is guaranteed to keep users hooked. Users are presented with top and latest products on the home page and they can also browse or search for the products they have in mind. To purchase an item, users are required to open an account for ease of transaction, they then proceed to adding a shipping address (which is stored to the user account for future use), then a final review of the items selected and then they are directed to the payment page. Customers can choose to pay with their credit cards, USSD Code or bank transfer. All payment transactions are made easy with paystack. On successful payment, customers are redirected to their account where they can see all the details about the order made.
 
 
-### Built With
+## Built With
 
 Chavonn is a modern E-commerce Application built with a react frontend and an express backend. The state functionality of the frontend is handled with React-Redux and the application is styled with SCSS. Material_UI was also used while building this application, it was not used throughout but it contributed significantly to the structure of the code.
 
