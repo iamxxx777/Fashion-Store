@@ -33,7 +33,6 @@ app.get('/api/config/paystack', (req, res) =>
 )
 
 
-
 const __currentDirectory = path.resolve();
 
 if (process.env.NODE_ENV === 'production') {
