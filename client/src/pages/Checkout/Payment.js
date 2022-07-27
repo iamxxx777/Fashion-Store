@@ -62,7 +62,7 @@ const Payment = () => {
         return total.toFixed(2);
     }
 
-    var orderDetails = {
+    let orderDetails = {
         shippingAddress,
         orderItems: cartItems,
         itemsPrice: totalItemsPrice(),

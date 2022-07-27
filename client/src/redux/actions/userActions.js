@@ -103,7 +103,6 @@ export const deleteUser = (id) => async (dispatch, getState) => {
     }
 }
 
-
 export const getUserInfo = (id) => async (dispatch, getState) => {
     try {
         dispatch({ type: actionTypes.GET_USER_INFO_REQUEST })
@@ -140,7 +139,6 @@ export const getUserInfo = (id) => async (dispatch, getState) => {
         });
     }
 }
-
 
 export const editProfile = (formData) => async (dispatch, getState) => {
     try {
@@ -179,7 +177,6 @@ export const editProfile = (formData) => async (dispatch, getState) => {
     }
 }
 
-
 export const updatePassword = (formData) => async (dispatch, getState) => {
     try {
         dispatch({ type: actionTypes.UPDATE_PASSWORD_REQUEST })
@@ -214,7 +211,6 @@ export const updatePassword = (formData) => async (dispatch, getState) => {
         });
     }
 }
-
 
 export const upgradeUser = (id) => async (dispatch, getState) => {
     try {
@@ -433,6 +429,62 @@ export const deleteAddress = (id) => async (dispatch, getState) => {
 
         dispatch({
             type: actionTypes.DELETE_ADDRESS_FAIL,
+            payload: message,
+        })
+    }
+}
+
+export const forgotPassword = (formData) => async (dispatch) => {
+    try {
+        dispatch({ type: actionTypes.FORGOT_PASSWORD_REQUEST })
+
+        const { data } = await axios.post('/api/users/forgot-password', formData)
+        dispatch({
+            type: actionTypes.FORGOT_PASSWORD_SUCCESS,
+            payload: data,
+        })
+    } catch (error) {
+        const message =
+            error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+
+        if (message === 'Not authorized, token failed') {
+            logOut()
+        }
+
+        dispatch({
+            type: actionTypes.FORGOT_PASSWORD_FAIL,
+            payload: message,
+        })
+    }
+}
+
+
+export const resetPassword = (formData) => async (dispatch) => {
+    try {
+        dispatch({ type: actionTypes.RESET_PASSWORD_REQUEST })
+
+        const { data } = await axios.post(
+            '/api/users/reset-password',
+            formData
+        )
+        dispatch({
+            type: actionTypes.RESET_PASSWORD_SUCCESS,
+            payload: data,
+        })
+    } catch (error) {
+        const message =
+            error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+
+        if (message === 'Not authorized, token failed') {
+            logOut()
+        }
+
+        dispatch({
+            type: actionTypes.RESET_PASSWORD_FAIL,
             payload: message,
         })
     }

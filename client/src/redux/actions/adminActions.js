@@ -23,11 +23,17 @@ export const getDashboardStats = () => async (dispatch, getState) => {
         })
 
     } catch (error) {
+        const message =
+            error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+
+        if (message === 'Not authorized, token failed') {
+            logOut()
+        }
         dispatch({
             type: actionTypes.GET_DASHBOARD_STATS_FAIL,
-            payload: error.response && error.response.data.message
-                        ? error.response.data.message
-                        : error.message,
+            payload: message,
         })
     }
 }
@@ -57,11 +63,17 @@ export const getAdminProducts = (pageNumber = '', sortKey = '', sortValue = '', 
         })
 
     } catch (error) {
+        const message =
+            error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+
+        if (message === 'Not authorized, token failed') {
+            logOut()
+        }
         dispatch({
             type: actionTypes.GET_ADMIN_PRODUCTS_FAIL,
-            payload: error.response && error.response.data.message
-                        ? error.response.data.message
-                        : error.message,
+            payload: message,
         });
     }
 };
@@ -86,11 +98,17 @@ export const getOrders = (keyword = "", pageNumber = "") => async (dispatch, get
         })
 
     } catch (error) {
+        const message =
+            error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+
+        if (message === 'Not authorized, token failed') {
+            logOut()
+        }
         dispatch({
             type: actionTypes.GET_ADMIN_ORDERS_FAIL,
-            payload: error.response && error.response.data.message
-                        ? error.response.data.message
-                        : error.message,
+            payload: message,
         })
     }
 }

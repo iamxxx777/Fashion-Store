@@ -17,58 +17,51 @@
         .stats {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1rem;
-            .sales, .orders, .products {
-                @include flex_left;
-                padding: $p;
+            gap: 1.5rem;
+            .stat {
+                padding: 1.5rem 1.25rem;
                 background-color: $background_1;
-                box-shadow: $shadow-3;
-                border-radius: 4px;
+                box-shadow: $shadow-7;
+                border-radius: 0.75rem;
+                @include flex_btw;
+                flex-direction: row-reverse;
+                gap: 1rem;
                 .icon {
-                    width: 45px;
-                    height: 45px;
-                    border-radius: 50%;
-                    @include flex_center;
-                    margin-right: $m;
+                    .icon_circle {
+                        width: 55px;
+                        height: 55px;
+                        border-radius: 50%;
+                        @include flex_center;
+                        svg {
+                            fill: $white;
+                        }
+                    }
+                    .sales {
+                        background-color: $green;
+                    }
+                    .orders_stat {
+                        background-color: $salmon;
+                    }
+                    .products {
+                        background-color: $sea-blue;
+                    }
                 }
-                .stat {
+                .stat_info {
                     text-align: left;
+                    font-family: $family-2;
                     h2 {
                         font-size: $f-sm;
-                        font-weight: 600;
-                        margin-bottom: $m-s;
+                        font-weight: 500;
+                        color: $primary-text-3;
+                        margin-bottom: 0.5rem;
                     }
                     h3 {
-                        font-weight: 400;
-                        font-size: $f-s;
+                        font-size: $f-lg;
+                        font-weight: 600;
                     }
                 }
             }
-            .sales {
-                .icon {
-                    background-color: rgba(15, 52, 96, 0.1);
-                    svg {
-                        color: #0f3460;
-                    }
-                }
-            }
-            .orders {
-                margin-top: 0 !important;
-                .icon {
-                    background-color: rgba(39, 207, 47, 0.1);
-                    svg {
-                        color: #27cf2f;
-                    }
-                }
-            }
-            .products {
-                .icon {
-                    background-color: $pink-shade;
-                    svg {
-                        color: $pink;
-                    }
-                }
-            }
+            
         }
         .charts {
             width: 100%;
@@ -181,19 +174,6 @@
             }
             .stats {
                 grid-template-columns: 1fr 1fr;
-                .sales, .orders, .products {
-                    padding: $p;
-                    .icon {
-                        width: 50px;
-                        height: 50px;
-                        margin-right: $m-1;
-                    }
-                    .stat {
-                        h2 {
-                            font-size: $f-md;
-                        }
-                    }
-                }
             }
             .charts {
                 .charts_container {

@@ -23,7 +23,7 @@ export const deleteUserReducer = (state = {}, action) => {
 }
 
 export const userLoginReducer = (state = {userInfo : {}}, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case actionTypes.LOGIN_REQUEST:
             return {
                 loginLoading: true,
@@ -31,24 +31,26 @@ export const userLoginReducer = (state = {userInfo : {}}, action) => {
         case actionTypes.LOGIN_SUCCESS:
             return {
                 loginLoading: false,
-                loginUser: action.payload
+                loginUser: action.payload,
             }
         case actionTypes.LOGIN_FAIL:
             return {
                 loginLoading: false,
-                loginError: action.payload
+                loginError: action.payload,
             }
+        case actionTypes.LOGIN_RESET:
+            return {}
         case actionTypes.LOGOUT_USER:
             return {
                 loginUser: {},
             }
         default:
-            return state;
+            return state
     }
 }
 
 export const userRegisterReducer = (state = {userData: {}}, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case actionTypes.SIGNUP_REQUEST:
             return {
                 registerLoading: true,
@@ -56,19 +58,21 @@ export const userRegisterReducer = (state = {userData: {}}, action) => {
         case actionTypes.SIGNUP_SUCCESS:
             return {
                 registerLoading: false,
-                registerUser: action.payload
+                registerUser: action.payload,
             }
         case actionTypes.SIGNUP_FAIL:
             return {
                 registerLoading: false,
-                registerError: action.payload
+                registerError: action.payload,
             }
+        case actionTypes.SIGNUP_RESET:
+            return {}
         case actionTypes.LOGOUT_USER:
             return {
                 registerUser: {},
             }
         default:
-            return state;
+            return state
     }
 }
 
@@ -261,7 +265,6 @@ export const addAddressReducer = (state = {result: {}}, action) => {
     }
 }
 
-
 export const deleteAddressReducer = (state = {result: {}}, action) => {
     switch(action.type) {
         case actionTypes.DELETE_ADDRESS_REQUEST:
@@ -283,5 +286,51 @@ export const deleteAddressReducer = (state = {result: {}}, action) => {
             return {}
         default:
             return state;
+    }
+}
+
+export const forgotPasswordReducer = (state = {}, action) => {
+    switch (action.type) {
+        case actionTypes.FORGOT_PASSWORD_REQUEST:
+            return {
+                loading: true,
+            }
+        case actionTypes.FORGOT_PASSWORD_SUCCESS:
+            return {
+                loading: false,
+                result: action.payload,
+            }
+        case actionTypes.FORGOT_PASSWORD_FAIL:
+            return {
+                loading: false,
+                error: action.payload,
+            }
+        case actionTypes.FORGOT_PASSWORD_RESET:
+            return {}
+        default:
+            return state
+    }
+}
+
+export const resetPasswordReducer = (state = {}, action) => {
+    switch (action.type) {
+        case actionTypes.RESET_PASSWORD_REQUEST:
+            return {
+                loading: true,
+            }
+        case actionTypes.RESET_PASSWORD_SUCCESS:
+            return {
+                loading: false,
+                result: action.payload,
+            }
+        case actionTypes.RESET_PASSWORD_FAIL:
+            return {
+                loading: false,
+                error: action.payload,
+            }
+        case actionTypes.RESET_PASSWORD_RESET:
+            return {}
+        default:
+            return state
     }
 }

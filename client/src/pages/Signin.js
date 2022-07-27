@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link }  from 'react-router-dom'
-import { useAlert } from 'react-alert'
 
 // MUI COMPONENTS
 import PropTypes from 'prop-types'
@@ -16,10 +15,10 @@ import InputLabel from '@mui/material/InputLabel'
 import InputAdornment from '@mui/material/InputAdornment'
 import FormControl from '@mui/material/FormControl'
 import LoadingButton from '@mui/lab/LoadingButton'
+import Alert from '@mui/material/Alert'
 
 // LAYOUT
 import Layout from '../components/Layout/Layout'
-
 
 //ICONS
 import Visibility from '@mui/icons-material/Visibility'
@@ -28,6 +27,7 @@ import SendIcon from '@mui/icons-material/Send'
 
 // REDUX ACTIONS
 import { loginUser, registerUser } from "../redux/actions/userActions"
+import { LOGIN_RESET, SIGNUP_RESET } from '../redux/constants/userConstants'
 
 // STYLES
 import '../styles/Signin.scss'
@@ -77,9 +77,8 @@ const Signin = () => {
     const { registerError, registerLoading } = useSelector((state) => state.registerUser)
 
     const dispatch = useDispatch()
-    const alert = useAlert()
 
-
+    // FORM STATES
     const [tabValue, setTabValue] = useState(0)
     const [loginEmail, setLoginEmail] = useState("")
     const [loginPassword, setLoginPassword] = useState("")
@@ -90,6 +89,8 @@ const Signin = () => {
     const [showLoginPassword, setShowLoginPassword] = useState(false)
     const [showRegisterPassword, setShowRegisterPassword] = useState(false)
 
+    const [formError, setFormError] = useState(false)
+
     const handleMouseDownPassword = (event) => {
         event.preventDefault()
     }
@@ -97,6 +98,15 @@ const Signin = () => {
     const handleTabChange = (event, newValue) => {
         setTabValue(newValue);
     };
+
+    const handleRegisterChange = () => {
+        setFormError("")
+        dispatch({type: SIGNUP_RESET})
+    }
+
+    const handleLoginChange = () => {
+        dispatch({ type: LOGIN_RESET })
+    }
 
     const handleLogin = async (e) => {
         e.preventDefault()
@@ -109,7 +119,7 @@ const Signin = () => {
         e.preventDefault()
 
         if(registerPassword.length < 6) {
-            alert.error('Password must be a minimum of 6 characters')
+            setFormError('Password must be a minimum of 6 characters')
         } else {
             const formData = { 
                 email: registerEmail, 
@@ -136,9 +146,9 @@ const Signin = () => {
                         </Box>
                         <TabPanel value={tabValue} index={0}>
                             <div className="login">
-                                <form onSubmit={handleLogin}>
+                                <form onSubmit={handleLogin} onChange={() => handleLoginChange()}>
                                     <h2>Login</h2>
-                                    {loginError && <span style={{ color: "red", marginBottom: "1rem" }}>{loginError}</span>}
+                                    {loginError && <Alert sx={{ mb: 3 }} severity='error'>{loginError}</Alert>}
                                     <Grid container rowSpacing={3} columnSpacing={6}>
                                         <Grid item xs={12}>
                                             <TextField 
@@ -189,16 +199,17 @@ const Signin = () => {
                                     >
                                         Login
                                     </LoadingButton>
-                                    <Link to="/password/reset">Forgot password</Link>
+                                    <Link to="/forgot-password">Forgot password</Link>
                                     <p>New here, <button type="button" onClick={() => setTabValue(1)}>Sign up</button></p>
                                 </form>
                             </div>
                         </TabPanel>
                         <TabPanel value={tabValue} index={1}>
                             <div className="signin">
-                                <form onSubmit={handleSignin}>
+                                <form onSubmit={handleSignin} onChange={() => handleRegisterChange()}>
                                     <h2>Signin</h2>
-                                    {registerError && <span style={{ color: "red", marginBottom: "2rem" }}>{registerError}</span>}
+                                    {registerError && <Alert severity='error' sx={{ mb: 3 }}>{registerError}</Alert>}
+                                    {formError && <Alert severity='error' sx={{ mb: 3 }}>{formError}</Alert>}
                                     <Grid container rowSpacing={3} columnSpacing={6}>
                                         <Grid item xs={12}>
                                             <TextField 

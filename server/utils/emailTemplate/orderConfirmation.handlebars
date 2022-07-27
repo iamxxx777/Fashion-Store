@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <style>
+            h3 {
+                font-size: 1.35rem;
+                margin-bottom: 0.75rem;
+                font-weight: 500;
+            }
+            footer { 
+                margin-top: 5rem; 
+            }
+            p {
+
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+                text-align: left;
+            }
+
+            .delivery-details {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                width: 100%;
+                margin: 1.5rem 0;
+            }
+
+            .user h2, .address h2 {
+                text-align: center;
+                font-size: 1.3rem;
+                margin-bottom: 0.5rem;
+            }
+            .user p, .address p {
+                text-align: left;
+                font-size: 1rem;
+                padding: 0.25rem 0.25rem 0.75rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Dear {{name}},</h3>
+        <p>Thank you for shopping on Chavonn</p>
+        <p>Your order {{id}} has been confirmed successfully</p>
+        <p>It will be packed and shipped as soon as possible. You will recieve a notification from us once the item (s)
+             are available for delivery.
+        </p>
+
+        <div class="delivery-details">
+            <div class="user">
+                <h2>Recipient Details</h2>
+                <p>
+                    <span>{{name}}</span>
+                    <span>{{phone}}</span>
+                </p>
+            </div>
+            <div class="address">
+                <h2>Delivery Address</h2>
+                <p>{{address}}</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Happy shopping and warm regards from everyone at Chavonn.</p>
+        </footer>
+    </body>
+</html>

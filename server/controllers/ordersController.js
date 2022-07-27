@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler")
 const Order = require("../models/order")
 const Product = require("../models/product")
-const sendMessage = require("../utils/nodemailer")
+const sendMail = require('../utils/sendMail.js')
 
 
 const newOrder = asyncHandler(async (req, res) => {
@@ -53,13 +53,17 @@ const newOrder = asyncHandler(async (req, res) => {
 
     const populatedOrder = await Order.findById(order._id).populate("user", "name email")
 
-    // const data = {
-    //     name: populatedOrder.user.name,
-    //     email: populatedOrder.user.email,
-    //     ref: populatedOrder.paymentStatus.id
-    // }
-
-    // await sendMessage(data)
+    await sendMail(
+        user.email,
+        'Order Confirmation Successful',
+        { 
+            name: populatedOrder.user.firstName,
+            id: order._id,
+            address: order.shippingAddress,
+            phone: populatedOrder.user.phone,
+        },
+        './emailTemplate/orderConfirmation.handlebars'
+    )
     
     res.json(populatedOrder)
 })

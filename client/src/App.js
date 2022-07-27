@@ -13,15 +13,7 @@ import Home from './pages/Home'
 import ProductPage from './pages/ProductPage'
 import Cart from './pages/Cart'
 import Products from './pages/Products'
-// import Signin from './pages/Signin'
-// import Shipping from './pages/Checkout/Shipping'
-// import OrderReview from './pages/Checkout/OrderReview'
-// import Payment from './pages/Checkout/Payment'
-// import Account from './pages/Profile/Account'
-// import CategoryProducts from './pages/CategoryProducts'
-// import GenderProducts from './pages/GenderProducts'
-// import NotFound from './pages/NotFound'
-// import AdminPage from './pages/Admin/AdminPage'
+
 
 import "./App.css";
 
@@ -37,6 +29,8 @@ const Account = React.lazy(() => import("./pages/Profile/Account"))
 const Shipping = React.lazy(() => import("./pages/Checkout/Shipping"));
 const OrderReview = React.lazy(() => import("./pages/Checkout/OrderReview"));
 const Payment = React.lazy(() => import("./pages/Checkout/Payment"));
+const ForgotPassword = React.lazy(() => import("./pages/password/forgotPassword"))
+const ResetPassword = React.lazy(() => import("./pages/password/resetPassword"))
 const NotFound = React.lazy(() => import('./pages/NotFound'))
 
 
@@ -48,6 +42,8 @@ function App() {
                     <React.Suspense fallback={<Loader />}>
                     <Switch>
                         <Route path="/signin" component={Signin} /> 
+                        <Route path="/forgot-password" component={ForgotPassword} />
+                        <Route path="/reset-password" component={ResetPassword} />
                         <Route path="/product/:id" component={ProductPage} />
                         <Route path="/products/page/:pageNumber" component={Products} />
                         <Route path="/products" component={Products} />

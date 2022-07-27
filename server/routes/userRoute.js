@@ -14,7 +14,9 @@ const {
     getAddress,
     editAddress,
     deleteAddress,
-    setAddressToDefault
+    setAddressToDefault,
+    requestPasswordReset,
+    handlePasswordReset
 } = require("../controllers/usersController")
 
 
@@ -45,6 +47,10 @@ router.put("/profile/:id/address/:addressId", isAuthenticated, editAddress)
 router.delete("/profile/:id/address/:addressId", isAuthenticated, deleteAddress)
 
 router.put("/admin/:id", isAuthenticated, isAdmin, upgradeUser)
+
+router.post("/forgot-password", requestPasswordReset)
+
+router.post('/reset-password', handlePasswordReset)
 
 
 module.exports = router

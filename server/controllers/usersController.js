@@ -2,6 +2,9 @@ const asyncHandler = require("express-async-handler")
 const bcrypt = require("bcrypt")
 const User = require("../models/user")
 const generateToken = require("../utils/generateToken")
+const Token = require('../models/token')
+const crypto = require('crypto')
+const sendMail = require('../utils/sendMail.js')
 
 
 const registerUser = asyncHandler(async (req, res) => {
@@ -319,6 +322,71 @@ const deleteAddress = asyncHandler(async (req, res) => {
     res.json({ success: true })
 })
 
+const requestPasswordReset = asyncHandler(async (req, res) => {
+    const { email } = req.body
+    const user = await User.findOne({ email: email })
+
+    if (!user) {
+        res.status(404)
+        throw new Error('User does not exist')
+    }
+
+    let token = await Token.findOne({ userId: user._id })
+    if (!token) {
+        let newToken = new Token({
+            userId: user._id,
+            token: crypto.randomBytes(32).toString('hex'),
+        })
+
+        token = await newToken.save()
+    }
+
+    const baseUrl = process.env.NODE_ENV === 'production' ? process.env.PROD_BASE_URL : process.env.DEV_BASE_URL
+
+    const url = `${baseUrl}/reset-password?token=${token.token}&id=${token.userId}`
+    await sendMail(
+        user.email,
+        'Password Reset',
+        { name: user.name, link: url },
+        './emailTemplate/passwordResetRequest.handlebars'
+    )
+
+    res.json({ success: true })
+})
+
+const handlePasswordReset = asyncHandler(async (req, res) => {
+    const { token, id, password } = req.body
+
+    const user = await User.findById(id)
+
+    if (!user) {
+        res.status(400)
+        throw new Error('Invalid User Id')
+    }
+
+    const tokenExist = await Token.findOne({ userId: id, token: token })
+    if (!tokenExist) {
+        res.status(404)
+        throw new Error('Token does not exist or is expired')
+    }
+
+    const salt = await bcrypt.genSalt(10)
+    const newPassword = await bcrypt.hash(password, salt)
+
+    await User.findOneAndUpdate(
+        { _id: id },
+        { $set: { password: newPassword } }
+    )
+    await sendMail(
+        user.email,
+        'Password Reset Successful',
+        { name: user.name },
+        './emailTemplate/passwordResetConfirmation.handlebars'
+    )
+    await Token.deleteOne({ token: token })
+
+    res.json({ success: true })
+})
 
 
 module.exports = {
@@ -335,5 +403,7 @@ module.exports = {
     getAddress,
     editAddress,
     setAddressToDefault,
-    deleteAddress
+    deleteAddress,
+    handlePasswordReset,
+    requestPasswordReset,
 }
